@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
+    android:id="@+id/insert">
+
+    <ImageView
+        android:id="@+id/insertImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
+
+        <TextView
+            android:id="@+id/dateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date :"
+            android:textSize="18sp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            />
+
+            <Spinner
+                android:id="@+id/dateDropDown"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/spinner"
+                />
+
+            <TextView
+                android:id="@+id/slash"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:layout_marginLeft="132dp"
+                android:textSize="25sp"
+                android:layout_marginTop="60dp"
+                />
+
+            <Spinner
+                android:id="@+id/monthDropDown"
+                android:layout_width="75dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="152dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/spinner"
+                />
+
+            <TextView
+                android:id="@+id/slash2"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:layout_marginLeft="239dp"
+                android:layout_marginTop="60dp"
+                android:textSize="25sp"
+                />
+
+            <TextView
+                android:id="@+id/yearText"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="262dp"
+                android:layout_marginTop="60dp"
+                android:textSize="25sp"
+                />
+
+    <EditText
+        android:id="@+id/subjectText"
+        android:layout_width="318dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:hint="Subject"
+        android:inputType="text" />
+
+
+    <EditText
+        android:id="@+id/eventText"
+        android:layout_width="320dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="250dp"
+        android:ems="10"
+        android:hint="Event"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <ImageButton
+        android:id="@+id/favorite"
+        style="@android:style/Widget.DeviceDefault.ImageButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginTop="470dp"
+        android:adjustViewBounds="false"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/favorite"
+        android:onClick="fav"
+        android:visibility="visible"
+        tools:src="@drawable/favorite" />
+
+    <Button
+        android:id="@+id/insertLogBtn"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="110sp"
+        android:layout_marginTop="530dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/selectbutton"
+        android:onClick="validateInput"
+        android:text="Log Event" />
+
+</RelativeLayout>

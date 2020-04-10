@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/watchActivityImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:background="@drawable/header">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="170sp"
+        android:layout_height="52dp"
+        android:text="Wednesday"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="14dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="23sp"
+        android:visibility="visible"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="180sp"
+        android:layout_height="52dp"
+        android:text="Activities"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="33dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="40sp"
+        android:visibility="visible"
+        />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/activityLabel"
+        android:layout_width="340dp"
+        android:layout_height="450dp"
+        android:text="Event"
+        android:textSize="20sp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="160dp"
+        android:scrollbars="horizontal|vertical"
+        />
+
+</RelativeLayout>

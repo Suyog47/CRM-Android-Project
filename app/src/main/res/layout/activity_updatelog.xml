@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF69B4">
+
+    <ImageView
+        android:id="@+id/updateEventImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
+
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:background="@drawable/header">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="210dp"
+        android:layout_height="54dp"
+        android:text="Update Event"
+        android:layout_marginLeft="90sp"
+        android:layout_marginTop="15dp"
+        android:textStyle="italic"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="35dp"
+        android:visibility="visible"
+        />
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/yearDropDown"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40sp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/spinner"
+        />
+
+    <Spinner
+        android:id="@+id/dateDropDown"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="190sp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/spinner"/>
+
+    <Button
+        android:id="@+id/selectLogBtn"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="120sp"
+        android:layout_marginTop="180dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/selectbutton"
+        android:onClick="watchEvent"
+        android:text="Select" />
+
+    <ImageView
+        android:id="@+id/fav"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginLeft="163dp"
+        android:onClick="setFav"
+        android:src="@drawable/favorite"/>
+
+    <EditText
+        android:id="@+id/subjectText"
+        android:layout_width="318dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="240dp"
+        android:textColor="@color/cardview_light_background"
+        android:ems="10"
+        android:hint="Subject"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/eventText"
+        android:layout_width="320dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="320dp"
+        android:textColor="@color/cardview_light_background"
+        android:ems="10"
+        android:hint="Event"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+
+    <Button
+        android:id="@+id/updateBtn"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@id/yearDropDown"
+        android:layout_marginTop="540dp"
+        android:textColor="@android:color/black"
+        android:background="@drawable/updatebutton"
+        android:onClick="validateInput"
+        android:text="Update" />
+
+    <Button
+        android:id="@+id/deleteBtn"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="540dp"
+        android:textColor="@android:color/black"
+        android:background="@drawable/settimerbutton"
+        android:onClick="deleteEvent"
+        android:text="Delete" />
+</RelativeLayout>

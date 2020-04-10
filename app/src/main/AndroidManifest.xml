@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.example.demoapp">
+
+    <dist:module dist:instant="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/iconimage"
+        android:label="@string/app_name"
+        android:hardwareAccelerated="false"
+        android:roundIcon="@mipmap/iconimage"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <receiver android:name=".BackgroundProcessClass.BackgroundNotificationService" >
+        </receiver>
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MenuData"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EventClasses.ShowLog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EventClasses.InsertLog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyActivityClasses.DailyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EventClasses.SweetMemories"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EventClasses.UpdateLog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyActivityClasses.WatchActivities"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyActivityClasses.SetTimer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyActivityClasses.UpdateDailyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyActivityClasses.NotificationWindow"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NotesClasses.Notes"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NotesClasses.AddNotes"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DatesClasses.Impdates"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BackgroundProcessClass.BackupAndRestoreDBs"
+            android:screenOrientation="portrait" />
+    </application>
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+</manifest>

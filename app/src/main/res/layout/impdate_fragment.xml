@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_marginTop="15dp"
+    android:layout_height="75dp"
+    android:background="@drawable/daterecyclerviewdesign">
+
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:text="Date:- "
+        android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/event"
+        android:layout_width="290sp"
+        android:layout_height="35sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="35dp"
+        android:gravity="center_vertical"
+        android:scrollbars="horizontal|vertical"
+        android:autoSizeTextType="uniform"
+        android:textSize="17sp"/>
+
+    <ImageButton
+        android:id="@+id/delBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="300sp"
+        android:layout_marginTop="13dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_delete" />
+
+</RelativeLayout>

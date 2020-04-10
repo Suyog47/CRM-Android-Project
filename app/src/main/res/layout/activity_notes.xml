@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B800B8">
+
+    <ImageView
+        android:id="@+id/loginImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:background="@drawable/header">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="100dp"
+            android:layout_height="54dp"
+            android:text="Notes"
+            android:layout_marginLeft="135sp"
+            android:layout_marginTop="15dp"
+            android:textStyle="italic"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="35dp"
+            android:visibility="visible"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/green_button_background"
+        android:onClick="newNote"
+        android:text="Add New"/>
+
+<ScrollView
+    android:layout_width="400dp"
+    android:layout_height="600dp"
+    android:layout_marginTop="170dp">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:id="@+id/notesLayout">
+
+   </LinearLayout>
+</ScrollView>
+</RelativeLayout>

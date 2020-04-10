@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/seeLog">
+
+    <ImageView
+        android:id="@+id/showImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:background="@drawable/header">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="200dp"
+        android:layout_height="54dp"
+        android:text="Life Events"
+        android:layout_marginLeft="100sp"
+        android:layout_marginTop="15dp"
+        android:textStyle="italic"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="35dp"
+        android:visibility="visible"
+        />
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/yearDropDown"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40sp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/spinner"
+        />
+
+    <Spinner
+        android:id="@+id/dateDropDown"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="190sp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/spinner"/>
+
+    <Button
+        android:id="@+id/selectLogBtn"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="120sp"
+        android:layout_marginTop="180dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/selectbutton"
+        android:onClick="watchEvent"
+        android:text="Watch Event" />
+
+    <TextView
+        android:id="@+id/subjectLabel"
+        android:layout_width="318dp"
+        android:layout_height="50dp"
+        android:text="Subject"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="247dp"
+        android:textColor="@color/cardview_light_background"
+        android:background="@drawable/textviewdesign"
+        android:scrollbars = "horizontal"
+        android:ems="10"/>
+
+    <ImageView
+        android:id="@+id/fav"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="163dp"
+        android:src="@drawable/favorite"/>
+
+    <TextView
+        android:id="@+id/eventLabel"
+        android:layout_width="318dp"
+        android:layout_height="270dp"
+        android:text="Event"
+        android:textSize="20sp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="330dp"
+        android:padding="10dp"
+        android:scrollbars = "horizontal|vertical"
+        android:background="@drawable/textviewdesign"
+        />
+</RelativeLayout>

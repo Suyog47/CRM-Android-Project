@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/menuLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background">
+
+    <ImageView
+        android:id="@+id/menuImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:background="@drawable/header">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="170sp"
+            android:layout_height="54dp"
+            android:text="Activities"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="14dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="40sp"
+            android:visibility="visible"
+            />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="400dp"
+        android:layout_height="650dp"
+        android:layout_marginTop="100dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-90dp"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp">
+
+            <TableRow>
+
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/loginview"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:elevation="23dp"
+        android:onClick="insertLog">
+
+            <ImageButton
+                android:id="@+id/insertLogBtn"
+                android:layout_width="60dp"
+                android:layout_height="66dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="20dp"
+                android:cropToPadding="true"
+                android:onClick="insertLog"
+                android:background="@drawable/loginview"
+                android:scaleType="fitCenter"
+                android:src="@drawable/insertlog"
+                android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="100dp"
+        android:text="Insert Event"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:onClick="insertLog"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/loginview"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:elevation="23dp"
+        android:onClick="showLog">
+
+        <ImageButton
+            android:id="@+id/showLogBtn"
+            android:layout_width="60dp"
+            android:layout_height="66dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/loginview"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            android:onClick="showLog"
+            android:src="@drawable/showlog"
+            android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="100dp"
+        android:text="Show Event"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:onClick="showLog"
+        />
+    </RelativeLayout>
+
+            </TableRow>
+
+            <TableRow>
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/loginview"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:elevation="23dp"
+        android:onClick="dailyActivity">
+
+            <ImageButton
+                android:id="@+id/dailyActivityBtn"
+                android:layout_width="60dp"
+                android:layout_height="66dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/loginview"
+                android:cropToPadding="true"
+                android:scaleType="fitCenter"
+                android:onClick="dailyActivity"
+                android:src="@drawable/dailyactivity"
+                android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="100dp"
+        android:text="Daily Activities"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:onClick="dailyActivity"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/loginview"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:elevation="23dp"
+        android:onClick="sweetMemories">
+
+            <ImageButton
+                android:id="@+id/sweetMemoriesBtn"
+                android:layout_width="70dp"
+                android:layout_height="76dp"
+                android:layout_marginLeft="29dp"
+                android:layout_marginTop="19dp"
+                android:adjustViewBounds="false"
+                android:background="@drawable/loginview"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                android:onClick="sweetMemories"
+                android:src="@drawable/sweetmemories"
+                android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="85dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="83dp"
+        android:text="  Sweet Memories"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:onClick="sweetMemories"
+        />
+    </RelativeLayout>
+
+            </TableRow>
+
+            <TableRow>
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/loginview"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:elevation="23dp"
+        android:onClick="updateLog">
+
+            <ImageButton
+                android:id="@+id/updateLogBtn"
+                android:layout_width="70dp"
+                android:layout_height="76dp"
+                android:layout_marginLeft="29dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/loginview"
+                android:cropToPadding="true"
+                android:scaleType="fitCenter"
+                android:onClick="updateLog"
+                android:src="@drawable/updatelog"
+                android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="100dp"
+        android:text="Update Event"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:onClick="updateLog"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/loginview"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:elevation="23dp"
+        android:onClick="updateDailyActivity">
+
+            <ImageButton
+                android:id="@+id/updateDailyActivityBtn"
+                android:layout_width="60dp"
+                android:layout_height="66dp"
+                android:layout_marginLeft="38dp"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="false"
+                android:background="@drawable/loginview"
+                android:cropToPadding="false"
+                android:onClick="updateDailyActivity"
+                android:scaleType="fitCenter"
+
+                android:src="@drawable/updatedailyactivity"
+                android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text6"
+        android:layout_width="85dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="83dp"
+        android:text="  Update D-Activity"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:onClick="updateDailyActivity"
+        />
+    </RelativeLayout>
+
+            </TableRow>
+
+            <TableRow>
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="30dp"
+            android:elevation="23dp"
+            android:onClick="notes">
+
+            <ImageButton
+                android:id="@+id/NotesBtn"
+                android:layout_width="70dp"
+                android:layout_height="76dp"
+                android:layout_marginLeft="31dp"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="false"
+                android:background="@drawable/loginview"
+                android:cropToPadding="false"
+                android:onClick="notes"
+                android:scaleType="fitCenter"
+                android:src="@drawable/notes"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/text7"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="42dp"
+                android:layout_marginTop="100dp"
+                android:text="Notes"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="notes"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="40dp"
+            android:elevation="23dp"
+            android:onClick="impdates">
+
+            <ImageButton
+                android:id="@+id/ImpDatesBtn"
+                android:layout_width="70dp"
+                android:layout_height="76dp"
+                android:layout_marginLeft="31dp"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="false"
+                android:background="@drawable/loginview"
+                android:cropToPadding="false"
+                android:onClick="impdates"
+                android:scaleType="fitCenter"
+                android:src="@drawable/impdates"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/text8"
+                android:layout_width="95dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="100dp"
+                android:text="Imp-Dates"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="impdates"
+                />
+        </RelativeLayout>
+            </TableRow>
+        </TableLayout>
+        <RelativeLayout
+            android:layout_width="180dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="89dp"
+            android:elevation="23dp"
+            android:onClick="dbcontrols">
+
+            <ImageButton
+                android:id="@+id/DBControlBtn"
+                android:layout_width="70dp"
+                android:layout_height="76dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="false"
+                android:background="@drawable/loginview"
+                android:cropToPadding="false"
+                android:onClick="dbcontrols"
+                android:scaleType="fitCenter"
+                android:src="@drawable/db"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/text9"
+                android:layout_width="155dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="92dp"
+                android:text="Database  Controls"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="dbcontrols"
+                />
+        </RelativeLayout>
+     </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
