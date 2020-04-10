@@ -98,7 +98,7 @@ public class Login extends Activity {
     //Function to check valid Owner
     public void evaluate(View v){
         userCode = ucode.getText().toString();
-        if(userCode.equals("s")) {
+        if(userCode.equals("SA")) {
             Intent a1 = new Intent(this,MenuData.class);
             startActivity(a1);
         }
