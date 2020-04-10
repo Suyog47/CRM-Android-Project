@@ -98,7 +98,7 @@ public class Login extends Activity {
     //Function to check valid Owner
     public void evaluate(View v){
         userCode = ucode.getText().toString();
-        if(userCode.equals("SA")) {
+        if(userCode.equals("SA09")) {
             Intent a1 = new Intent(this,MenuData.class);
             startActivity(a1);
         }
@@ -114,12 +114,15 @@ public class Login extends Activity {
         }
     }
 
+
     //Function to set Link like Text
     public void getHint(View v){
-        new SweetAlertDialog(this,SweetAlertDialog.NORMAL_TYPE)
-                .setTitleText("Scrape this to get Hint")
-                .setContentText("10101011010")
-                .show();
+        String hint1 = "First Hint:- 01010011 | 01000001 | 0b0 | 0b1001";
+        String hint2 = "Second Hint:- 0b1100100 | 01010010 | 0b1111101000 | 0b100 | 0b111";
+       new AlertDialog.Builder(this)
+               .setTitle("Decode this to get Hint")
+               .setMessage(hint1+"\n"+hint2)
+               .show();
     }
 
 }
