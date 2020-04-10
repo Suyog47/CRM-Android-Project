@@ -48,23 +48,7 @@ public class BackupAndRestoreDBs extends Activity {
         rl = findViewById(R.id.backupRelativeLayout);
         rl.setVisibility(View.INVISIBLE);
 
-        //Setting up new Thread
-        Callable<Void> call1 = new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
                 authenticateAgain();
-                return null;
-            }
-        };
-
-        List<Callable<Void>> task = new ArrayList<>();
-        task.add(call1);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-
-        try { executor.invokeAll(task); }
-        catch (InterruptedException ie) { Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show(); }
-        finally{ executor.shutdown(); }
     }
 
 
@@ -83,7 +67,7 @@ public class BackupAndRestoreDBs extends Activity {
                 .setPositiveButton("Check", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if(pass.getText().toString().equals("A")){
+                        if(pass.getText().toString().equals("CRM47")){
                             Log.i(TAG,"SUCCESS");
                             rl.setVisibility(View.VISIBLE);
                             successCall();
