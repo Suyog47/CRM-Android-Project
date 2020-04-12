@@ -119,10 +119,10 @@ public class Login extends Activity {
     public void getHint(View v){
         String hint1 = "First Hint:- 01010011 | 01000001 | 0b0 | 0b1001";
         String hint2 = "Second Hint:- 0b1100100 | 01010010 | 0b1111101000 | 0b100 | 0b111";
-       new AlertDialog.Builder(this)
-               .setTitle("Decode this to get Hint")
-               .setMessage(hint1+"\n"+hint2)
-               .show();
+        new AlertDialog.Builder(this)
+                .setTitle("Decode this to get Hint")
+                .setMessage(hint1+"\n"+hint2)
+                .show();
     }
 
 }
