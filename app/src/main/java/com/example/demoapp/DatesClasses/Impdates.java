@@ -40,7 +40,6 @@ public class Impdates extends Activity {
     EditText input;
     TextView t;
     LinearLayout mlayout, hlayout, vlayout;
-    LinearLayout.LayoutParams[] params = new LinearLayout.LayoutParams[2];
     RelativeLayout relativeLayout;
 
 

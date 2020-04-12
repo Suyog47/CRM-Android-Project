@@ -82,7 +82,7 @@ public class Login extends Activity {
         ExecutorService executor = Executors.newCachedThreadPool();
         try{executor.invokeAll(tasklist);}
         catch(Exception e){
-            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();}
+            Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show();}
         finally {
             executor.shutdown();
         }

@@ -67,6 +67,7 @@ public class BackgroundNotificationService extends BroadcastReceiver {
                         .setAutoCancel(true);
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
+
         //Code to set Notification Channel if Android Version(Api level) >= Oreo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {

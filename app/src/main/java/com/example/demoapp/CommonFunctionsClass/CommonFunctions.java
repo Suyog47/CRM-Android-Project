@@ -75,7 +75,7 @@ public class CommonFunctions {
     }
 
 
-    // Function to set daily-activites
+    // Function to set daily-activities
     public void showDActivity(Context context, DActivitySqlliteDbService db, String message, TextView activity){
         db = new DActivitySqlliteDbService(context);
         Cursor act = db.getActivities(message);

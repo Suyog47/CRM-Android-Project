@@ -47,8 +47,7 @@ public class BackupAndRestoreDBs extends Activity {
         setContentView(R.layout.activity_backup_restore);
         rl = findViewById(R.id.backupRelativeLayout);
         rl.setVisibility(View.INVISIBLE);
-
-                authenticateAgain();
+        authenticateAgain();
     }
 
 
@@ -120,6 +119,7 @@ public class BackupAndRestoreDBs extends Activity {
         }
     }
 
+
     public void backUp(View v){
         Dir.mkdirs();
         backupDB("Memory.db");
@@ -158,6 +158,7 @@ public class BackupAndRestoreDBs extends Activity {
         }
         catch(Exception e){ e.printStackTrace(); }
     }
+
 
     public void reStore(View v){
         restoreDB("Memory.db");
@@ -209,7 +210,6 @@ public class BackupAndRestoreDBs extends Activity {
     //Function to Download db from Cloud Server
     public void Download(View v){
         Toast.makeText(this,"Downloading Code not written yet",Toast.LENGTH_LONG).show();
-
     }
 
 }

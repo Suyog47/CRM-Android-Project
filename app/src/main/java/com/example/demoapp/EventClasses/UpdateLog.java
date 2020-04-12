@@ -39,7 +39,6 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
     Spinner year, date;
     Button ubtn, dbtn;
     EditText subject, event;
-    ArrayAdapter<String> da;
     ImageView updateventimg, fav;
 
     @Override
