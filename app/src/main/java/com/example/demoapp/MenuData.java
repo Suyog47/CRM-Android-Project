@@ -29,8 +29,6 @@ import java.util.concurrent.Executors;
 public class MenuData extends Activity {
 
     ImageView menuimg;
-    CommonFunctions cf = new CommonFunctions();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,7 @@ public class MenuData extends Activity {
             public Void call() throws Exception {
                 int img = R.drawable.menu;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 menuimg.setImageBitmap(scaledImg);
                 return null;
             }

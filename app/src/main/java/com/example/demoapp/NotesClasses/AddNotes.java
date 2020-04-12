@@ -37,9 +37,7 @@ public class AddNotes extends Activity {
     Button noteBtn;
     Date dt = new Date();
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-    NotesSqlliteDbService db;
     ImageView addnotesimg;
-    CommonFunctions cf = new CommonFunctions();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,7 +57,7 @@ public class AddNotes extends Activity {
                 //Setting up Bitmap Scaled Image
                 int img = R.drawable.notesbg2;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 addnotesimg.setImageBitmap(scaledImg);
                 return null;
             }
@@ -102,11 +100,10 @@ public class AddNotes extends Activity {
         if (TextUtils.isEmpty(notes.getText().toString())) {
             notes.setError("Write Something");
         } else {
-            db = new NotesSqlliteDbService(this);
             String date = formatter.format(dt);
             String note = notes.getText().toString();
             String flg = flag.getSelectedItem().toString();
-            String res = db.insertNote(date, note, flg);
+            String res = new NotesSqlliteDbService(this).insertNote(date, note, flg);
 
             if (res == "Notes Inserted") {
                 notes.setText("");

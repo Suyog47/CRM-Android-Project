@@ -40,9 +40,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
     Button ubtn, dbtn;
     EditText subject, event;
     ArrayAdapter<String> da;
-    EventSqlliteDbService db;
     ImageView updateventimg, fav;
-    CommonFunctions cf = new CommonFunctions();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,7 +67,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
                 //Setting up Bitmap Scaled Images
                 int img = R.drawable.updatevent;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 updateventimg.setImageBitmap(scaledImg);
                 return null;
             }
@@ -80,9 +78,8 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
             public Void call() throws Exception {
 
                 //Get all Event Years registered in Db
-                db = new EventSqlliteDbService(getApplicationContext());
-                Cursor res = db.getYear();
-                year.setAdapter(cf.setYears(getApplicationContext(), res));
+                Cursor res = new EventSqlliteDbService(getApplicationContext()).getYear();
+                year.setAdapter(new CommonFunctions().setYears(getApplicationContext(), res));
                 return null;
             }
         };
@@ -101,8 +98,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
     //Function to get dates from selected Year
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         String yr = year.getSelectedItem().toString();
-        db = new EventSqlliteDbService(this);
-        date.setAdapter(cf.setDates(this,db,yr,"normal"));
+        date.setAdapter(new CommonFunctions().setDates(this, new EventSqlliteDbService(this), yr,"normal"));
     }
 
     public void onNothingSelected(AdapterView<?> parent) { }
@@ -112,8 +108,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
     public void watchEvent(View v){
         subject.setEnabled(true); event.setEnabled(true); ubtn.setEnabled(true); fav.setEnabled(true);
 
-        db = new EventSqlliteDbService(this);
-        Cursor res = db.getEvent(date.getSelectedItem().toString());
+        Cursor res = new EventSqlliteDbService(this).getEvent(date.getSelectedItem().toString());
         while(res.moveToNext()){
             subject.setText(res.getString(2));
             event.setText(res.getString(3));
@@ -147,7 +142,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
     //Function to update Event
     public void update(){
         Boolean favrt = (fv == 1) ? true : false;
-        boolean result = db.updateEvent(date.getSelectedItem().toString(), subject.getText().toString(), event.getText().toString(), favrt);
+        boolean result = new EventSqlliteDbService(this).updateEvent(date.getSelectedItem().toString(), subject.getText().toString(), event.getText().toString(), favrt);
         if (result == true) {
             ubtn.setText("Event Updated");
             ubtn.setEnabled(false);
@@ -169,7 +164,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
 
     //Function to ask for Confirmation for deletion
     public void deleteEvent(View v) {
-        cf.setVibration(this);
+        new CommonFunctions().setVibration(this);
         new AlertDialog.Builder(this)
                 .setTitle("Are You Sure!")
                 .setMessage("You Want to Delete this Event?")
@@ -190,11 +185,10 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
     //Function to delete event
     public void sureDelete(){
         String dte = date.getSelectedItem().toString();
-        int result = db.deleteEvent(dte);
+        int result = new EventSqlliteDbService(this).deleteEvent(dte);
         if (result > 0) {
             String yr = year.getSelectedItem().toString();
-            db = new EventSqlliteDbService(this);
-            date.setAdapter(cf.setDates(this,db,yr,"normal"));
+            date.setAdapter(new CommonFunctions().setDates(this, new EventSqlliteDbService(this), yr,"normal"));
                 subject.setText("");
                 event.setText("");
                 dbtn.setText("Event Deleted");

@@ -30,8 +30,6 @@ public class ImpDatesListAdapter extends RecyclerView.Adapter<ImpDatesListAdapte
     ViewHolder viewHolder;
     ArrayList Dates, Events;
     Context context;
-    ImpDatesSqlliteDbService db;
-    CommonFunctions cf = new CommonFunctions();
 
     // RecyclerView recyclerView;
 
@@ -91,7 +89,7 @@ public class ImpDatesListAdapter extends RecyclerView.Adapter<ImpDatesListAdapte
 
     //Function to delete Date
     public void deleteDate(final ViewHolder holder, final String Date){
-        cf.setVibration(context);
+        new CommonFunctions().setVibration(context);
         confirmDelete(holder, Date);
     }
 
@@ -105,8 +103,8 @@ public class ImpDatesListAdapter extends RecyclerView.Adapter<ImpDatesListAdapte
             }
         }, 500);
 
-        db = new ImpDatesSqlliteDbService(context);
-        int res = db.deleteDate(Date);
+
+        int res = new ImpDatesSqlliteDbService(context).deleteDate(Date);
         if(res > 0){
             Toast.makeText(context,"Date Deleted",Toast.LENGTH_SHORT).show();
         }

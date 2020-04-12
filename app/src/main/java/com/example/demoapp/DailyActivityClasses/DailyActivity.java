@@ -13,7 +13,6 @@ import com.example.demoapp.R;
 public class DailyActivity extends Activity {
     String s1;
     Button b1,b2,b3,b4,b5,b6,b7,btn1,btn2,btn3,btn4,btn5,btn6,btn7;
-    CommonFunctions cf = new CommonFunctions();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

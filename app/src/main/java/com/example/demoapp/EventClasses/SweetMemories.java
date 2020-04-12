@@ -29,9 +29,7 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
 
     Spinner year, date;
     TextView event, subject;
-    EventSqlliteDbService db;
     ImageView sweetmemimg;
-    CommonFunctions cf = new CommonFunctions();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +53,7 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
                 //Setting up Bitmap Scaled Images
                 int img = R.drawable.sweetmem;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 sweetmemimg.setImageBitmap(scaledImg);
                 return null;
             }
@@ -66,9 +64,8 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
             public Void call() throws Exception {
 
                 //Get favorite Event Years registered in Db
-                db = new EventSqlliteDbService(getApplicationContext());
-                Cursor res = db.getSweetYears();
-                year.setAdapter(cf.setYears(getApplicationContext(), res));
+                Cursor res = new EventSqlliteDbService(getApplicationContext()).getSweetYears();
+                year.setAdapter(new CommonFunctions().setYears(getApplicationContext(), res));
                 return null;
             }
         };
@@ -77,10 +74,10 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
         taskList.add(call1);
         taskList.add(call2);
 
-        ExecutorService exector = Executors.newCachedThreadPool();
-        try{ exector.invokeAll(taskList); }
+        ExecutorService executor = Executors.newCachedThreadPool();
+        try{ executor.invokeAll(taskList); }
         catch(InterruptedException ie){ Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show(); }
-        finally{ exector.shutdown(); }
+        finally{ executor.shutdown(); }
 
     }
 
@@ -88,8 +85,7 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
     //Function to get dates from selected Year
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
         String yr = year.getSelectedItem().toString();
-        db = new EventSqlliteDbService(this);
-        date.setAdapter(cf.setDates(this,db,yr,"sweet"));
+        date.setAdapter(new CommonFunctions().setDates(this, new EventSqlliteDbService(this), yr,"sweet"));
     }
 
     public void onNothingSelected(AdapterView<?> parent) { }
@@ -97,8 +93,7 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
 
     //Function to get Event for Selected Date
     public void watchEvent(View v) {
-        db = new EventSqlliteDbService(this);
-        Cursor res = db.getEvent(date.getSelectedItem().toString());
+        Cursor res = new EventSqlliteDbService(this).getEvent(date.getSelectedItem().toString());
         while(res.moveToNext()){
             event.setText(res.getString(3));
             subject.setText(res.getString(2));}

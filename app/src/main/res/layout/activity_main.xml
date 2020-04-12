@@ -24,7 +24,7 @@
         android:layout_height="54dp"
         android:text="Enter the Access Code"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="33dp"
+        android:layout_marginLeft="35dp"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="30sp"
         android:textStyle="italic"

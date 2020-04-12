@@ -35,8 +35,6 @@ public class Login extends Activity {
     TextView hint;
     ImageView loginimg;
     private MediaPlayer mp;
-    CommonFunctions cf = new CommonFunctions();
-    BackupAndRestoreDBs res = new BackupAndRestoreDBs();
 
     //Showing Alert Dialog to Confirm the Exit of Application
     @Override
@@ -72,7 +70,7 @@ public class Login extends Activity {
             public Void call() throws Exception {
                 int img = R.drawable.login;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 loginimg.setImageBitmap(scaledImg);
                 return null;
             }

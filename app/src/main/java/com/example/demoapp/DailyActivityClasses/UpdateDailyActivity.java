@@ -33,9 +33,7 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
     Spinner week;
     Button ubtn;
     EditText act;
-    DActivitySqlliteDbService db;
     ImageView updatedactivityimg;
-    CommonFunctions cf = new CommonFunctions();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +55,7 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
                 //Setting up Bitmap Scaled Image
                 int img = R.drawable.updatedactivity;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 updatedactivityimg.setImageBitmap(scaledImg);
                 return null;
             }
@@ -95,18 +93,17 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
     //Function to get Current day activity
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        cf.showDActivity(this, db, week.getSelectedItem().toString(), act);
+        new CommonFunctions().showDActivity(this, new DActivitySqlliteDbService(this), week.getSelectedItem().toString(), act);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        cf.showDActivity(this, db, "Sunday", act);
+        new CommonFunctions().showDActivity(this, new DActivitySqlliteDbService(this), "Sunday", act);
     }
 
     //Function to update Current day activity
     public void updateActivity(View v) {
-        db = new DActivitySqlliteDbService(this);
-        boolean result = db.updateActivity(week.getSelectedItem().toString(), act.getText().toString());
+        boolean result = new DActivitySqlliteDbService(this).updateActivity(week.getSelectedItem().toString(), act.getText().toString());
         if (result == true) {
             ubtn.setText("Updated");
             ubtn.setEnabled(false);
