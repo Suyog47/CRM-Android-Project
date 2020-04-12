@@ -25,9 +25,7 @@ public class WatchActivities extends Activity {
 
     TextView title;
     TextView activity;
-    DActivitySqlliteDbService db;
     ImageView watchactivityimg;
-    CommonFunctions cf = new CommonFunctions();
 
 
     @Override
@@ -47,7 +45,7 @@ public class WatchActivities extends Activity {
                 //Setting up Bitmap Scaled Image
                 int img = R.drawable.seeactivity;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 watchactivityimg.setImageBitmap(scaledImg);
                 return null;
             }
@@ -63,7 +61,7 @@ public class WatchActivities extends Activity {
                 title.setText(message);
 
                 //Get Current day Activity
-                cf.showDActivity(getApplicationContext(), db, message, activity);
+                new CommonFunctions().showDActivity(getApplicationContext(), new DActivitySqlliteDbService(getApplicationContext()), message, activity);
                 return null;
             }
         };

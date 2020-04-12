@@ -38,7 +38,6 @@ public class Notes extends Activity {
     LinearLayout.LayoutParams[] params = new LinearLayout.LayoutParams[100];
     NotesSqlliteDbService db;
     ImageView loginimg;
-    CommonFunctions cf = new CommonFunctions();
     int i = 0, id;
 
     @Override
@@ -56,7 +55,7 @@ public class Notes extends Activity {
                 //Setting up Bitmap Scaled Image
                 int img = R.drawable.login;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 loginimg.setImageBitmap(scaledImg);
                 return null;
             }

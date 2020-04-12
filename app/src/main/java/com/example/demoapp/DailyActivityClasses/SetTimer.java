@@ -47,9 +47,7 @@ public class SetTimer extends Activity {
     Switch timer;
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
-    DActivitySqlliteDbService db;
     ImageView setimerimg;
-    CommonFunctions cf = new CommonFunctions();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,7 +68,7 @@ public class SetTimer extends Activity {
                 //Setting up Bitmap Scaled Image
                 int img = R.drawable.settimer;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 setimerimg.setImageBitmap(scaledImg);
                 return null;
             }
@@ -107,8 +105,7 @@ public class SetTimer extends Activity {
 
     //Function to get the Timer for current day(if set)
     public void showSetTimer(){
-        db = new DActivitySqlliteDbService(this);
-        Cursor dt = db.getTimer(message);
+        Cursor dt = new DActivitySqlliteDbService(getApplicationContext()).getTimer(message);
         String dtimer = null;
         boolean stat = false;
         int dtimerstatus = 0;
@@ -130,8 +127,7 @@ public class SetTimer extends Activity {
     //Function to Update timer
     public void setTimer(View v) {
         String time = timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute();
-        db = new DActivitySqlliteDbService(this);
-        boolean result = db.updateTimer(title.getText().toString(), time);
+        boolean result = new DActivitySqlliteDbService(getApplicationContext()).updateTimer(title.getText().toString(), time);
         if (result == true) {
             btn.setText("Timer Placed");
             btn.setEnabled(false);
@@ -158,8 +154,7 @@ public class SetTimer extends Activity {
     public void switchTimer(View v){
         boolean status = timer.isChecked();
         int res = (status) ? 1 : 0;
-        db = new DActivitySqlliteDbService(this);
-        boolean result = db.setTimerStatus(title.getText().toString(), res);
+        boolean result = new DActivitySqlliteDbService(getApplicationContext()).setTimerStatus(title.getText().toString(), res);
         if(result == true){
             Toast.makeText(this, "Timer Set "+status, Toast.LENGTH_SHORT).show();
             setDayMinus1();
@@ -182,8 +177,7 @@ public class SetTimer extends Activity {
         String time = null;
         int Hr = 0, Min = 0;
 
-        db = new DActivitySqlliteDbService(context);
-        Cursor dt = db.getActivities(Day);
+        Cursor dt = new DActivitySqlliteDbService(context).getActivities(Day);
         while(dt.moveToNext()){
             time = dt.getString(2);
         }

@@ -26,7 +26,6 @@ import static android.content.ContentValues.TAG;
 public class BackgroundNotificationService extends BroadcastReceiver {
     String act;
     int timeStatus;
-    DActivitySqlliteDbService db;
     SetTimer st = new SetTimer();
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
@@ -37,9 +36,8 @@ public class BackgroundNotificationService extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         st.placeTimer(context);
-        db = new DActivitySqlliteDbService(context);
         String Day = formatter.format(calendar.getTime());
-        Cursor dt = db.getActivities(Day);
+        Cursor dt = new DActivitySqlliteDbService(context).getActivities(Day);
         while(dt.moveToNext()){
             act = dt.getString(1);
             timeStatus = dt.getInt(3);

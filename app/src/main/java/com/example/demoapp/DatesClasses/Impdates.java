@@ -39,7 +39,6 @@ public class Impdates extends Activity {
     Spinner date,month;
     EditText input;
     TextView t;
-    ImpDatesSqlliteDbService db;
     LinearLayout mlayout, hlayout, vlayout;
     LinearLayout.LayoutParams[] params = new LinearLayout.LayoutParams[2];
     RelativeLayout relativeLayout;
@@ -176,9 +175,8 @@ public class Impdates extends Activity {
 
     //Function to check whether Event is already Inserted for Specified Date or not
     public void checkFirst(){
-            db = new ImpDatesSqlliteDbService(this);
             String dt = date.getSelectedItem().toString() + "/" + month.getSelectedItem().toString();
-            Cursor res = db.getCertainDate(dt);
+            Cursor res = new ImpDatesSqlliteDbService(this).getCertainDate(dt);
             if (res.getCount() > 0) {
                 new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                         .setContentText("Already added Event for this Date")
@@ -195,8 +193,7 @@ public class Impdates extends Activity {
 
     //Function to insert date-event
     public void newDate(String dt){
-     db = new ImpDatesSqlliteDbService(this);
-     String res = db.insertDate(dt, input.getText().toString());
+     String res = new ImpDatesSqlliteDbService(this).insertDate(dt, input.getText().toString());
      if(res == "Date Inserted"){
          hlayout.removeAllViews();
          vlayout.removeAllViews();
@@ -216,8 +213,7 @@ public class Impdates extends Activity {
 
     //Function to get all dates and its events
     public void showDates(Context context){
-        db = new ImpDatesSqlliteDbService(context);
-        Cursor res = db.getDates();
+        Cursor res = new ImpDatesSqlliteDbService(context).getDates();
         ArrayList Dates = new ArrayList<>();
         ArrayList Events = new ArrayList<>();
         if(res.getCount() == 0){ }

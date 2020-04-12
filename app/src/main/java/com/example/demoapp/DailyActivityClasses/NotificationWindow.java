@@ -25,9 +25,6 @@ public class NotificationWindow extends Activity {
 
     TextView event;
     String FullDay;
-    ImageView menuimg;
-    CommonFunctions cf = new CommonFunctions();
-    DActivitySqlliteDbService db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +43,7 @@ public class NotificationWindow extends Activity {
                 FullDay = formatter.format(dt);
 
                 //Get Current day Activity
-                db = new DActivitySqlliteDbService(getApplicationContext());
-                cf.showDActivity(getApplicationContext(), db, FullDay, event);
+                new CommonFunctions().showDActivity(getApplicationContext(), new DActivitySqlliteDbService(getApplicationContext()), FullDay, event);
                 return null;
             }
         };

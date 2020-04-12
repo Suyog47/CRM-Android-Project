@@ -47,9 +47,7 @@ public class InsertLog extends Activity {
     Date dt = new Date();
     MediaPlayer player;
     SimpleDateFormat formatter = new SimpleDateFormat("YYYY");
-    EventSqlliteDbService db;
     ImageView insertimg;
-    CommonFunctions cf = new CommonFunctions();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +72,7 @@ public class InsertLog extends Activity {
                 //Setting up Bitmap Scaled Image
                 int img = R.drawable.insertevent;
                 Display display = getWindowManager().getDefaultDisplay();
-                Bitmap scaledImg = cf.getScaledImage(getApplicationContext(), img, display);
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 insertimg.setImageBitmap(scaledImg);
                 return null;
             }
@@ -184,10 +182,9 @@ public class InsertLog extends Activity {
 
     //Function to check whether Event is already Inserted for Specified Date or not
     public void checkFirst(String fullDate){
-        db = new EventSqlliteDbService(this);
-        Cursor res = db.getEvent(fullDate);
+        Cursor res = new EventSqlliteDbService(this).getEvent(fullDate);
         if(res.getCount() >= 1){
-            cf.setVibration(this);
+            new CommonFunctions().setVibration(this);
             new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Already Inserted for this Date")
                     .setContentText("Try updating ur Event")
@@ -199,8 +196,7 @@ public class InsertLog extends Activity {
 
     //Function to Insert Event
     public void insert(String fullDate){
-        db = new EventSqlliteDbService(this);
-        String result = db.insertData(Integer.parseInt(year.getText().toString()), fullDate, subject.getText().toString(), event.getText().toString(), fav);
+        String result = new EventSqlliteDbService(this).insertData(Integer.parseInt(year.getText().toString()), fullDate, subject.getText().toString(), event.getText().toString(), fav);
         if(result == "Data Inserted!") {
             btn.setText("Event Inserted");
             btn.setEnabled(false);
