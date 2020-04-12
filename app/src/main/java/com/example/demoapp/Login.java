@@ -114,6 +114,7 @@ public class Login extends Activity {
         }
     }
 
+
     //Function to set Link like Text
     public void getHint(View v){
         String hint1 = "First Hint:- 01010011 | 01000001 | 0b0 | 0b1001";
