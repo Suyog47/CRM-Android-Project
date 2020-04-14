@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -57,6 +58,7 @@ public class BackupAndRestoreDBs extends Activity {
         final ViewGroup.LayoutParams mparams = new ViewGroup.LayoutParams(400, 180);
         final EditText pass = new EditText(this);
         pass.setLayoutParams(mparams);
+        pass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         l.addView(pass);
         l.setGravity(Gravity.CENTER);
 
