@@ -8,17 +8,17 @@
     android:background="#B3B3B3">
 
     <RelativeLayout
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@drawable/header">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="300sp"
-            android:layout_height="54dp"
+            android:layout_width="273sp"
+            android:layout_height="44dp"
             android:text="Database Controls"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="33sp"
             android:visibility="visible"
@@ -29,7 +29,7 @@
         android:layout_width="340sp"
         android:layout_height="80sp"
         android:layout_marginTop="130sp"
-        android:layout_marginLeft="10sp"
+        android:layout_centerHorizontal="true"
         android:onClick="backUp"
         android:backgroundTint="@android:color/holo_orange_light"
         android:background="@drawable/backupbtndesign"
@@ -59,7 +59,7 @@
         android:layout_width="340sp"
         android:layout_height="80sp"
         android:layout_marginTop="240sp"
-        android:layout_marginLeft="10sp"
+        android:layout_centerHorizontal="true"
         android:onClick="reStore"
         android:backgroundTint="#FFFF00"
         android:background="@drawable/restorebtndesign" >
@@ -88,13 +88,13 @@
     android:textColor="@color/cardview_light_background"
     android:textSize="30dp"
     android:layout_marginTop="325sp"
-    android:layout_marginLeft="23dp"/>
+    android:layout_centerHorizontal="true"/>
 
     <RelativeLayout
         android:layout_width="340sp"
         android:layout_height="80sp"
         android:layout_marginTop="380sp"
-        android:layout_marginLeft="10sp"
+        android:layout_centerHorizontal="true"
         android:onClick="Upload"
         android:backgroundTint="@color/blue_btn_bg_color"
         android:background="@drawable/backupbtndesign"
@@ -123,7 +123,7 @@
         android:layout_width="340sp"
         android:layout_height="80sp"
         android:layout_marginTop="490sp"
-        android:layout_marginLeft="10sp"
+        android:layout_centerHorizontal="true"
         android:onClick="Download"
         android:backgroundTint="@android:color/holo_green_light"
         android:background="@drawable/restorebtndesign" >

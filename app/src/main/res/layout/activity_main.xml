@@ -13,18 +13,19 @@
         android:id="@+id/loginImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ImageView>
+
 <RelativeLayout
-    android:layout_width="400dp"
+    android:layout_width="match_parent"
     android:layout_height="90dp"
     android:background="@drawable/header">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="320dp"
+        android:layout_width="295dp"
         android:layout_height="54dp"
         android:text="Enter the Access Code"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="35dp"
+        android:layout_centerHorizontal="true"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="30sp"
         android:textStyle="italic"
@@ -35,44 +36,45 @@
     <RelativeLayout
         android:layout_width="320dp"
         android:layout_height="250dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:elevation="18dp"
         android:background="@drawable/loginview">
 
-    <EditText
-        android:id="@+id/ucode"
-        android:layout_width="270dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:textColor="@android:color/holo_green_dark"
-        android:hint="Access Code"
-        android:fontFamily=""
-        android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/ucode"
+            android:layout_width="270dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:textColor="@android:color/holo_green_dark"
+            android:hint="Access Code"
+            android:fontFamily=""
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/hint"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="115dp"
+            android:textColor="@android:color/holo_green_light"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:onClick="getHint"
+            />
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="120dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="150dp"
             android:background="@android:color/transparent"
             android:onClick="evaluate"
             android:scaleType="fitCenter"
             android:src="@drawable/logicon" />
-    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/hint"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="260dp"
-        android:layout_marginTop="435dp"
-        android:textColor="@android:color/holo_green_light"
-        android:textStyle="bold"
-        android:textSize="17dp"
-        android:onClick="getHint"
-        />
+    </RelativeLayout>
 </RelativeLayout>

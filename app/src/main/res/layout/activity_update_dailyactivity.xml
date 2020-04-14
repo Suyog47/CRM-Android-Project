@@ -10,16 +10,16 @@
         android:layout_height="match_parent"></ImageView>
 
     <RelativeLayout
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@drawable/header">
     <TextView
         android:id="@+id/textView"
-        android:layout_width="300dp"
-        android:layout_height="54dp"
+        android:layout_width="278dp"
+        android:layout_height="44dp"
         android:text="Update Daily_Activity"
-        android:layout_marginLeft="45sp"
-        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:textStyle="italic"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="30dp"
@@ -30,7 +30,7 @@
         android:id="@+id/weekDropDown"
         android:layout_width="160dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="105sp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="110dp"
         android:background="@drawable/spinner"
         />
@@ -39,7 +39,7 @@
         android:id="@+id/eventText"
         android:layout_width="320dp"
         android:layout_height="320dp"
-        android:layout_marginLeft="23dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="185dp"
         android:ems="10"
         android:gravity="start|top"
@@ -49,7 +49,7 @@
         android:id="@+id/updateActBtn"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="105sp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="530dp"
         android:textColor="@android:color/black"
         android:background="@drawable/updatebutton"

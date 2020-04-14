@@ -10,10 +10,10 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="260sp"
+        android:layout_width="245sp"
         android:layout_height="52dp"
         android:text="Today's  Activities"
-        android:layout_marginLeft="70dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="30sp"
@@ -26,7 +26,7 @@
         android:layout_height="450dp"
         android:text="Event"
         android:textSize="20sp"
-        android:layout_marginLeft="27dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         />
 

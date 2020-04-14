@@ -12,7 +12,7 @@
         android:layout_height="match_parent"></ImageView>
 
     <RelativeLayout
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@drawable/header">
 
@@ -21,7 +21,7 @@
             android:layout_width="170sp"
             android:layout_height="54dp"
             android:text="Activities"
-            android:layout_marginLeft="100dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="14dp"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="40sp"
@@ -30,21 +30,21 @@
     </RelativeLayout>
 
     <ScrollView
-        android:layout_width="400dp"
+        android:layout_width="300dp"
         android:layout_height="650dp"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_marginTop="-90dp"
         android:orientation="vertical">
 
         <TableLayout
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp">
-
             <TableRow>
 
     <RelativeLayout
@@ -52,7 +52,6 @@
         android:layout_height="130dp"
         android:background="@drawable/loginview"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
         android:elevation="23dp"
         android:onClick="insertLog">
 
@@ -60,7 +59,7 @@
                 android:id="@+id/insertLogBtn"
                 android:layout_width="60dp"
                 android:layout_height="66dp"
-                android:layout_marginLeft="35dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:cropToPadding="true"
                 android:onClick="insertLog"
@@ -71,7 +70,7 @@
 
     <TextView
         android:id="@+id/text2"
-        android:layout_width="100dp"
+        android:layout_width="98dp"
         android:layout_height="30dp"
         android:layout_marginLeft="19dp"
         android:layout_marginTop="100dp"
@@ -95,7 +94,7 @@
             android:id="@+id/showLogBtn"
             android:layout_width="60dp"
             android:layout_height="66dp"
-            android:layout_marginLeft="36dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/loginview"
             android:cropToPadding="false"
@@ -106,7 +105,7 @@
 
     <TextView
         android:id="@+id/text1"
-        android:layout_width="100dp"
+        android:layout_width="98dp"
         android:layout_height="30dp"
         android:layout_marginLeft="19dp"
         android:layout_marginTop="100dp"
@@ -125,7 +124,6 @@
         android:layout_height="130dp"
         android:background="@drawable/loginview"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp"
         android:elevation="23dp"
         android:onClick="dailyActivity">
 
@@ -133,7 +131,7 @@
                 android:id="@+id/dailyActivityBtn"
                 android:layout_width="60dp"
                 android:layout_height="66dp"
-                android:layout_marginLeft="33dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/loginview"
                 android:cropToPadding="true"
@@ -144,7 +142,7 @@
 
     <TextView
         android:id="@+id/text3"
-        android:layout_width="140dp"
+        android:layout_width="124dp"
         android:layout_height="30dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="100dp"
@@ -168,7 +166,7 @@
                 android:id="@+id/sweetMemoriesBtn"
                 android:layout_width="70dp"
                 android:layout_height="76dp"
-                android:layout_marginLeft="29dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="19dp"
                 android:adjustViewBounds="false"
                 android:background="@drawable/loginview"
@@ -180,7 +178,7 @@
 
     <TextView
         android:id="@+id/text4"
-        android:layout_width="85dp"
+        android:layout_width="83dp"
         android:layout_height="50dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="83dp"
@@ -199,7 +197,6 @@
         android:layout_height="130dp"
         android:background="@drawable/loginview"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp"
         android:elevation="23dp"
         android:onClick="updateLog">
 
@@ -207,7 +204,7 @@
                 android:id="@+id/updateLogBtn"
                 android:layout_width="70dp"
                 android:layout_height="76dp"
-                android:layout_marginLeft="29dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/loginview"
                 android:cropToPadding="true"
@@ -218,7 +215,7 @@
 
     <TextView
         android:id="@+id/text5"
-        android:layout_width="140dp"
+        android:layout_width="110dp"
         android:layout_height="30dp"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="100dp"
@@ -242,7 +239,7 @@
                 android:id="@+id/updateDailyActivityBtn"
                 android:layout_width="60dp"
                 android:layout_height="66dp"
-                android:layout_marginLeft="38dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="false"
                 android:background="@drawable/loginview"
@@ -255,7 +252,7 @@
 
     <TextView
         android:id="@+id/text6"
-        android:layout_width="85dp"
+        android:layout_width="83dp"
         android:layout_height="50dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="83dp"
@@ -274,7 +271,6 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="30dp"
             android:elevation="23dp"
             android:onClick="notes">
 
@@ -282,7 +278,7 @@
                 android:id="@+id/NotesBtn"
                 android:layout_width="70dp"
                 android:layout_height="76dp"
-                android:layout_marginLeft="31dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="false"
                 android:background="@drawable/loginview"
@@ -294,7 +290,7 @@
 
             <TextView
                 android:id="@+id/text7"
-                android:layout_width="55dp"
+                android:layout_width="52dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="42dp"
                 android:layout_marginTop="100dp"
@@ -318,7 +314,7 @@
                 android:id="@+id/ImpDatesBtn"
                 android:layout_width="70dp"
                 android:layout_height="76dp"
-                android:layout_marginLeft="31dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="false"
                 android:background="@drawable/loginview"
@@ -330,7 +326,7 @@
 
             <TextView
                 android:id="@+id/text8"
-                android:layout_width="95dp"
+                android:layout_width="88dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="100dp"
@@ -342,12 +338,13 @@
         </RelativeLayout>
             </TableRow>
         </TableLayout>
+
         <RelativeLayout
             android:layout_width="180dp"
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="89dp"
+            android:layout_gravity="center"
             android:elevation="23dp"
             android:onClick="dbcontrols">
 
@@ -355,7 +352,7 @@
                 android:id="@+id/DBControlBtn"
                 android:layout_width="70dp"
                 android:layout_height="76dp"
-                android:layout_marginLeft="55dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 android:adjustViewBounds="false"
                 android:background="@drawable/loginview"

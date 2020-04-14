@@ -11,16 +11,16 @@
         android:layout_height="match_parent"></ImageView>
 
     <RelativeLayout
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@drawable/header">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="200sp"
+            android:layout_width="190sp"
             android:layout_height="54dp"
             android:text="Add Notes"
-            android:layout_marginLeft="95dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="14dp"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="40sp"
@@ -28,12 +28,15 @@
             />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_height="50sp"
+        android:layout_width="310sp"
+        android:layout_marginTop="110sp"
+        android:layout_centerHorizontal="true">
     <Button
         android:id="@+id/addNoteBtn"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginLeft="40dp"
         android:textColor="@android:color/black"
         android:background="@drawable/green_button_background"
         android:onClick="addNewNote"
@@ -43,15 +46,15 @@
         android:id="@+id/flags"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="190sp"
-        android:layout_marginTop="110dp"
+        android:layout_marginLeft="160sp"
         android:background="@drawable/spinner"/>
 
+    </RelativeLayout>
     <EditText
         android:id="@+id/NotesText"
         android:layout_width="320dp"
         android:layout_height="400dp"
-        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
         android:ems="10"
         android:hint="Notes"
