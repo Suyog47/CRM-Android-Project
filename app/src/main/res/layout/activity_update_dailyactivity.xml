@@ -53,7 +53,7 @@
         android:layout_marginTop="530dp"
         android:textColor="@android:color/black"
         android:background="@drawable/updatebutton"
-        android:onClick="updateActivity"
+        android:onClick="checkFirst"
         android:text="Update Activity" />
 
 </RelativeLayout>

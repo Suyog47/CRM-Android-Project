@@ -1,6 +1,7 @@
 package com.example.demoapp.DailyActivityClasses;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -101,8 +102,40 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
         new CommonFunctions().showDActivity(this, new DActivitySqlliteDbService(this), "Sunday", act);
     }
 
-    //Function to update Current day activity
-    public void updateActivity(View v) {
+
+    //Function to check if activity of selected week exists or not
+    public void checkFirst(View v) {
+        Cursor res = new DActivitySqlliteDbService(this).getActivities(week.getSelectedItem().toString());
+        if(res.getCount() == 0) {addActivity();}
+        else{updateActivity();}
+    }
+
+
+    //Function to Add activity(if does not exists)
+    public void addActivity(){
+        String result = new DActivitySqlliteDbService(this).insertActivity(week.getSelectedItem().toString(), act.getText().toString());
+        if (result == "Activity Inserted!") {
+            ubtn.setText("Update");
+            ubtn.setEnabled(false);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ubtn.setText("Update Activity");
+                    ubtn.setEnabled(true);
+                }
+            }, 2000);
+        } else {
+            new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Oops")
+                    .setContentText("Activity Not Updated!")
+                    .show();
+        }
+
+    }
+
+    
+    //Function to Update activity(if does not exists)
+    public void updateActivity(){
         boolean result = new DActivitySqlliteDbService(this).updateActivity(week.getSelectedItem().toString(), act.getText().toString());
         if (result == true) {
             ubtn.setText("Updated");

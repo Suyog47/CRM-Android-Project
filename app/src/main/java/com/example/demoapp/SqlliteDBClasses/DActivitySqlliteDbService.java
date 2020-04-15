@@ -30,17 +30,17 @@ public class DActivitySqlliteDbService extends SQLiteOpenHelper {
     }
 
     //Function for Inserting data
-//    public String insertActivity(String Day, String Activity){
-//        db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(COL_1, Day);
-//        values.put(COL_2, Activity);
-//        long result = db.insert(TABLE_NAME,null,values);
-//        if(result == -1){
-//            return "Not Inserted!";
-//        }
-//        else{return "Activity Inserted!"; }
-//    }
+    public String insertActivity(String Day, String Activity){
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_1, Day);
+        values.put(COL_2, Activity);
+        long result = db.insert(TABLE_NAME,null,values);
+        if(result == -1){
+            return "Not Inserted!";
+        }
+        else{return "Activity Inserted!"; }
+    }
 
 
     //Function for Update-Activity data
