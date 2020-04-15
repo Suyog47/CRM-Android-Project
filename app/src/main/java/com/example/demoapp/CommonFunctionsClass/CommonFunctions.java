@@ -79,7 +79,10 @@ public class CommonFunctions {
     public void showDActivity(Context context, DActivitySqlliteDbService db, String message, TextView activity){
         db = new DActivitySqlliteDbService(context);
         Cursor act = db.getActivities(message);
-        if(act.getCount() == 0){ activity.setHint("No Activities Registered");}
+        if(act.getCount() == 0){
+            activity.setText("");
+            activity.setHint("No Activities Registered");
+        }
         else{
             while(act.moveToNext()){
                 activity.setText(act.getString(1));
