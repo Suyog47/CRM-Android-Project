@@ -142,7 +142,7 @@ public class Notes extends Activity {
             lines = 200;
         }
             param.height = lines;
-            param.width = 820;
+            param.width = 880;
             note[id].setLayoutParams(param);
         }
 
