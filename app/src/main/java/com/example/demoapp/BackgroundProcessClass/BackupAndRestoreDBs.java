@@ -47,44 +47,11 @@ public class BackupAndRestoreDBs extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_backup_restore);
         rl = findViewById(R.id.backupRelativeLayout);
-        rl.setVisibility(View.INVISIBLE);
-        authenticateAgain();
-    }
 
-
-    //Function to show alert dialog to authenticate user
-    private void authenticateAgain() {
-        LinearLayout l = new LinearLayout(this);
-        final ViewGroup.LayoutParams mparams = new ViewGroup.LayoutParams(400, 180);
-        final EditText pass = new EditText(this);
-        pass.setLayoutParams(mparams);
-        pass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        l.addView(pass);
-        l.setGravity(Gravity.CENTER);
-
-        new AlertDialog.Builder(this)
-                .setTitle("          Enter Pass Code")
-                .setView(l)
-                .setPositiveButton("Check", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(pass.getText().toString().equals("CRM47")){
-                            Log.i(TAG,"SUCCESS");
-                            rl.setVisibility(View.VISIBLE);
-                            successCall();
-                        }
-                         else {
-                            authenticateAgain();
-                        }
-                    }
-                }).show();
-    }
-
-    public void successCall(){
         Callable<Void> call1 = new Callable<Void>() {
             @Override
             public Void call() throws Exception {
-                isStoragePermissionGranted();
+                            isStoragePermissionGranted();
                 return null;
             }
         };
@@ -97,6 +64,16 @@ public class BackupAndRestoreDBs extends Activity {
         catch (InterruptedException ie) { Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show(); }
         finally{ executor.shutdown(); }
     }
+
+
+    //Function to show alert dialog to authenticate user
+//    private void authenticateAgain() {
+//
+//    }
+//
+//    public void successCall(){
+//
+//    }
 
 
     //Function to ask the External Storage permission
