@@ -51,7 +51,7 @@ public class BackupAndRestoreDBs extends Activity {
         Callable<Void> call1 = new Callable<Void>() {
             @Override
             public Void call() throws Exception {
-                            isStoragePermissionGranted();
+                isStoragePermissionGranted();
                 return null;
             }
         };
@@ -64,16 +64,6 @@ public class BackupAndRestoreDBs extends Activity {
         catch (InterruptedException ie) { Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show(); }
         finally{ executor.shutdown(); }
     }
-
-
-    //Function to show alert dialog to authenticate user
-//    private void authenticateAgain() {
-//
-//    }
-//
-//    public void successCall(){
-//
-//    }
 
 
     //Function to ask the External Storage permission
