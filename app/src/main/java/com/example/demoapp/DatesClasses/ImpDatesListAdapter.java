@@ -83,9 +83,10 @@ public class ImpDatesListAdapter extends RecyclerView.Adapter<ImpDatesListAdapte
             this.event = itemView.findViewById(R.id.event);
             this.event.setMovementMethod(new ScrollingMovementMethod());
             this.del = itemView.findViewById(R.id.delBtn);
-            relativeLayout = itemView.findViewById(R.id.relativeLayout);
+            this.relativeLayout = itemView.findViewById(R.id.relativeLayout);
         }
     }
+
 
     //Function to delete Date
     public void deleteDate(final ViewHolder holder, final String Date){

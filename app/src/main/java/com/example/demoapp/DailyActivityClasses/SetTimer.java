@@ -190,16 +190,13 @@ public class SetTimer extends Activity {
             Min = 00;
         }
 
-        //Log.i(TAG,""+act+" "+timeStatus+" "+time);
         calendar.set(Calendar.HOUR_OF_DAY, Hr);
         calendar.set(Calendar.MINUTE, Min);
         calendar.set(Calendar.SECOND, 00);
-         Log.i(TAG, "time set");
 
-        Intent intent = new Intent(context, BackgroundNotificationService.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0, new Intent(context, BackgroundNotificationService.class), 0);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
 }

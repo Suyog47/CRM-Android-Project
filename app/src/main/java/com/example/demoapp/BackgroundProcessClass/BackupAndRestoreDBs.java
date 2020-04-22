@@ -103,11 +103,7 @@ public class BackupAndRestoreDBs extends Activity {
     public void isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-            Log.v(TAG,"Permission Requested");
             }
-        else {
-            Log.v(TAG,"Permission is granted by Default");
-        }
     }
 
 
@@ -116,8 +112,10 @@ public class BackupAndRestoreDBs extends Activity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-            Log.v(TAG,"Permission: "+permissions[0]+ " was "+grantResults[0]);
-
+            Toast.makeText(this, "Permission granted for Storage", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this, "Permission not given for Storage", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -138,15 +136,15 @@ public class BackupAndRestoreDBs extends Activity {
         OutputStream output;
         FileInputStream fis = null;
         try {
-            String fileName = getApplicationContext().getDatabasePath(name).getPath();
-            File file = new File(fileName);
+            String filePath = getApplicationContext().getDatabasePath(name).getPath();
+            File file = new File(filePath);
             fis = new FileInputStream(file);
         }
         catch(Exception e){ e.printStackTrace(); }
 
         try {
-            String outFileName = Environment.getExternalStorageDirectory() + "/CRM/" + name;
-            output = new FileOutputStream(outFileName);
+            String outFilePath = Environment.getExternalStorageDirectory() + "/CRM/" + name;
+            output = new FileOutputStream(outFilePath);
 
             byte[] buffer = new byte[1024];
             int length;

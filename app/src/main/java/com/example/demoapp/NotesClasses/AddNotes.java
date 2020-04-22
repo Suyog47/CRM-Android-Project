@@ -72,7 +72,7 @@ public class AddNotes extends Activity {
                 fl.add("Basic");
                 fl.add("Important");
                 fl.add("Extreme");
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, fl);
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, fl);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 flag.setAdapter(dataAdapter);
                 return null;

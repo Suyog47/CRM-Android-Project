@@ -229,5 +229,4 @@ public class Impdates extends Activity {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
     }
-
 }

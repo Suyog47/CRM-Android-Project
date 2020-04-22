@@ -94,7 +94,7 @@ public class Notes extends Activity {
             note[i].setId(i);
             note[i].setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
+                    200
             ));
             params[i] = (LinearLayout.LayoutParams) note[i].getLayoutParams();
             note[i].setText(val.getString(1));
@@ -102,7 +102,6 @@ public class Notes extends Activity {
             else if(val.getString(2).equals("Extreme")) { note[i].setTextColor(Color.RED); }
             note[i].setTextSize(21);
             note[i].setPadding(20,20,20,20);
-            note[i].getLayoutParams().height = 200;
             params[i].setMargins(100, 20, 100, 50);
             note[i].setBackground(getResources().getDrawable(R.drawable.noteviewdesign));
             note[i].setLayoutParams(params[i]);
@@ -134,16 +133,15 @@ public class Notes extends Activity {
     public void seeFullNote(View v){
         id = v.getId();
         ViewGroup.LayoutParams param = note[id].getLayoutParams();
-        int lines = note[id].getLineCount();
-        if(note[id].getMeasuredHeight() == 200 && lines >=3){
-            lines *= 100;
+        int lines;
+        if(note[id].getMeasuredHeight() == 200){
+            lines = LinearLayout.LayoutParams.WRAP_CONTENT;
         }
-        else{
-            lines = 200;
-        }
-            param.height = lines;
-            param.width = 880;
-            note[id].setLayoutParams(param);
+        else{ lines = 200; }
+
+        param.height = lines;
+        param.width = 880;
+        note[id].setLayoutParams(param);
         }
 
 

@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
 
@@ -44,20 +45,19 @@ public class BackgroundNotificationService extends BroadcastReceiver {
         }
 
         if(timeStatus == 1){
-            Log.i(TAG,"Timer is 1");
             showNotification(context, act); }
     }
 
 
     //Function to send Notification
     private void showNotification(Context context, String act) {
-        Log.i(TAG,"ShowNotification Called");
         bigText = new NotificationCompat.BigTextStyle();
         bigText.bigText(act);
 
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(context, NotificationWindow.class), 0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+
                         .setSmallIcon(R.drawable.splash2)
                         .setContentTitle("Today's Activity")
                         .setContentText("Expand to See")
@@ -74,8 +74,10 @@ public class BackgroundNotificationService extends BroadcastReceiver {
             String channelId = "01";
             NotificationChannel channel = new NotificationChannel(
                     channelId,
-                    "Channel human readable title",
+                    "CRM Notification channel",
                     NotificationManager.IMPORTANCE_HIGH);
+            channel.enableLights(true);
+            channel.setLightColor(Color.RED);
             mNotificationManager.createNotificationChannel(channel);
             mBuilder.setChannelId(channelId);
         }

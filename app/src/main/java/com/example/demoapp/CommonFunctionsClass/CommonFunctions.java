@@ -33,7 +33,7 @@ public class CommonFunctions {
             options.inSampleSize = widthRatio;
         }
         options.inJustDecodeBounds = false;
-        Bitmap scaledImg = BitmapFactory.decodeResource(context.getResources(),img,options);
+        Bitmap scaledImg = BitmapFactory.decodeResource(context.getResources(), img, options);
         return scaledImg;
     }
 
