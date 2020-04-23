@@ -29,6 +29,7 @@ import com.example.demoapp.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -45,6 +46,7 @@ public class SetTimer extends Activity {
     TextView title;
     Button btn;
     Switch timer;
+    int Hr = 0, Min = 0;
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
     ImageView setimerimg;
@@ -165,7 +167,17 @@ public class SetTimer extends Activity {
 
     //Function to set Calendar Instance date to Yesterday's date
     public void setDayMinus1(){
-        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date dt = new Date();
+        String time;
+        String Day = formatter.format(dt);
+        if(Day.equals(title.getText().toString())){
+            time = timer.getText().toString();
+            Hr = Integer.parseInt(time.split(":")[0]);
+            Min = Integer.parseInt(time.split(":")[1]);
+            if(Hr >= Integer.parseInt(new SimpleDateFormat("hh").format(dt)) && Min > Integer.parseInt(new SimpleDateFormat("mm").format(dt))){
+                calendar.add(Calendar.DAY_OF_YEAR, -1);
+            }
+        }
         placeTimer(this);
     }
 
@@ -175,7 +187,6 @@ public class SetTimer extends Activity {
         calendar.add(Calendar.DAY_OF_YEAR, 1);
         String Day = formatter.format(calendar.getTime());
         String time = null;
-        int Hr = 0, Min = 0;
 
         Cursor dt = new DActivitySqlliteDbService(context).getActivities(Day);
         while(dt.moveToNext()){
