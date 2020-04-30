@@ -41,7 +41,7 @@ public class MenuData extends Activity {
     ImageView menuimg;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_data);
         menuimg = findViewById(R.id.menuImg);
@@ -57,65 +57,126 @@ public class MenuData extends Activity {
                 return null;
             }
         };
+        setThreads(call1);
 
-        List<Callable<Void>> tasklist = new ArrayList<>();
-        tasklist.add(call1);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try{executor.invokeAll(tasklist);}
-        catch(Exception e){
-            Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show();}
-        finally {
-            executor.shutdown();
-        }
     }
 
     //Function to start Insert Log Activity
     public void insertLog(View v){
-        Intent al = new Intent(this, InsertLog.class);
-        startActivity(al);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent al = new Intent(getApplicationContext(), InsertLog.class);
+                startActivity(al);
+                return null;
+            }
+        };
+        setThreads(call1);
     }
 
     //Function to start Show Log Activity
     public void showLog(View v) {
-        Intent a2 = new Intent(this, ShowLog.class);
-        startActivity(a2);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a2 = new Intent(getApplicationContext(), ShowLog.class);
+                startActivity(a2);
+                return null;
+            }
+        };
+        setThreads(call1);
     }
 
     //Function to start Daily-Activities Activity
     public void dailyActivity(View v){
-        Intent a3 = new Intent(this, DailyActivity.class);
-        startActivity(a3);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a3 = new Intent(getApplicationContext(), DailyActivity.class);
+                startActivity(a3);
+                return null;
+            }
+        };
+        setThreads(call1);
     }
 
     //Function to start Sweet-Memory Activity
     public void sweetMemories(View v){
-        Intent a4 = new Intent(this, SweetMemories.class);
-        startActivity(a4);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a4 = new Intent(getApplicationContext(), SweetMemories.class);
+                startActivity(a4);
+                return null;
+            }
+        };
+        setThreads(call1);
     }
 
     //Function to start Update Log Activity
     public void updateLog(View v){
-        Intent a5 = new Intent(this, UpdateLog.class);
-        startActivity(a5);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a5 = new Intent(getApplicationContext(), UpdateLog.class);
+                startActivity(a5);
+                return null;
+            }
+        };
+        setThreads(call1);
     }
 
     //Function to start Update daily-activities Activity
     public void updateDailyActivity(View v){
-        Intent a6 = new Intent(this, UpdateDailyActivity.class);
-        startActivity(a6);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a6 = new Intent(getApplicationContext(), UpdateDailyActivity.class);
+                startActivity(a6);
+                return null;
+            }
+        };
+        setThreads(call1);
     }
 
     //Function to start Notes Activity
     public void notes(View v){
-        Intent a7 = new Intent(this, Notes.class);
-        startActivity(a7);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a7 = new Intent(getApplicationContext(), Notes.class);
+                startActivity(a7);
+                return null;
+            }
+        };
+        setThreads(call1);
+
     }
 
     //Function to start ImpDates Activity
     public void impdates(View v){
-        Intent a8 = new Intent(this, Impdates.class);
-        startActivity(a8);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a8 = new Intent(getApplicationContext(), Impdates.class);
+                startActivity(a8);
+                return null;
+            }
+        };
+        setThreads(call1);
+    }
+
+    //Function to start ShowImages Activity
+    public void showImage(View v){
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a9 = new Intent(getApplicationContext(), ShowImage.class);
+                startActivity(a9);
+                return null;
+            }
+        };
+        setThreads(call1);
     }
 
     //Function to start BackUp and Restore Activity
@@ -129,14 +190,21 @@ public class MenuData extends Activity {
         l.setGravity(Gravity.CENTER);
 
         new AlertDialog.Builder(this)
-                .setTitle("          Enter Pass Code")
+                .setTitle("Enter Pass Code")
                 .setView(l)
                 .setPositiveButton("Check", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if(pass.getText().toString().equals("CRM47")){
-                            Intent a9 = new Intent(getApplicationContext(), BackupAndRestoreDBs.class);
-                            startActivity(a9);
+                            Callable<Void> call1 = new Callable<Void>() {
+                                @Override
+                                public Void call() throws Exception {
+                                    Intent a10 = new Intent(getApplicationContext(), BackupAndRestoreDBs.class);
+                                    startActivity(a10);
+                                    return null;
+                                }
+                            };
+                            setThreads(call1);
                         }
                         else {
                             dbcontrols(v);
@@ -145,4 +213,17 @@ public class MenuData extends Activity {
                 }).show();
     }
 
+
+    public void setThreads(Callable<Void> call1){
+        List<Callable<Void>> tasklist = new ArrayList<>();
+        tasklist.add(call1);
+
+        ExecutorService executor = Executors.newCachedThreadPool();
+        try{executor.invokeAll(tasklist);}
+        catch(Exception e){
+            Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show();}
+        finally {
+            executor.shutdown();
+        }
+    }
 }

@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_btn_bg_color">
+    android:background="@android:color/black">
 
     <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@drawable/header">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="250dp"
+            android:layout_width="135sp"
             android:layout_height="54dp"
-            android:text="Important Dates"
+            android:text="Images"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:textStyle="italic"
+            android:layout_marginTop="14dp"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="35dp"
+            android:textSize="40sp"
             android:visibility="visible"
             />
     </RelativeLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ImageView
+        android:id="@+id/expandImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
-        android:scrollbars="vertical"
-        android:id="@+id/recyclerView"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imageRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="20dp"
+        android:scrollbars="vertical" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:clickable="true"
-        android:layout_alignBottom="@id/recyclerView"
+        android:layout_alignBottom="@id/imageRecyclerView"
         android:layout_centerHorizontal="true"
-        android:onClick="showNoteDialog"
-        android:src="@android:drawable/ic_input_add" />
+        android:onClick="openGalary"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

@@ -130,16 +130,13 @@ public class InsertLog extends Activity {
                 x2 = event.getX();
                 float deltaX = x2 - x1;
 
-                if (Math.abs(deltaX) > MIN_DISTANCE)
-                {
-                    if (x2 > x1)
-                    {
+                if (Math.abs(deltaX) > MIN_DISTANCE) {
+                    if (x2 > x1) {
                         int yr = Integer.parseInt(year.getText().toString());
                         yr-=1;
                         year.setText(yr+"");
                     }
-                    else
-                    {
+                    else {
                         int yr = Integer.parseInt(year.getText().toString());
                         yr+=1;
                         year.setText(yr+"");

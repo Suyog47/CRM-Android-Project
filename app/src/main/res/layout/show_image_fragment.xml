@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/imgLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:background="@drawable/loginview">
+
+    <ImageButton
+        android:id="@+id/delBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:src="@android:drawable/ic_delete" />
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_height="135sp"
+            android:layout_width="135sp"
+            android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/imgdate"
+        android:layout_width="135sp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:textSize="19sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"/>
+
+        <TextView
+            android:id="@+id/imgdesc"
+            android:layout_width="135sp"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:textSize="17sp"/>
+
+</LinearLayout>

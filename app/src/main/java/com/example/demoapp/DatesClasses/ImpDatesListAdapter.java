@@ -31,8 +31,6 @@ public class ImpDatesListAdapter extends RecyclerView.Adapter<ImpDatesListAdapte
     ArrayList Dates, Events;
     Context context;
 
-    // RecyclerView recyclerView;
-
     //Constructor to set Contexts
     public ImpDatesListAdapter(Context context, ArrayList Dates, ArrayList Events) {
         this.context = context;
@@ -77,6 +75,7 @@ public class ImpDatesListAdapter extends RecyclerView.Adapter<ImpDatesListAdapte
         public TextView date, event;
         public ImageButton del;
         public RelativeLayout relativeLayout;
+
         public ViewHolder(View itemView) {
             super(itemView);
             this.date = itemView.findViewById(R.id.date);

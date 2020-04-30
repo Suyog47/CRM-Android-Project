@@ -70,6 +70,9 @@
             android:name=".DatesClasses.Impdates"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ShowImage"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".BackgroundProcessClass.BackupAndRestoreDBs"
             android:screenOrientation="portrait" />
     </application>
