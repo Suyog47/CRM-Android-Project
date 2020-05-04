@@ -18,8 +18,8 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="170sp"
-            android:layout_height="54dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Activities"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="14dp"
@@ -30,30 +30,26 @@
     </RelativeLayout>
 
     <ScrollView
-        android:layout_width="300dp"
-        android:layout_height="650dp"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true">
 
-    <LinearLayout
-        android:layout_width="300dp"
+    <GridLayout
+        android:id="@+id/menuRecyclerView"
+        android:layout_width="350dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="-90dp"
-        android:orientation="vertical">
+        android:layout_centerHorizontal="true"
+        android:columnCount="2">
 
-        <TableLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp">
-            <TableRow>
-
-    <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:background="@drawable/loginview"
-        android:layout_marginTop="10dp"
-        android:elevation="23dp"
-        android:onClick="insertLog">
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="23sp"
+            android:elevation="23dp"
+            android:onClick="insertLog">
 
             <ImageButton
                 android:id="@+id/insertLogBtn"
@@ -68,64 +64,62 @@
                 android:src="@drawable/insertlog"
                 android:visibility="visible"/>
 
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="98dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="100dp"
-        android:text="Insert Event"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:onClick="insertLog"
-        />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="98dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="100dp"
+                android:text="Insert Event"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="insertLog"
+                />
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:background="@drawable/loginview"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="40dp"
-        android:elevation="23dp"
-        android:onClick="showLog">
-
-        <ImageButton
-            android:id="@+id/showLogBtn"
-            android:layout_width="60dp"
-            android:layout_height="66dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/loginview"
-            android:cropToPadding="false"
-            android:scaleType="fitCenter"
-            android:onClick="showLog"
-            android:src="@drawable/showlog"
-            android:visibility="visible" />
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="45dp"
+            android:elevation="23dp"
+            android:onClick="showLog">
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="98dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="100dp"
-        android:text="Show Event"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:onClick="showLog"
-        />
-    </RelativeLayout>
+            <ImageButton
+                android:id="@+id/showLogBtn"
+                android:layout_width="60dp"
+                android:layout_height="66dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/loginview"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                android:onClick="showLog"
+                android:src="@drawable/showlog"
+                android:visibility="visible" />
 
-            </TableRow>
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="98dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="100dp"
+                android:text="Show Event"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="showLog"
+                />
+        </RelativeLayout>
 
-            <TableRow>
-    <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:background="@drawable/loginview"
-        android:layout_marginTop="40dp"
-        android:elevation="23dp"
-        android:onClick="dailyActivity">
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="23sp"
+            android:elevation="23dp"
+            android:onClick="dailyActivity">
 
             <ImageButton
                 android:id="@+id/dailyActivityBtn"
@@ -140,27 +134,27 @@
                 android:src="@drawable/dailyactivity"
                 android:visibility="visible" />
 
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="124dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
-        android:text="Daily Activities"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:onClick="dailyActivity"
-        />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="124dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="100dp"
+                android:text="Daily Activities"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="dailyActivity"
+                />
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:background="@drawable/loginview"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:elevation="23dp"
-        android:onClick="sweetMemories">
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="45dp"
+            android:elevation="23dp"
+            android:onClick="sweetMemories">
 
             <ImageButton
                 android:id="@+id/sweetMemoriesBtn"
@@ -176,29 +170,27 @@
                 android:src="@drawable/sweetmemories"
                 android:visibility="visible" />
 
-    <TextView
-        android:id="@+id/text4"
-        android:layout_width="83dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="83dp"
-        android:text="  Sweet Memories"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:onClick="sweetMemories"
-        />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="83dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="83dp"
+                android:text="  Sweet Memories"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="sweetMemories"
+                />
+        </RelativeLayout>
 
-            </TableRow>
-
-            <TableRow>
-    <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:background="@drawable/loginview"
-        android:layout_marginTop="40dp"
-        android:elevation="23dp"
-        android:onClick="updateLog">
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="23sp"
+            android:elevation="23dp"
+            android:onClick="updateLog">
 
             <ImageButton
                 android:id="@+id/updateLogBtn"
@@ -213,27 +205,27 @@
                 android:src="@drawable/updatelog"
                 android:visibility="visible" />
 
-    <TextView
-        android:id="@+id/text5"
-        android:layout_width="110dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="100dp"
-        android:text="Update Event"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:onClick="updateLog"
-        />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="100dp"
+                android:text="Update Event"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="updateLog"
+                />
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:background="@drawable/loginview"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:elevation="23dp"
-        android:onClick="updateDailyActivity">
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="45dp"
+            android:elevation="23dp"
+            android:onClick="updateDailyActivity">
 
             <ImageButton
                 android:id="@+id/updateDailyActivityBtn"
@@ -250,27 +242,25 @@
                 android:src="@drawable/updatedailyactivity"
                 android:visibility="visible" />
 
-    <TextView
-        android:id="@+id/text6"
-        android:layout_width="83dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="83dp"
-        android:text="  Update D-Activity"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:onClick="updateDailyActivity"
-        />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/text6"
+                android:layout_width="83dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="83dp"
+                android:text="  Update D-Activity"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="updateDailyActivity"
+                />
+        </RelativeLayout>
 
-            </TableRow>
-
-            <TableRow>
         <RelativeLayout
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
+            android:layout_marginLeft="23sp"
             android:elevation="23dp"
             android:onClick="notes">
 
@@ -306,7 +296,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="45dp"
             android:elevation="23dp"
             android:onClick="impdates">
 
@@ -336,82 +326,78 @@
                 android:onClick="impdates"
                 />
         </RelativeLayout>
-            </TableRow>
 
-            <TableRow>
-                <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:background="@drawable/loginview"
-                    android:layout_marginTop="40dp"
-                    android:elevation="23dp"
-                    android:onClick="showImage">
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="23sp"
+            android:elevation="23dp"
+            android:onClick="showImage">
 
-                    <ImageButton
-                        android:id="@+id/ShowImageBtn"
-                        android:layout_width="60dp"
-                        android:layout_height="66dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="20dp"
-                        android:adjustViewBounds="false"
-                        android:background="@drawable/loginview"
-                        android:cropToPadding="false"
-                        android:onClick="showImage"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/galary"
-                        android:visibility="visible" />
+            <ImageButton
+                android:id="@+id/ShowImageBtn"
+                android:layout_width="60dp"
+                android:layout_height="66dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="false"
+                android:background="@drawable/loginview"
+                android:cropToPadding="false"
+                android:onClick="showImage"
+                android:scaleType="fitCenter"
+                android:src="@drawable/galary"
+                android:visibility="visible" />
 
-                    <TextView
-                        android:id="@+id/text9"
-                        android:layout_width="155dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="11dp"
-                        android:layout_marginTop="92dp"
-                        android:text="Show Images"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:onClick="showImage"
-                        />
-                </RelativeLayout>
+            <TextView
+                android:id="@+id/text9"
+                android:layout_width="155dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="92dp"
+                android:text="Show Images"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="showImage"
+                />
+        </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:background="@drawable/loginview"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:elevation="23dp"
-                    android:onClick="dbcontrols">
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/loginview"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="45dp"
+            android:elevation="23dp"
+            android:onClick="dbcontrols">
 
-                    <ImageButton
-                        android:id="@+id/DBControlBtn"
-                        android:layout_width="60dp"
-                        android:layout_height="66dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="20dp"
-                        android:adjustViewBounds="false"
-                        android:background="@drawable/loginview"
-                        android:cropToPadding="false"
-                        android:onClick="dbcontrols"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/db"
-                        android:visibility="visible" />
+            <ImageButton
+                android:id="@+id/DBControlBtn"
+                android:layout_width="60dp"
+                android:layout_height="66dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="false"
+                android:background="@drawable/loginview"
+                android:cropToPadding="false"
+                android:onClick="dbcontrols"
+                android:scaleType="fitCenter"
+                android:src="@drawable/db"
+                android:visibility="visible" />
 
-                    <TextView
-                        android:id="@+id/text10"
-                        android:layout_width="155dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="92dp"
-                        android:text="DB Controls"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:onClick="dbcontrols"
-                        />
-                </RelativeLayout>
-            </TableRow>
-        </TableLayout>
-
-     </LinearLayout>
+            <TextView
+                android:id="@+id/text10"
+                android:layout_width="155dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="92dp"
+                android:text="DB Controls"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:onClick="dbcontrols"
+                />
+        </RelativeLayout>
+    </GridLayout>
     </ScrollView>
 </RelativeLayout>
