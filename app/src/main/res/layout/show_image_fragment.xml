@@ -9,12 +9,28 @@
     android:orientation="vertical"
     android:background="@drawable/loginview">
 
-    <ImageButton
-        android:id="@+id/delBtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="right"
-        android:src="@android:drawable/ic_delete" />
+    <TableLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <TableRow>
+
+            <ImageButton
+                android:id="@+id/saveBtn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="left"
+                android:background="@android:color/holo_green_light"
+                android:src="@android:drawable/ic_menu_save" />
+
+            <ImageButton
+                android:id="@+id/delBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="80sp"
+                android:src="@android:drawable/ic_delete" />
+        </TableRow>
+    </TableLayout>
 
         <ImageView
             android:id="@+id/img"

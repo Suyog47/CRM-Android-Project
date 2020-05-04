@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,22 +16,18 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.SqlliteDBClasses.ShowImageDbService;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -45,13 +39,15 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static android.content.ContentValues.TAG;
 
 public class ShowImage extends Activity {
 
     ImageView img;
     Bitmap bitmap;
-    int count=0, MIN_DISTANCE = 50;
+    int count=0;
     float x1, x2;
     Cursor res;
     LinearLayout vlayout;
@@ -84,39 +80,17 @@ public class ShowImage extends Activity {
 
     }
 
+
+    //Function to show 6 Images on every count incr/decr
     public void showImages(Cursor res) {
             while (res.moveToNext()) {
                 byte[] imgByte = res.getBlob(0);
-                imgList.add(convertToBitmapImage(imgByte));
+                imgList.add(new CommonFunctions().convertToBitmapImage(imgByte));
                 imgDate.add(res.getString(1));
                 imgDesc.add(res.getString(2));
             }
             recyclerView = findViewById(R.id.imageRecyclerView);
-            recyclerView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    switch(event.getAction()){
-                        case MotionEvent.ACTION_DOWN:
-                            x1 = event.getX();
-                            break;
 
-                        case MotionEvent.ACTION_UP:
-                            x2 = event.getX();
-                            float diff = x2 - x1;
-
-                            if(Math.abs(diff) > MIN_DISTANCE){
-                                if(x2 > x1){
-                                    showPrevious();
-                                }
-                                else{
-                                    showNext();
-                                }
-                            }
-                            break;
-                    }
-                    return false;
-                }
-            });
             ShowImageListAdapter adapter = new ShowImageListAdapter(getApplicationContext(), imgList, imgDate, imgDesc);
             recyclerView.setHasFixedSize(true);
             StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
@@ -124,34 +98,31 @@ public class ShowImage extends Activity {
             recyclerView.setAdapter(adapter);
     }
 
-    public void showNext(){
+
+    //Function to increment Count
+    public void showNext(View v){
         count+=6;
         res = new ShowImageDbService(getApplicationContext()).getImages(count);
         if(res.getCount() >= 1){
-            imgList.clear();
-            imgDate.clear();
-            imgDesc.clear();
+            imgList.clear(); imgDate.clear(); imgDesc.clear();
             showImages(res);
         }
         else{ count-=6; }
     }
 
-    public void showPrevious(){
+
+    //Function to decrement Count
+    public void showPrevious(View v){
         if(count > 0){
-            imgList.clear();
-            imgDate.clear();
-            imgDesc.clear();
+            imgList.clear(); imgDate.clear(); imgDesc.clear();
             count-=6;
             res = new ShowImageDbService(getApplicationContext()).getImages(count);
             showImages(res);
         }
     }
 
-    public static Bitmap convertToBitmapImage(byte[] image) {
-        return BitmapFactory.decodeByteArray(image, 0, image.length);
-    }
 
-
+    //Function to open Phone Galary
     public void openGalary(View v){
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -169,6 +140,7 @@ public class ShowImage extends Activity {
     }
 
 
+    //Function to open Dialog containing selected image
     public void openDialog(Intent data){
         img = new ImageView(this);
         final ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(920, 520);
@@ -202,24 +174,32 @@ public class ShowImage extends Activity {
                 .setPositiveButton("Insert", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addImage(bitmap, txt.getText().toString());
+                        checkFirst(txt.getText().toString());
                     }
                 })
                 .show();
     }
 
 
-    public byte[] convertToByteArray(Bitmap bitmap) {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
-        return outputStream.toByteArray();
+    //Function to check if Image with same Description exists or not
+    public void checkFirst(String text){
+         Cursor res = new ShowImageDbService(this).getSelectedImage(text);
+         if(res.getCount() > 0){
+             new CommonFunctions().setVibration(this);
+             new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                     .setTitleText("Already wrote this description for another Image")
+                     .setContentText("write something different")
+                     .show();
+         }
+         else{ addImage(bitmap, text); }
     }
 
 
+    //Function to insert Image into db
     public void addImage(Bitmap bitmapImg, String desc){
         Date dt = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-       byte[] byteImg = convertToByteArray(bitmapImg);
+       byte[] byteImg = new CommonFunctions().convertToByteArray(bitmapImg);
        String res = new ShowImageDbService(this).insertImages(byteImg, desc, dateFormat.format(dt));
         imgList.clear();
         imgDate.clear();

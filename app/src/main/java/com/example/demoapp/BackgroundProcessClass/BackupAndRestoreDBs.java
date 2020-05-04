@@ -93,6 +93,7 @@ public class BackupAndRestoreDBs extends Activity {
         backupDB("DActivity.db");
         backupDB("Notes.db");
         backupDB("Dates.db");
+        backupDB("Image.db");
 
         Toast.makeText(this,"All Database has been Backuped",Toast.LENGTH_LONG).show();
     }
@@ -132,6 +133,7 @@ public class BackupAndRestoreDBs extends Activity {
         restoreDB("DActivity.db");
         restoreDB("Notes.db");
         restoreDB("Dates.db");
+        restoreDB("Image.db");
 
         Toast.makeText(this,"All Database has been Restored",Toast.LENGTH_LONG).show();
     }
