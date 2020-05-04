@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="135sp"
+            android:layout_width="132sp"
             android:layout_height="54dp"
             android:text="Images"
             android:layout_centerHorizontal="true"
@@ -26,14 +26,24 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/expandImg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
-        />
+        android:layout_width="70sp"
+        android:layout_height="40sp"
+        android:layout_alignLeft="@id/header"
+        android:layout_alignBottom="@id/header"
+        android:background="@android:color/holo_red_dark"
+        android:rotation="180"
+        android:onClick="showPrevious"
+        android:src="@drawable/leftarrow" />
+
+    <ImageView
+        android:layout_width="70sp"
+        android:layout_height="40sp"
+        android:layout_alignRight="@id/header"
+        android:layout_alignBottom="@id/header"
+        android:background="@android:color/holo_green_dark"
+        android:onClick="showNext"
+        android:src="@drawable/leftarrow" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imageRecyclerView"

@@ -48,6 +48,12 @@ public class ShowImageDbService extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getSelectedImage(String desc){
+        db  = getReadableDatabase();
+        Cursor res = db.rawQuery("select Image from PImages_table where Description = '"+ desc +"'",null);
+        return res;
+    }
+
     public Integer delPhoto(String desc){
         db = getWritableDatabase();
         return db.delete(TABLE_NAME,"Description = ?", new String[] {desc});

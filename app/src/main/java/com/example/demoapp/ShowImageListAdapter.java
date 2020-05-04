@@ -1,28 +1,23 @@
 package com.example.demoapp;
 
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.util.Log;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.demoapp.SqlliteDBClasses.ShowImageDbService;
-
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
-
-import static android.content.ContentValues.TAG;
-
 
 public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdapter.ViewHolder>  {
     ViewHolder viewHolder;
@@ -46,25 +41,45 @@ public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdap
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-     holder.img.setImageBitmap((Bitmap) imgList.get(position));
+        holder.img.setImageBitmap((Bitmap) imgList.get(position));
      holder.imgdate.setText(imgDate.get(position).toString());
      holder.imgdesc.setText(imgDesc.get(position).toString());
+
      holder.dbtn.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
              deleteImage(holder, position);
          }
      });
+
+     holder.savebtn.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             BitmapDrawable draw = (BitmapDrawable) holder.img.getDrawable();
+             saveImage(draw, position);
+         }
+     });
+
+     holder.img.setOnClickListener(new View.OnClickListener(){
+         @Override
+         public void onClick(View v) {
+             Intent a1 = new Intent(context, ShowExpandedImage.class);
+             a1.putExtra("imgDesc", imgDesc.get(position).toString());
+             context.startActivity(a1);
+         }
+     });
     }
+
 
     @Override
     public int getItemCount() {
         return imgList.size();
     }
 
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img, expandImg;
-        ImageButton dbtn;
+        ImageView img;
+        ImageButton dbtn, savebtn;
         TextView imgdate, imgdesc;
         LinearLayout imglayout;
 
@@ -74,11 +89,33 @@ public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdap
             imgdate = itemView.findViewById(R.id.imgdate);
             imgdesc = itemView.findViewById(R.id.imgdesc);
             dbtn = itemView.findViewById(R.id.delBtn);
+            savebtn = itemView.findViewById(R.id.saveBtn);
             imglayout = itemView.findViewById(R.id.imgLayout);
-            expandImg = itemView.findViewById(R.id.expandImg);
         }
     }
 
+
+    //Function to save Image on phone galary
+    private void saveImage(BitmapDrawable draw, int position){
+        Bitmap bitmap = draw.getBitmap();
+
+        FileOutputStream outStream;
+        File sdCard = Environment.getExternalStorageDirectory();
+        File dir = new File(sdCard.getAbsolutePath() + "/Download");
+        String fileName = String.format(imgDesc.get(position).toString()+".jpg", System.currentTimeMillis());
+        File outFile = new File(dir, fileName);
+        try {
+            outStream = new FileOutputStream(outFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+            outStream.flush();
+            outStream.close();
+            Toast.makeText(context,"Image Downloaded", Toast.LENGTH_SHORT).show();
+        }
+        catch(Exception e){ e.printStackTrace();}
+    }
+
+
+    //Function to delete Image from db
     public void deleteImage(ViewHolder holder, int position){
         int res = new ShowImageDbService(context).delPhoto(imgDesc.get(position).toString());
         if(res > 0){

@@ -1,5 +1,6 @@
 package com.example.demoapp.CommonFunctionsClass;
 
+import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.example.demoapp.SqlliteDBClasses.DActivitySqlliteDbService;
 import com.example.demoapp.SqlliteDBClasses.EventSqlliteDbService;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +90,20 @@ public class CommonFunctions {
                 activity.setText(act.getString(1));
             }
         }
+    }
+
+
+    //Function to convert Bitmap Image to byte[]
+    public byte[] convertToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        return outputStream.toByteArray();
+    }
+
+
+    //Function to convert byte[] into Bitmap Image
+    public static Bitmap convertToBitmapImage(byte[] image) {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 
 
