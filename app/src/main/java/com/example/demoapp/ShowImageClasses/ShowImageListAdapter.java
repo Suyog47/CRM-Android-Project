@@ -1,4 +1,4 @@
-package com.example.demoapp;
+package com.example.demoapp.ShowImageClasses;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.ShowImageDbService;
 import java.io.File;
 import java.io.FileOutputStream;

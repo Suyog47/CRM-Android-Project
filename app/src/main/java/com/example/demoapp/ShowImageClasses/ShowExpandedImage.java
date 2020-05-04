@@ -1,4 +1,4 @@
-package com.example.demoapp;
+package com.example.demoapp.ShowImageClasses;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.ShowImageDbService;
 
 import java.io.ByteArrayOutputStream;

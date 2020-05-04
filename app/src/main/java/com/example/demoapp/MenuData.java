@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -27,14 +26,13 @@ import com.example.demoapp.EventClasses.ShowLog;
 import com.example.demoapp.EventClasses.SweetMemories;
 import com.example.demoapp.EventClasses.UpdateLog;
 import com.example.demoapp.NotesClasses.Notes;
+import com.example.demoapp.ShowImageClasses.ShowImage;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import static android.content.ContentValues.TAG;
 
 public class MenuData extends Activity {
 
