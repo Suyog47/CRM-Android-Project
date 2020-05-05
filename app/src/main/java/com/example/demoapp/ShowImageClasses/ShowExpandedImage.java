@@ -4,14 +4,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,16 +12,11 @@ import androidx.annotation.Nullable;
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.ShowImageDbService;
-
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.zip.Inflater;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class ShowExpandedImage extends Activity {
 

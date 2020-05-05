@@ -2,19 +2,11 @@ package com.example.demoapp.BackgroundProcessClass;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.text.InputType;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -33,7 +25,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static android.content.ContentValues.TAG;
 
 public class BackupAndRestoreDBs extends Activity {
 

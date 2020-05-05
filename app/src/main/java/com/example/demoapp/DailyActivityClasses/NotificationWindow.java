@@ -2,7 +2,6 @@ package com.example.demoapp.DailyActivityClasses;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 

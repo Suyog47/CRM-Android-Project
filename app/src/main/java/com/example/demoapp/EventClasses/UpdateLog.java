@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;

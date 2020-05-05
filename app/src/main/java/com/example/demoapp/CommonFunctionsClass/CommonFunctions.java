@@ -1,6 +1,6 @@
 package com.example.demoapp.CommonFunctionsClass;
 
-import android.app.Application;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;

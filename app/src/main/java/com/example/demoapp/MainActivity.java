@@ -9,13 +9,6 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 

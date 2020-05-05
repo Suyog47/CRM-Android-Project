@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +36,6 @@ import java.util.concurrent.Executors;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-import static android.content.ContentValues.TAG;
 
 public class SetTimer extends Activity {
 

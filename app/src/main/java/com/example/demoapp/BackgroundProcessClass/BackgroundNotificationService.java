@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -22,7 +21,6 @@ import com.example.demoapp.SqlliteDBClasses.DActivitySqlliteDbService;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import static android.content.ContentValues.TAG;
 
 public class BackgroundNotificationService extends BroadcastReceiver {
     String act;
