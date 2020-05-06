@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Environment;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +46,9 @@ public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdap
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.img.setImageBitmap((Bitmap) imgList.get(position));
-     holder.imgdate.setText(imgDate.get(position).toString());
+        SpannableString content = new SpannableString(imgDate.get(position).toString());
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+     holder.imgdate.setText(content);
      holder.imgdesc.setText(imgDesc.get(position).toString());
 
      holder.dbtn.setOnClickListener(new View.OnClickListener() {
@@ -127,5 +131,4 @@ public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdap
             Toast.makeText(context, "Something went Wrong", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

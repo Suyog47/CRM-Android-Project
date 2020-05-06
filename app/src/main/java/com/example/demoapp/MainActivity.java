@@ -12,7 +12,6 @@ import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    static int timeout = 2400;
     ImageView sLogo;
     ProgressBar start;
 
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, timeout);
+        }, 2000);
 
 
         //Setting Display Screen to Full Screen and Removing Navigation Bar.
