@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.CommonFunctionsClass.EventsCF;
 import com.example.demoapp.SqlliteDBClasses.EventSqlliteDbService;
 import com.example.demoapp.R;
 
@@ -69,7 +70,7 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
 
                 //Get favorite Event Years registered in Db
                 Cursor res = new EventSqlliteDbService(getApplicationContext()).getSweetYears();
-                year.setAdapter(new CommonFunctions().setYears(getApplicationContext(), res));
+                year.setAdapter(new EventsCF().setYears(getApplicationContext(), res));
                 return null;
             }
         };
@@ -100,7 +101,7 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
     //Function to get dates from selected Year
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
         String yr = year.getSelectedItem().toString();
-        date.setAdapter(new CommonFunctions().setDates(this, new EventSqlliteDbService(this), yr,"sweet"));
+        date.setAdapter(new EventsCF().setDates(this, new EventSqlliteDbService(this), yr,"sweet"));
     }
 
     public void onNothingSelected(AdapterView<?> parent) { }

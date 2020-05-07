@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.CommonFunctionsClass.ShowImageCF;
 import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.ShowImageDbService;
 
@@ -95,7 +96,7 @@ public class ShowImage extends Activity {
     public void showImages(Cursor res) {
             while (res.moveToNext()) {
                 byte[] imgByte = res.getBlob(0);
-                imgList.add(new CommonFunctions().convertToBitmapImage(imgByte));
+                imgList.add(new ShowImageCF().convertToBitmapImage(imgByte));
                 imgDate.add(res.getString(1));
                 imgDesc.add(res.getString(2));
             }
@@ -209,7 +210,7 @@ public class ShowImage extends Activity {
     public void addImage(Bitmap bitmapImg, String desc){
         Date dt = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-       byte[] byteImg = new CommonFunctions().convertToByteArray(bitmapImg);
+       byte[] byteImg = new ShowImageCF().convertToByteArray(bitmapImg);
        String res = new ShowImageDbService(this).insertImages(byteImg, desc, dateFormat.format(dt));
         imgList.clear();
         imgDate.clear();

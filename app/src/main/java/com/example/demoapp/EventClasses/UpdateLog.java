@@ -25,6 +25,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.CommonFunctionsClass.EventsCF;
 import com.example.demoapp.SqlliteDBClasses.EventSqlliteDbService;
 import com.example.demoapp.R;
 
@@ -83,7 +84,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
 
                 //Get all Event Years registered in Db
                 Cursor res = new EventSqlliteDbService(getApplicationContext()).getYear();
-                year.setAdapter(new CommonFunctions().setYears(getApplicationContext(), res));
+                year.setAdapter(new EventsCF().setYears(getApplicationContext(), res));
                 return null;
             }
         };
@@ -113,7 +114,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
     //Function to get dates from selected Year
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         String yr = year.getSelectedItem().toString();
-        date.setAdapter(new CommonFunctions().setDates(this, new EventSqlliteDbService(this), yr,"normal"));
+        date.setAdapter(new EventsCF().setDates(this, new EventSqlliteDbService(this), yr,"normal"));
     }
 
     public void onNothingSelected(AdapterView<?> parent) { }
@@ -203,7 +204,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
         int result = new EventSqlliteDbService(this).deleteEvent(dte);
         if (result > 0) {
             String yr = year.getSelectedItem().toString();
-            date.setAdapter(new CommonFunctions().setDates(this, new EventSqlliteDbService(this), yr,"normal"));
+            date.setAdapter(new EventsCF().setDates(this, new EventSqlliteDbService(this), yr,"normal"));
                 subject.setText("");
                 event.setText("");
                 dbtn.setText("Event Deleted");

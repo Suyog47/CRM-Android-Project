@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.CommonFunctionsClass.DailyActivitiesCF;
 import com.example.demoapp.SqlliteDBClasses.DActivitySqlliteDbService;
 import com.example.demoapp.R;
 
@@ -42,7 +43,7 @@ public class NotificationWindow extends Activity {
                 FullDay = formatter.format(dt);
 
                 //Get Current day Activity
-                new CommonFunctions().showDActivity(getApplicationContext(), new DActivitySqlliteDbService(getApplicationContext()), FullDay, event);
+                new DailyActivitiesCF().showDActivity(getApplicationContext(), new DActivitySqlliteDbService(getApplicationContext()), FullDay, event);
                 return null;
             }
         };

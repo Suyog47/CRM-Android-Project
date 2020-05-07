@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.CommonFunctionsClass.DailyActivitiesCF;
 import com.example.demoapp.SqlliteDBClasses.DActivitySqlliteDbService;
 import com.example.demoapp.R;
 
@@ -109,12 +110,12 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
     //Function to get Current day activity
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        new CommonFunctions().showDActivity(this, new DActivitySqlliteDbService(this), week.getSelectedItem().toString(), act);
+        new DailyActivitiesCF().showDActivity(this, new DActivitySqlliteDbService(this), week.getSelectedItem().toString(), act);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        new CommonFunctions().showDActivity(this, new DActivitySqlliteDbService(this), "Sunday", act);
+        new DailyActivitiesCF().showDActivity(this, new DActivitySqlliteDbService(this), "Sunday", act);
     }
 
 

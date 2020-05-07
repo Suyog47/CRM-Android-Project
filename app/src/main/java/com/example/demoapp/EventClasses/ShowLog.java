@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.CommonFunctionsClass.EventsCF;
 import com.example.demoapp.SqlliteDBClasses.EventSqlliteDbService;
 import com.example.demoapp.R;
 
@@ -69,7 +70,7 @@ public class ShowLog extends Activity implements AdapterView.OnItemSelectedListe
 
                 //Get all Event Years registered in Db
                 Cursor res = new EventSqlliteDbService(getApplicationContext()).getYear();
-                year.setAdapter(new CommonFunctions().setYears(getApplicationContext(), res));
+                year.setAdapter(new EventsCF().setYears(getApplicationContext(), res));
                 return null;
             }
         };
@@ -99,7 +100,7 @@ public class ShowLog extends Activity implements AdapterView.OnItemSelectedListe
     //Function to get dates from selected Year
    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
         String yr = year.getSelectedItem().toString();
-       date.setAdapter(new CommonFunctions().setDates(this,new EventSqlliteDbService(this),yr,"normal"));
+       date.setAdapter(new EventsCF().setDates(this,new EventSqlliteDbService(this),yr,"normal"));
    }
 
     public void onNothingSelected(AdapterView<?> parent) { }

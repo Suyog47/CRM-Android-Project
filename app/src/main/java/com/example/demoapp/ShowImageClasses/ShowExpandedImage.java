@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.CommonFunctionsClass.ShowImageCF;
 import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.ShowImageDbService;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class ShowExpandedImage extends Activity {
                 while (res.moveToNext()) {
                     barr = res.getBlob(0);
                 }
-                Bitmap img = new CommonFunctions().convertToBitmapImage(barr);
+                Bitmap img = new ShowImageCF().convertToBitmapImage(barr);
                 ei.setImageBitmap(img);
                 return null;
             }
