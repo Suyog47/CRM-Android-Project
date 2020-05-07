@@ -53,12 +53,8 @@ public class Impdates extends Activity {
         month = new Spinner(this);
         input = new EditText(this);
         relativeLayout = findViewById(R.id.relativeLayout);
-
         tv = findViewById(R.id.impdatesHeader);
 
-        SpannableString content = new SpannableString("Important Dates");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {
@@ -95,9 +91,20 @@ public class Impdates extends Activity {
             }
         };
 
+        Callable<Void> call3 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Important Dates");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+
         List<Callable<Void>> taskList = new ArrayList<>();
         taskList.add(call1);
         taskList.add(call2);
+        taskList.add(call3);
 
         ExecutorService executor = Executors.newCachedThreadPool();
         try { executor.invokeAll(taskList); }

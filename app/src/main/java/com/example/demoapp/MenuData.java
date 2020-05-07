@@ -49,10 +49,6 @@ public class MenuData extends Activity {
         menuimg = findViewById(R.id.menuImg);
         tv = findViewById(R.id.menuHeader);
 
-        SpannableString content = new SpannableString("Activities");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
-
         //Setting up new Thread to set Bitmap Scaled Images
         Callable<Void> call1 = new Callable<Void>() {
             @Override
@@ -64,8 +60,18 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
 
+        Callable<Void> call2 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Activities");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+        setThreads(call1);
+        setThreads(call2);
     }
 
     //Function to start Insert Log Activity

@@ -46,12 +46,8 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
         event.setMovementMethod(new ScrollingMovementMethod());
         year.setOnItemSelectedListener(this);
         sweetmemimg = findViewById(R.id.sweetMemImg);
-
         tv = findViewById(R.id.sweetmemHeader);
 
-        SpannableString content = new SpannableString("Sweet Memories");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {
@@ -78,9 +74,20 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
             }
         };
 
+        Callable<Void> call3  = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Sweet Memories");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+
         List<Callable<Void>> taskList = new ArrayList<>();
         taskList.add(call1);
         taskList.add(call2);
+        taskList.add(call3);
 
         ExecutorService executor = Executors.newCachedThreadPool();
         try{ executor.invokeAll(taskList); }

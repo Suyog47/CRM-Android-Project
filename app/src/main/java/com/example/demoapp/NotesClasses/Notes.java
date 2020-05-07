@@ -49,12 +49,7 @@ public class Notes extends Activity {
         setContentView(R.layout.activity_notes);
         lLayout = findViewById(R.id.notesLayout);
         loginimg = findViewById(R.id.loginImg);
-
         tv = findViewById(R.id.notesHeader);
-
-        SpannableString content = new SpannableString("Notes");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {
@@ -78,9 +73,20 @@ public class Notes extends Activity {
            }
        };
 
-        List<Callable<Void>> taskList = new ArrayList<>();
+       Callable<Void> call3 = new Callable<Void>() {
+           @Override
+           public Void call() throws Exception {
+               SpannableString content = new SpannableString("Notes");
+               content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+               tv.setText(content);
+               return null;
+           }
+       };
+
+       List<Callable<Void>> taskList = new ArrayList<>();
         taskList.add(call1);
         taskList.add(call2);
+        taskList.add(call3);
 
         ExecutorService executor = Executors.newCachedThreadPool();
         try {

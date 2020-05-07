@@ -65,10 +65,6 @@ public class Login extends Activity {
         loginimg = findViewById(R.id.loginImg);
         tv = findViewById(R.id.loginHeader);
 
-        content = new SpannableString("Enter the Access Code");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
-
         //Setting up new Thread to set Bitmap Scaled Images
         Callable<Void> call1 = new Callable<Void>() {
             @Override
@@ -81,8 +77,19 @@ public class Login extends Activity {
             }
         };
 
+        Callable<Void> call2 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                content = new SpannableString("Enter the Access Code");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+
        List<Callable<Void>> tasklist = new ArrayList<>();
        tasklist.add(call1);
+       tasklist.add(call2);
 
         ExecutorService executor = Executors.newCachedThreadPool();
         try{executor.invokeAll(tasklist);}

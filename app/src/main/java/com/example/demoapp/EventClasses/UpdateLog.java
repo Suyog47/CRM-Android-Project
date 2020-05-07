@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telecom.Call;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
@@ -58,14 +59,9 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
         event = findViewById(R.id.eventText);
         fav = findViewById(R.id.fav);
         updateventimg = findViewById(R.id.updateEventImg);
-
-        subject.setEnabled(false); event.setEnabled(false); ubtn.setEnabled(false); fav.setEnabled(false);
-
         tv = findViewById(R.id.updateLogHeader);
 
-        SpannableString content = new SpannableString("Update Event");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
+        subject.setEnabled(false); event.setEnabled(false); ubtn.setEnabled(false); fav.setEnabled(false);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {
@@ -92,9 +88,20 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
             }
         };
 
+        Callable<Void> call3 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Update Event");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+
         List<Callable<Void>> taskList = new ArrayList<>();
         taskList.add(call1);
         taskList.add(call2);
+        taskList.add(call3);
 
         ExecutorService executor =  Executors.newCachedThreadPool();
         try{ executor.invokeAll(taskList); }

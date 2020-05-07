@@ -11,6 +11,12 @@ import android.widget.TextView;
 
 import com.example.demoapp.R;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 public class DailyActivity extends Activity {
 
@@ -19,12 +25,25 @@ public class DailyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dailyactivity);
-
         tv = findViewById(R.id.dactivityHeader);
 
-        SpannableString content = new SpannableString("Daily Activities");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Daily Activities");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+
+        List<Callable<Void>> tasklist = new ArrayList<>();
+        tasklist.add(call1);
+
+        ExecutorService executor = Executors.newCachedThreadPool();
+        try{ executor.invokeAll(tasklist);}
+        catch(Exception e){}
+        finally { executor.shutdown(); }
     }
 
 

@@ -50,12 +50,7 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
         act = findViewById(R.id.eventText);
         ubtn = findViewById(R.id.updateActBtn);
         updatedactivityimg = findViewById(R.id.updateDActivityImg);
-
         tv = findViewById(R.id.updateActivityHeader);
-
-        SpannableString content = new SpannableString("Update Daily_Activity");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {
@@ -85,9 +80,20 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
             }
         };
 
+        Callable<Void> call3 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Update Daily_Activity");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+
         List<Callable<Void>> taskList = new ArrayList<>();
         taskList.add(call1);
         taskList.add(call2);
+        taskList.add(call3);
 
         ExecutorService executor = Executors.newCachedThreadPool();
         try {

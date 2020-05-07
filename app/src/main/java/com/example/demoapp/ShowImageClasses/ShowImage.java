@@ -58,12 +58,7 @@ public class ShowImage extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
-
         tv = findViewById(R.id.imagesHeader);
-
-        SpannableString content = new SpannableString("Images");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
 
         Callable<Void> call1 = new Callable<Void>() {
             @Override
@@ -74,8 +69,19 @@ public class ShowImage extends Activity {
             }
         };
 
+        Callable<Void> call2 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Images");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+
         List<Callable<Void>> taskList = new ArrayList<>();
         taskList.add(call1);
+        taskList.add(call2);
 
         ExecutorService executor = Executors.newCachedThreadPool();
         try { executor.invokeAll(taskList); }
