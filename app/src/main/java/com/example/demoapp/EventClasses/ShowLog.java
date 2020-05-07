@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,7 +29,7 @@ import java.util.concurrent.Executors;
 public class ShowLog extends Activity implements AdapterView.OnItemSelectedListener {
 
     Spinner year, date;
-    TextView event, subject;
+    TextView event, subject, tv;
     ImageView showimg, fav;
 
     @Override
@@ -44,6 +46,12 @@ public class ShowLog extends Activity implements AdapterView.OnItemSelectedListe
         fav = findViewById(R.id.fav);
         year.setOnItemSelectedListener(this);
         showimg = findViewById(R.id.showImg);
+
+        tv = findViewById(R.id.showLogHeader);
+
+        SpannableString content = new SpannableString("Life Events");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {

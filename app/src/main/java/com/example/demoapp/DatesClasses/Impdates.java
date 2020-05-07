@@ -7,7 +7,9 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.UnderlineSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +40,7 @@ public class Impdates extends Activity {
 
     Spinner date,month;
     EditText input;
-    TextView t;
+    TextView t, tv;
     LinearLayout mlayout, hlayout, vlayout;
     RelativeLayout relativeLayout;
 
@@ -51,6 +53,12 @@ public class Impdates extends Activity {
         month = new Spinner(this);
         input = new EditText(this);
         relativeLayout = findViewById(R.id.relativeLayout);
+
+        tv = findViewById(R.id.impdatesHeader);
+
+        SpannableString content = new SpannableString("Important Dates");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {

@@ -3,7 +3,9 @@ package com.example.demoapp.DailyActivityClasses;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,7 +60,9 @@ public class WatchActivities extends Activity {
                 //Get current Day
                 Bundle bundle = getIntent().getExtras();
                 String message = bundle.getString("title");
-                title.setText(message);
+                SpannableString content = new SpannableString(message);
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                title.setText(content);
 
                 //Get Current day Activity
                 new CommonFunctions().showDActivity(getApplicationContext(), new DActivitySqlliteDbService(getApplicationContext()), message, activity);

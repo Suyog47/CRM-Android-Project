@@ -4,16 +4,27 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
+import android.widget.TextView;
+
 import com.example.demoapp.R;
 
 
 public class DailyActivity extends Activity {
 
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dailyactivity);
+
+        tv = findViewById(R.id.dactivityHeader);
+
+        SpannableString content = new SpannableString("Daily Activities");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
     }
 
 

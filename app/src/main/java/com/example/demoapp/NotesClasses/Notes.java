@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class Notes extends Activity {
 
     TextView[] note = new TextView[100];
+    TextView tv;
     LinearLayout lLayout;
     LinearLayout.LayoutParams[] params = new LinearLayout.LayoutParams[100];
     NotesSqlliteDbService db;
@@ -46,6 +49,12 @@ public class Notes extends Activity {
         setContentView(R.layout.activity_notes);
         lLayout = findViewById(R.id.notesLayout);
         loginimg = findViewById(R.id.loginImg);
+
+        tv = findViewById(R.id.notesHeader);
+
+        SpannableString content = new SpannableString("Notes");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {

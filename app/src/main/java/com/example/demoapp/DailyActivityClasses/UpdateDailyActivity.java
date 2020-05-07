@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -34,6 +37,7 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
     Spinner week;
     Button ubtn;
     EditText act;
+    TextView tv;
     ImageView updatedactivityimg;
 
     @Override
@@ -47,6 +51,11 @@ public class UpdateDailyActivity extends Activity implements AdapterView.OnItemS
         ubtn = findViewById(R.id.updateActBtn);
         updatedactivityimg = findViewById(R.id.updateDActivityImg);
 
+        tv = findViewById(R.id.updateActivityHeader);
+
+        SpannableString content = new SpannableString("Update Daily_Activity");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {

@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +43,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class ShowImage extends Activity {
 
     ImageView img;
+    TextView tv;
     Bitmap bitmap;
     int count=0;
     float x1, x2;
@@ -55,6 +58,12 @@ public class ShowImage extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
+
+        tv = findViewById(R.id.imagesHeader);
+
+        SpannableString content = new SpannableString("Images");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         Callable<Void> call1 = new Callable<Void>() {
             @Override

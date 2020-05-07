@@ -17,14 +17,15 @@
         android:background="@drawable/header">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/menuHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Activities"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="40sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:textColor="#F39C12"
+            android:textStyle="italic|bold"
+            android:textSize="28sp"
             android:visibility="visible"
             />
     </RelativeLayout>

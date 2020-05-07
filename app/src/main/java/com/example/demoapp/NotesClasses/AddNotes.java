@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -34,6 +37,7 @@ public class AddNotes extends Activity {
 
     Spinner flag;
     EditText notes;
+    TextView tv;
     Button noteBtn;
     Date dt = new Date();
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -48,6 +52,12 @@ public class AddNotes extends Activity {
         notes = findViewById(R.id.NotesText);
         noteBtn = findViewById(R.id.addNoteBtn);
         addnotesimg = findViewById(R.id.addNotesImg);
+
+        tv = findViewById(R.id.addnotesHeader);
+
+        SpannableString content = new SpannableString("Add Notes");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {

@@ -8,7 +8,9 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -39,6 +42,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
     Button ubtn, dbtn;
     EditText subject, event;
     ImageView updateventimg, fav;
+    TextView tv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +60,12 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
         updateventimg = findViewById(R.id.updateEventImg);
 
         subject.setEnabled(false); event.setEnabled(false); ubtn.setEnabled(false); fav.setEnabled(false);
+
+        tv = findViewById(R.id.updateLogHeader);
+
+        SpannableString content = new SpannableString("Update Event");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {

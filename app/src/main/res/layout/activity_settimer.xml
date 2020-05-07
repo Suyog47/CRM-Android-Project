@@ -20,11 +20,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Set Timer For"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:textStyle="italic"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="35dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#F39C12"
+        android:textStyle="italic|bold"
+        android:textSize="30dp"
         android:visibility="visible"
         />
 
@@ -34,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/textView"
             android:layout_marginTop="45sp"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="#F39C12"
+            android:textStyle="italic"
             android:textSize="25sp"
             android:visibility="visible"
             />

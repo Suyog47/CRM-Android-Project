@@ -31,8 +31,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class Login extends Activity {
     String userCode;
     EditText ucode;
-    TextView hint;
+    TextView hint, tv;
     ImageView loginimg;
+    SpannableString content;
     private MediaPlayer mp;
 
     //Showing Alert Dialog to Confirm the Exit of Application
@@ -62,6 +63,11 @@ public class Login extends Activity {
         ucode = findViewById(R.id.ucode);
         hint = findViewById(R.id.hint);
         loginimg = findViewById(R.id.loginImg);
+        tv = findViewById(R.id.loginHeader);
+
+        content = new SpannableString("Enter the Access Code");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread to set Bitmap Scaled Images
         Callable<Void> call1 = new Callable<Void>() {
@@ -87,7 +93,7 @@ public class Login extends Activity {
         }
 
         //Code to underline the Text
-        SpannableString content = new SpannableString("Get Hint");
+        content = new SpannableString("Get Hint");
         content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
         hint.setText(content);
     }

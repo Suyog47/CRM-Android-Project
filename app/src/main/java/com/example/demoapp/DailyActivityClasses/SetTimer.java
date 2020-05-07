@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
@@ -81,7 +83,9 @@ public class SetTimer extends Activity {
                 //Get Current day sent from Previous Activity
                 Bundle bundle = getIntent().getExtras();
                 message = bundle.getString("title");
-                title.setText(message);
+                SpannableString content = new SpannableString(message);
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                title.setText(content);
                 showSetTimer();
                 return null;
             }

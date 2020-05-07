@@ -15,15 +15,14 @@
         android:layout_height="90dp"
         android:background="@drawable/header">
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/updateLogHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update Event"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textStyle="italic"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="35dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:textColor="#F39C12"
+        android:textStyle="italic|bold"
+        android:textSize="25dp"
         android:visibility="visible"
         />
     </RelativeLayout>
