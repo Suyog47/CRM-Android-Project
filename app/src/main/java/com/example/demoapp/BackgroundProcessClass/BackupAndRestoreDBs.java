@@ -6,8 +6,11 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,15 +32,21 @@ import java.util.concurrent.Executors;
 public class BackupAndRestoreDBs extends Activity {
 
     RelativeLayout rl;
-
     String path = Environment.getExternalStorageDirectory().getAbsolutePath();
     File Dir = new File(path+"/CRM");
+    TextView tv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_backup_restore);
         rl = findViewById(R.id.backupRelativeLayout);
+
+        tv = findViewById(R.id.dbHeader);
+
+        SpannableString content = new SpannableString("Database Controls");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         Callable<Void> call1 = new Callable<Void>() {
             @Override

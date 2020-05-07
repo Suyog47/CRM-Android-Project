@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.demoapp.BackgroundProcessClass.BackupAndRestoreDBs;
@@ -36,6 +39,7 @@ import java.util.concurrent.Executors;
 
 public class MenuData extends Activity {
 
+    TextView tv;
     ImageView menuimg;
 
     @Override
@@ -43,6 +47,11 @@ public class MenuData extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_data);
         menuimg = findViewById(R.id.menuImg);
+        tv = findViewById(R.id.menuHeader);
+
+        SpannableString content = new SpannableString("Activities");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread to set Bitmap Scaled Images
         Callable<Void> call1 = new Callable<Void>() {

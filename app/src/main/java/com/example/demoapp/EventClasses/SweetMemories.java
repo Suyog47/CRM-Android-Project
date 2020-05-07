@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.UnderlineSpan;
 import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,7 +30,7 @@ import java.util.concurrent.Executors;
 public class SweetMemories extends Activity implements AdapterView.OnItemSelectedListener {
 
     Spinner year, date;
-    TextView event, subject;
+    TextView event, subject, tv;
     ImageView sweetmemimg;
 
     @Override
@@ -44,6 +46,12 @@ public class SweetMemories extends Activity implements AdapterView.OnItemSelecte
         event.setMovementMethod(new ScrollingMovementMethod());
         year.setOnItemSelectedListener(this);
         sweetmemimg = findViewById(R.id.sweetMemImg);
+
+        tv = findViewById(R.id.sweetmemHeader);
+
+        SpannableString content = new SpannableString("Sweet Memories");
+        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+        tv.setText(content);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {
