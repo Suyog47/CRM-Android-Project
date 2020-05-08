@@ -131,7 +131,7 @@ public class Login extends Activity {
         String hint2 = "Second Hint:- 0b1100100 | 01010010 | 0b1111101000 | 0b100 | 0b111";
         new AlertDialog.Builder(this)
                 .setTitle("Decode this to get Hint")
-                .setMessage(hint1+"\n"+hint2)
+                .setMessage(hint1+"\n\n"+hint2)
                 .show();
     }
 

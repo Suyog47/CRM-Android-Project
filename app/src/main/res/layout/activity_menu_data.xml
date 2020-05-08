@@ -66,9 +66,9 @@
 
             <TextView
                 android:id="@+id/text2"
-                android:layout_width="98dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="19dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:text="@string/menu_insert_log_text"
                 android:textStyle="bold"
@@ -101,9 +101,9 @@
 
             <TextView
                 android:id="@+id/text1"
-                android:layout_width="98dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="19dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:text="@string/menu_show_log_text"
                 android:textStyle="bold"
@@ -136,9 +136,9 @@
 
             <TextView
                 android:id="@+id/text3"
-                android:layout_width="124dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:text="@string/menu_daily_activity_text"
                 android:textStyle="bold"
@@ -172,13 +172,13 @@
 
             <TextView
                 android:id="@+id/text4"
-                android:layout_width="83dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="83dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="99dp"
                 android:text="@string/menu_sweet_memories_text"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:onClick="sweetMemories"
                 />
         </RelativeLayout>
@@ -207,9 +207,9 @@
 
             <TextView
                 android:id="@+id/text5"
-                android:layout_width="110dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:text="@string/menu_update_log_text"
                 android:textStyle="bold"
@@ -243,13 +243,13 @@
 
             <TextView
                 android:id="@+id/text6"
-                android:layout_width="83dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="83dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="99dp"
                 android:text="@string/menu_update_dactivity_text"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:onClick="updateDailyActivity"
                 />
         </RelativeLayout>
@@ -279,9 +279,9 @@
 
             <TextView
                 android:id="@+id/text7"
-                android:layout_width="52dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="42dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:text="@string/menu_notes_text"
                 android:textStyle="bold"
@@ -315,9 +315,9 @@
 
             <TextView
                 android:id="@+id/text8"
-                android:layout_width="88dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:text="@string/menu_imp_dates_text"
                 android:textStyle="bold"
@@ -351,9 +351,9 @@
 
             <TextView
                 android:id="@+id/text9"
-                android:layout_width="155dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="11dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="92dp"
                 android:text="@string/menu_show_images_text"
                 android:textStyle="bold"
@@ -387,9 +387,9 @@
 
             <TextView
                 android:id="@+id/text10"
-                android:layout_width="155dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="92dp"
                 android:text="@string/menu_db_controls_text"
                 android:textStyle="bold"

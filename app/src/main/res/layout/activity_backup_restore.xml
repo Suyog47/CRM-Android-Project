@@ -43,6 +43,7 @@
             android:layout_marginTop="25dp"
             android:text="@string/backup_text"
             android:textStyle="bold"
+            android:layout_centerVertical="true"
             android:textSize="22sp"/>
 
         <ImageView
@@ -71,6 +72,7 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="25dp"
             android:text="@string/restore_text"
+            android:layout_centerVertical="true"
             android:textStyle="bold"
             android:textSize="22sp"/>
 
@@ -88,7 +90,7 @@
     android:text="===================="
     android:textColor="@android:color/white"
     android:textSize="30sp"
-    android:layout_marginTop="325sp"
+    android:layout_marginTop="329sp"
     android:layout_centerHorizontal="true"/>
 
     <RelativeLayout
@@ -107,6 +109,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="23dp"
             android:text="@string/upload_text"
+            android:layout_centerVertical="true"
             android:textStyle="bold"
             android:textSize="22sp"/>
 
@@ -135,6 +138,7 @@
             android:layout_marginStart="110dp"
             android:layout_marginTop="20dp"
             android:text="@string/download_text"
+            android:layout_centerVertical="true"
             android:textStyle="bold"
             android:textSize="22sp"/>
 

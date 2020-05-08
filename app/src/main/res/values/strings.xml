@@ -8,9 +8,9 @@
     <string name="menu_insert_log_text">Insert Event</string>
     <string name="menu_show_log_text">Show Event</string>
     <string name="menu_daily_activity_text">Daily Activities</string>
-    <string name="menu_sweet_memories_text">  Sweet Memories</string>
+    <string name="menu_sweet_memories_text">Sweet Memories</string>
     <string name="menu_update_log_text">Update Event</string>
-    <string name="menu_update_dactivity_text">  Update D-Activity</string>
+    <string name="menu_update_dactivity_text">Update D-Activity</string>
     <string name="menu_notes_text">Notes</string>
     <string name="menu_imp_dates_text">Imp-Dates</string>
     <string name="menu_show_images_text">Show Images</string>
@@ -23,7 +23,7 @@
 
     <string name="showlog_watchevent_btn_text">Watch Event</string>
 
-    <string name="sweetmem_watchmem_text">Watch Memories</string>
+    <string name="sweetmem_watch_mem_text">Watch Memories</string>
 
     <string name="updatelog_select_btn_text">Select</string>
     <string name="updatelog_update_btn_text">Update</string>

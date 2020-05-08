@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -41,7 +42,8 @@ public class Notes extends Activity {
     LinearLayout.LayoutParams[] params = new LinearLayout.LayoutParams[100];
     NotesSqlliteDbService db;
     ImageView loginimg;
-    int i = 0, id;
+    int i = 0, id, MIN_DISTANCE = 350;
+    float x1, x2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,24 +113,46 @@ public class Notes extends Activity {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     200
             ));
-            params[i] = (LinearLayout.LayoutParams) note[i].getLayoutParams();
             note[i].setText(val.getString(1));
+
             if(val.getString(2).equals("Important")){ note[i].setTextColor(Color.GREEN); }
             else if(val.getString(2).equals("Extreme")) { note[i].setTextColor(Color.RED); }
+
             note[i].setTextSize(21);
             note[i].setPadding(20,20,20,20);
+
+            params[i] = (LinearLayout.LayoutParams) note[i].getLayoutParams();
             params[i].setMargins(100, 20, 100, 50);
-            note[i].setBackground(getResources().getDrawable(R.drawable.noteviewdesign));
             note[i].setLayoutParams(params[i]);
+
+            note[i].setBackground(getResources().getDrawable(R.drawable.noteviewdesign));
+
             note[i].setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     seeFullNote(v);
                 }
             });
-            note[i].setOnLongClickListener(new View.OnLongClickListener() {
-                public boolean onLongClick(View v) {
-                    deleteNote(v);
-                    return true;
+            note[i].setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(event.getAction() == MotionEvent.ACTION_DOWN){
+                        x1 = event.getRawX();
+                        return true;
+                    }
+                    if(event.getAction() == MotionEvent.ACTION_UP){
+                        x2 = event.getRawX();
+
+                        float diff = x2 - x1;
+
+                        if(Math.abs(diff) >= MIN_DISTANCE){
+                            if(x2 > x1){
+                                deleteNote(v);
+                            }
+                            return true;
+                        }
+                        return false;
+                    }
+                    return false;
                 }
             });
             lLayout.addView(note[i]);

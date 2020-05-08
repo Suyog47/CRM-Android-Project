@@ -61,7 +61,7 @@
         android:textColor="@android:color/white"
         android:background="@drawable/selectbutton"
         android:onClick="watchEvent"
-        android:text=""/>
+        android:text="@string/sweetmem_watch_mem_text"/>
 
     <TextView
         android:id="@+id/subjectLabel"
