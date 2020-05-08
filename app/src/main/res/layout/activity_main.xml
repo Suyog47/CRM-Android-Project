@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/loginImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent" />
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:textColor="#F39C12"
         android:textSize="25sp"
         android:textStyle="italic|bold"
@@ -48,7 +48,7 @@
             android:layout_marginTop="50dp"
             android:ems="10"
             android:textColor="@android:color/holo_green_dark"
-            android:hint="Access Code"
+            android:hint="@string/login_text"
             android:fontFamily=""
             android:inputType="textPassword" />
 
@@ -56,11 +56,11 @@
             android:id="@+id/hint"
             android:layout_width="80dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="220dp"
+            android:layout_marginStart="220dp"
             android:layout_marginTop="115dp"
             android:textColor="@android:color/holo_green_light"
             android:textStyle="bold"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:onClick="getHint"
             />
 

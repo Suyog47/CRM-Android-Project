@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/setTimerImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent"/>
 
 
     <RelativeLayout
@@ -19,12 +19,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Set Timer For"
+        android:text="@string/set_timer_header_text"
         android:layout_marginTop="10sp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:textColor="#F39C12"
         android:textStyle="italic|bold"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:visibility="visible"
         />
 
@@ -32,7 +32,7 @@
             android:id="@+id/dayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/textView"
+            android:layout_alignStart="@id/textView"
             android:layout_marginTop="45sp"
             android:textColor="#F39C12"
             android:textStyle="italic"
@@ -57,7 +57,7 @@
         android:textColor="@android:color/white"
         android:background="@drawable/selectbutton"
         android:onClick="setTimer"
-        android:text="Set Timer" />
+        android:text="@string/set_timer_header_text" />
 
     <Switch
         android:id="@+id/timerSwitch"
@@ -65,8 +65,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="530dp"
         android:layout_centerHorizontal="true"
-        android:text="00:00"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:onClick="switchTimer"
         android:background="@drawable/loginview"/>
 </RelativeLayout>

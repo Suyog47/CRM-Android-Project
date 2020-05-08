@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/showImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,10 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:textColor="#F39C12"
         android:textStyle="italic|bold"
-        android:textSize="28dp"
+        android:textSize="28sp"
         android:visibility="visible"
         />
     </RelativeLayout>
@@ -47,7 +47,7 @@
             android:id="@+id/dateDropDown"
             android:layout_width="120dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="130sp"
+            android:layout_marginStart="130sp"
             android:textAlignment="center"
             android:background="@drawable/spinner"/>
 
@@ -62,18 +62,18 @@
         android:textColor="@android:color/white"
         android:background="@drawable/selectbutton"
         android:onClick="watchEvent"
-        android:text="Watch Event" />
+        android:text="@string/showlog_watchevent_btn_text" />
 
     <TextView
         android:id="@+id/subjectLabel"
         android:layout_width="318dp"
         android:layout_height="50dp"
-        android:text="Subject"
+        android:text="@string/insertlog_subject_text"
         android:textSize="20sp"
         android:padding="10dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="247dp"
-        android:textColor="@color/cardview_light_background"
+        android:textColor="@android:color/white"
         android:background="@drawable/textviewdesign"
         android:scrollbars = "horizontal"
         android:ems="10"/>
@@ -90,9 +90,9 @@
         android:id="@+id/eventLabel"
         android:layout_width="318dp"
         android:layout_height="270dp"
-        android:text="Event"
+        android:text="@string/insertlog_event_text"
         android:textSize="20sp"
-        android:textColor="@color/cardview_light_background"
+        android:textColor="@android:color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="330dp"
         android:padding="10dp"

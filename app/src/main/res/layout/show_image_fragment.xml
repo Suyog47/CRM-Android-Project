@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/imgLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -19,7 +18,7 @@
                 android:id="@+id/saveBtn"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
                 android:background="@android:color/holo_green_light"
                 android:src="@android:drawable/ic_menu_save" />
 
@@ -27,7 +26,7 @@
                 android:id="@+id/delBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="80sp"
+                android:layout_marginStart="80sp"
                 android:src="@android:drawable/ic_delete" />
         </TableRow>
     </TableLayout>
@@ -40,9 +39,8 @@
 
     <TextView
         android:id="@+id/imgdate"
-        android:layout_width="135sp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
         android:textSize="17sp"
         android:textColor="@android:color/holo_red_dark"/>
 

@@ -6,13 +6,13 @@
     <ImageView
         android:id="@+id/menuImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Today's  Activities"
+        android:text="@string/notification_header_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:textColor="@android:color/holo_red_dark"
@@ -24,7 +24,7 @@
         android:id="@+id/eventLabel"
         android:layout_width="340dp"
         android:layout_height="450dp"
-        android:text="Event"
+        android:text="@string/insertlog_event_text"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"

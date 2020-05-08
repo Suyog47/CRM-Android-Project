@@ -13,10 +13,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:textColor="#F39C12"
             android:textStyle="italic|bold"
-            android:textSize="28dp"
+            android:textSize="28sp"
             android:visibility="visible"
             />
     </RelativeLayout>
@@ -36,11 +36,11 @@
         android:id="@+id/sunday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sunday Activity :"
+        android:text="@string/dactivity_sunday_text"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:layout_alignLeft="@id/Sunday"
+        android:layout_alignStart="@id/Sunday"
         android:layout_marginTop="50sp"
         />
 <TableLayout
@@ -57,17 +57,17 @@
             android:onClick="seeActivity"
             android:textColor="@android:color/white"
             android:background="@drawable/seeactivitybutton"
-            android:text="See Activity" />
+            android:text="@string/dactivity_see_activity_btn_text" />
 
         <Button
             android:id="@+id/set_Sunday_Timer"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp"
             android:onClick="setTimer"
             android:textColor="@android:color/black"
             android:background="@drawable/settimerbutton"
-            android:text="Set Timer-Sun" />
+            android:text="@string/dactivity_sunday_timer_btn_text" />
     </TableRow>
 </TableLayout>
 
@@ -75,11 +75,11 @@
         android:id="@+id/monday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Monday Activity :"
+        android:text="@string/dactivity_monday_text"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:layout_alignLeft="@id/Monday"
+        android:layout_alignStart="@id/Monday"
         android:layout_marginTop="170dp"
         />
 
@@ -97,17 +97,17 @@
                     android:onClick="seeActivity"
                     android:textColor="@android:color/white"
                     android:background="@drawable/seeactivitybutton"
-                    android:text="See Activity" />
+                    android:text="@string/dactivity_see_activity_btn_text" />
 
                 <Button
                     android:id="@+id/set_Monday_Timer"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
                     android:onClick="setTimer"
                     android:textColor="@android:color/black"
                     android:background="@drawable/settimerbutton"
-                    android:text="Set Timer-Mon" />
+                    android:text="@string/dactivity_monday_timer_btn_text" />
             </TableRow>
         </TableLayout>
 
@@ -115,11 +115,11 @@
         android:id="@+id/tuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tuesday Activity :"
+        android:text="@string/dactivity_tuesday_text"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:layout_alignLeft="@id/Tuesday"
+        android:layout_alignStart="@id/Tuesday"
         android:layout_marginTop="290dp"
         />
 
@@ -137,17 +137,17 @@
                     android:onClick="seeActivity"
                     android:textColor="@android:color/white"
                     android:background="@drawable/seeactivitybutton"
-                    android:text="See Activity" />
+                    android:text="@string/dactivity_see_activity_btn_text" />
 
                 <Button
                     android:id="@+id/set_Tuesday_Timer"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
                     android:onClick="setTimer"
                     android:textColor="@android:color/black"
                     android:background="@drawable/settimerbutton"
-                    android:text="Set Timer-Tues" />
+                    android:text="@string/dactivity_tuesday_timer_btn_text" />
             </TableRow>
         </TableLayout>
 
@@ -155,11 +155,11 @@
         android:id="@+id/wednesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wednesday Activity :"
+        android:text="@string/dactivity_wednesday_text"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:layout_alignLeft="@id/Wednesday"
+        android:layout_alignStart="@id/Wednesday"
         android:layout_marginTop="410dp"
         />
 
@@ -177,17 +177,17 @@
                     android:onClick="seeActivity"
                     android:textColor="@android:color/white"
                     android:background="@drawable/seeactivitybutton"
-                    android:text="See Activity" />
+                    android:text="@string/dactivity_see_activity_btn_text" />
 
                 <Button
                     android:id="@+id/set_Wednesday_Timer"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
                     android:onClick="setTimer"
                     android:textColor="@android:color/black"
                     android:background="@drawable/settimerbutton"
-                    android:text="Set Timer-Wed" />
+                    android:text="@string/dactivity_wednesday_timer_btn_text" />
             </TableRow>
         </TableLayout>
 
@@ -195,11 +195,11 @@
         android:id="@+id/thursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thursday Activity :"
+        android:text="@string/dactivity_thursday_text"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:layout_alignLeft="@id/Thursday"
+        android:layout_alignStart="@id/Thursday"
         android:layout_marginTop="530dp"
         />
 
@@ -217,17 +217,17 @@
                     android:onClick="seeActivity"
                     android:textColor="@android:color/white"
                     android:background="@drawable/seeactivitybutton"
-                    android:text="See Activity" />
+                    android:text="@string/dactivity_see_activity_btn_text" />
 
                 <Button
                     android:id="@+id/set_Thursday_Timer"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
                     android:onClick="setTimer"
                     android:textColor="@android:color/black"
                     android:background="@drawable/settimerbutton"
-                    android:text="Set Timer-Thur" />
+                    android:text="@string/dactivity_thursday_timer_btn_text" />
             </TableRow>
         </TableLayout>
 
@@ -235,11 +235,11 @@
         android:id="@+id/friday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Friday Activity :"
+        android:text="@string/dactivity_friday_text"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:layout_alignLeft="@id/Friday"
+        android:layout_alignStart="@id/Friday"
         android:layout_marginTop="650dp"
         />
 
@@ -257,17 +257,17 @@
                     android:onClick="seeActivity"
                     android:textColor="@android:color/white"
                     android:background="@drawable/seeactivitybutton"
-                    android:text="See Activity" />
+                    android:text="@string/dactivity_see_activity_btn_text" />
 
                 <Button
                     android:id="@+id/set_Friday_Timer"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
                     android:onClick="setTimer"
                     android:textColor="@android:color/black"
                     android:background="@drawable/settimerbutton"
-                    android:text="Set Timer-Fri" />
+                    android:text="@string/dactivity_friday_timer_btn_text" />
             </TableRow>
         </TableLayout>
 
@@ -275,11 +275,11 @@
         android:id="@+id/saturday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Saturday Activity :"
+        android:text="@string/dactivity_saturday_text"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:layout_alignLeft="@id/Saturday"
+        android:layout_alignStart="@id/Saturday"
         android:layout_marginTop="770dp"
         />
 
@@ -297,31 +297,19 @@
                     android:onClick="seeActivity"
                     android:textColor="@android:color/white"
                     android:background="@drawable/seeactivitybutton"
-                    android:text="See Activity" />
+                    android:text="@string/dactivity_see_activity_btn_text" />
 
                 <Button
                     android:id="@+id/set_Saturday_Timer"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
                     android:onClick="setTimer"
                     android:textColor="@android:color/black"
                     android:background="@drawable/settimerbutton"
-                    android:text="Set Timer-Sat" />
+                    android:text="@string/dactivity_saturday_timer_btn_text" />
             </TableRow>
         </TableLayout>
-
-        <TextView
-            android:id="@+id/end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="==============================="
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/cardview_light_background"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="940dp"
-            />
 </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

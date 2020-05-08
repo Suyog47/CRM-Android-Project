@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/insertImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent"/>
 
         <RelativeLayout
             android:layout_height="80sp"
@@ -22,7 +22,7 @@
             android:id="@+id/dateLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date :"
+            android:text="@string/insertlog_date_text"
             android:textSize="18sp"
             />
 
@@ -39,7 +39,7 @@
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:text="/"
-                android:layout_marginLeft="85dp"
+                android:layout_marginStart="85dp"
                 android:textSize="25sp"
                 android:layout_marginTop="30dp"
                 />
@@ -48,7 +48,7 @@
                 android:id="@+id/monthDropDown"
                 android:layout_width="75dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="112dp"
+                android:layout_marginStart="112dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/spinner"
                 />
@@ -58,7 +58,7 @@
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:text="/"
-                android:layout_marginLeft="202dp"
+                android:layout_marginStart="202dp"
                 android:layout_marginTop="30dp"
                 android:textSize="25sp"
                 />
@@ -67,7 +67,7 @@
                 android:id="@+id/yearText"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="222dp"
+                android:layout_marginStart="222dp"
                 android:layout_marginTop="30dp"
                 android:textSize="25sp"
                 />
@@ -81,7 +81,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:ems="10"
-        android:hint="Subject"
+        android:hint="@string/insertlog_subject_text"
         android:inputType="text" />
 
 
@@ -92,7 +92,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
         android:ems="10"
-        android:hint="Event"
+        android:hint="@string/insertlog_event_text"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
 
@@ -120,6 +120,6 @@
         android:textColor="@android:color/white"
         android:background="@drawable/selectbutton"
         android:onClick="validateInput"
-        android:text="Log Event" />
+        android:text="@string/insertlog_btn_text" />
 
 </RelativeLayout>

@@ -6,7 +6,7 @@
     <ImageView
         android:id="@+id/watchActivityImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,8 +17,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wednesday"
-        android:layout_alignLeft="@id/textView2"
+        android:layout_alignStart="@id/textView2"
         android:layout_marginTop="5sp"
         android:textColor="#F39C12"
         android:textStyle="italic|bold"
@@ -30,9 +29,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activities"
+        android:text="@string/watch_activity_header_text"
         android:layout_marginTop="23sp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:textColor="#F39C12"
         android:textStyle="italic|bold"
         android:textSize="34sp"

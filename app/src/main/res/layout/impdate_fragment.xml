@@ -11,21 +11,20 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:gravity="center_vertical"
-        android:text="Date:- "
+        android:text="@string/impdate_fragment_text"
         android:textSize="22sp"/>
 
     <TextView
         android:id="@+id/event"
         android:layout_width="290sp"
         android:layout_height="35sp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="35dp"
         android:gravity="center_vertical"
         android:scrollbars="horizontal|vertical"
-        android:autoSizeTextType="uniform"
         android:textSize="17sp"/>
 
     <ImageButton
@@ -33,8 +32,8 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginTop="13dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
         android:background="@android:color/transparent"
         android:src="@android:drawable/ic_delete" />
 

@@ -4,12 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_dark_background">
+    android:background="@android:color/black">
 
     <ImageView
         android:id="@+id/menuImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,9 +20,8 @@
             android:id="@+id/menuHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Activities"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:textColor="#F39C12"
             android:textStyle="italic|bold"
             android:textSize="28sp"
@@ -39,7 +38,7 @@
     <GridLayout
         android:id="@+id/menuRecyclerView"
         android:layout_width="350dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:columnCount="2">
 
@@ -48,7 +47,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="23sp"
+            android:layout_marginStart="23sp"
             android:elevation="23dp"
             android:onClick="insertLog">
 
@@ -69,9 +68,9 @@
                 android:id="@+id/text2"
                 android:layout_width="98dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="19dp"
+                android:layout_marginStart="19dp"
                 android:layout_marginTop="100dp"
-                android:text="Insert Event"
+                android:text="@string/menu_insert_log_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="insertLog"
@@ -83,7 +82,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
             android:elevation="23dp"
             android:onClick="showLog">
 
@@ -104,9 +103,9 @@
                 android:id="@+id/text1"
                 android:layout_width="98dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="19dp"
+                android:layout_marginStart="19dp"
                 android:layout_marginTop="100dp"
-                android:text="Show Event"
+                android:text="@string/menu_show_log_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="showLog"
@@ -118,7 +117,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="23sp"
+            android:layout_marginStart="23sp"
             android:elevation="23dp"
             android:onClick="dailyActivity">
 
@@ -139,9 +138,9 @@
                 android:id="@+id/text3"
                 android:layout_width="124dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="100dp"
-                android:text="Daily Activities"
+                android:text="@string/menu_daily_activity_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="dailyActivity"
@@ -153,7 +152,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
             android:elevation="23dp"
             android:onClick="sweetMemories">
 
@@ -175,9 +174,9 @@
                 android:id="@+id/text4"
                 android:layout_width="83dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="28dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="83dp"
-                android:text="  Sweet Memories"
+                android:text="@string/menu_sweet_memories_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="sweetMemories"
@@ -189,7 +188,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="23sp"
+            android:layout_marginStart="23sp"
             android:elevation="23dp"
             android:onClick="updateLog">
 
@@ -210,9 +209,9 @@
                 android:id="@+id/text5"
                 android:layout_width="110dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="13dp"
+                android:layout_marginStart="13dp"
                 android:layout_marginTop="100dp"
-                android:text="Update Event"
+                android:text="@string/menu_update_log_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="updateLog"
@@ -224,7 +223,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
             android:elevation="23dp"
             android:onClick="updateDailyActivity">
 
@@ -239,7 +238,6 @@
                 android:cropToPadding="false"
                 android:onClick="updateDailyActivity"
                 android:scaleType="fitCenter"
-
                 android:src="@drawable/updatedailyactivity"
                 android:visibility="visible" />
 
@@ -247,9 +245,9 @@
                 android:id="@+id/text6"
                 android:layout_width="83dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="83dp"
-                android:text="  Update D-Activity"
+                android:text="@string/menu_update_dactivity_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="updateDailyActivity"
@@ -261,7 +259,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="23sp"
+            android:layout_marginStart="23sp"
             android:elevation="23dp"
             android:onClick="notes">
 
@@ -283,9 +281,9 @@
                 android:id="@+id/text7"
                 android:layout_width="52dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="42dp"
+                android:layout_marginStart="42dp"
                 android:layout_marginTop="100dp"
-                android:text="Notes"
+                android:text="@string/menu_notes_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="notes"
@@ -297,7 +295,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
             android:elevation="23dp"
             android:onClick="impdates">
 
@@ -319,9 +317,9 @@
                 android:id="@+id/text8"
                 android:layout_width="88dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="100dp"
-                android:text="Imp-Dates"
+                android:text="@string/menu_imp_dates_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="impdates"
@@ -333,7 +331,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="23sp"
+            android:layout_marginStart="23sp"
             android:elevation="23dp"
             android:onClick="showImage">
 
@@ -355,9 +353,9 @@
                 android:id="@+id/text9"
                 android:layout_width="155dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"
                 android:layout_marginTop="92dp"
-                android:text="Show Images"
+                android:text="@string/menu_show_images_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="showImage"
@@ -369,7 +367,7 @@
             android:layout_height="130dp"
             android:background="@drawable/loginview"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
             android:elevation="23dp"
             android:onClick="dbcontrols">
 
@@ -391,9 +389,9 @@
                 android:id="@+id/text10"
                 android:layout_width="155dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="92dp"
-                android:text="DB Controls"
+                android:text="@string/menu_db_controls_text"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:onClick="dbcontrols"

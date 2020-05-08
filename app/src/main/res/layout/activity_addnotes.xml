@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/addNotesImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,9 +19,8 @@
             android:id="@+id/addnotesHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Notes"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:textColor="#F39C12"
             android:textSize="30sp"
             android:textStyle="italic|bold"
@@ -41,13 +40,13 @@
         android:textColor="@android:color/black"
         android:background="@drawable/green_button_background"
         android:onClick="addNewNote"
-        android:text="Add Note" />
+        android:text="@string/add_notes_btn_text" />
 
     <Spinner
         android:id="@+id/flags"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="160sp"
+        android:layout_marginStart="160sp"
         android:background="@drawable/spinner"/>
 
     </RelativeLayout>
@@ -58,8 +57,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
         android:ems="10"
-        android:hint="Notes"
-        android:textColor="@color/cardview_dark_background"
+        android:hint="@string/add_notes_text"
+        android:textColor="@android:color/black"
         android:padding="10dp"
         android:gravity="start"
         android:textStyle="bold"

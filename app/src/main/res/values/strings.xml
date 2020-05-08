@@ -1,3 +1,68 @@
 <resources>
     <string name="app_name">CRM</string>
+
+    <string name="splash_text">Capture and ReLive the Moments</string>
+
+    <string name="login_text">Access Code</string>
+
+    <string name="menu_insert_log_text">Insert Event</string>
+    <string name="menu_show_log_text">Show Event</string>
+    <string name="menu_daily_activity_text">Daily Activities</string>
+    <string name="menu_sweet_memories_text">  Sweet Memories</string>
+    <string name="menu_update_log_text">Update Event</string>
+    <string name="menu_update_dactivity_text">  Update D-Activity</string>
+    <string name="menu_notes_text">Notes</string>
+    <string name="menu_imp_dates_text">Imp-Dates</string>
+    <string name="menu_show_images_text">Show Images</string>
+    <string name="menu_db_controls_text">DB Controls</string>
+
+    <string name="insertlog_date_text">Date :-</string>
+    <string name="insertlog_subject_text">Subject</string>
+    <string name="insertlog_event_text">Event</string>
+    <string name="insertlog_btn_text">Log Event</string>
+
+    <string name="showlog_watchevent_btn_text">Watch Event</string>
+
+    <string name="sweetmem_watchmem_text">Watch Memories</string>
+
+    <string name="updatelog_select_btn_text">Select</string>
+    <string name="updatelog_update_btn_text">Update</string>
+    <string name="updatelog_delete_btn_text">Delete</string>
+
+    <string name="dactivity_see_activity_btn_text">See Activity</string>
+    <string name="dactivity_sunday_text">Sunday Activity :</string>
+    <string name="dactivity_sunday_timer_btn_text">Set Timer-Sun</string>
+    <string name="dactivity_monday_text">Monday Activity :</string>
+    <string name="dactivity_monday_timer_btn_text">Set Timer-Mon</string>
+    <string name="dactivity_tuesday_text">Tuesday Activity :</string>
+    <string name="dactivity_tuesday_timer_btn_text">Set Timer-Tues</string>
+    <string name="dactivity_wednesday_text">Wednesday Activity :</string>
+    <string name="dactivity_wednesday_timer_btn_text">Set Timer-Wed</string>
+    <string name="dactivity_thursday_text">Thursday Activity :</string>
+    <string name="dactivity_thursday_timer_btn_text">Set Timer-Thur</string>
+    <string name="dactivity_friday_text">Friday Activity :</string>
+    <string name="dactivity_friday_timer_btn_text">Set Timer-Fri</string>
+    <string name="dactivity_saturday_text">Saturday Activity :</string>
+    <string name="dactivity_saturday_timer_btn_text">Set Timer-Sat</string>
+
+    <string name="watch_activity_header_text">Activities</string>
+
+    <string name="set_timer_header_text">Set Timer For</string>
+    <string name="set_timer_btn_text">Set Timer</string>
+
+    <string name="update_activity_btn_text">Update Activity</string>
+
+    <string name="notification_header_text">Today\'s Activities</string>
+
+    <string name="notes_btn_text">Add New</string>
+
+    <string name="add_notes_btn_text">Add Notes</string>
+    <string name="add_notes_text">Notes</string>
+
+    <string name="impdate_fragment_text">Date:- </string>
+
+    <string name="backup_text">Backup to Storage</string>
+    <string name="restore_text">Restore from Storage</string>
+    <string name="upload_text">Upload to Cloud</string>
+    <string name="download_text">Download from Cloud</string>
 </resources>
