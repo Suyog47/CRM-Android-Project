@@ -39,10 +39,10 @@ public class Notes extends Activity {
     TextView[] note = new TextView[100];
     TextView tv;
     LinearLayout lLayout;
-    LinearLayout.LayoutParams[] params = new LinearLayout.LayoutParams[100];
+    LinearLayout.LayoutParams params;
     NotesSqlliteDbService db;
     ImageView loginimg;
-    int i = 0, id, MIN_DISTANCE = 350;
+    int i = 0, id, start, pos, swipe_count = 0;
     float x1, x2;
 
     @Override
@@ -109,9 +109,7 @@ public class Notes extends Activity {
         while (val.moveToNext()) {
             note[i] = new TextView(this);
             note[i].setId(i);
-            note[i].setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    200
+            note[i].setLayoutParams(new LinearLayout.LayoutParams(980, 200
             ));
             note[i].setText(val.getString(1));
 
@@ -121,36 +119,52 @@ public class Notes extends Activity {
             note[i].setTextSize(21);
             note[i].setPadding(20,20,20,20);
 
-            params[i] = (LinearLayout.LayoutParams) note[i].getLayoutParams();
-            params[i].setMargins(100, 20, 100, 50);
-            note[i].setLayoutParams(params[i]);
+            params = (LinearLayout.LayoutParams) note[i].getLayoutParams();
+            params.setMargins(50, 20, 50, 50);
+            note[i].setLayoutParams(params);
 
             note[i].setBackground(getResources().getDrawable(R.drawable.noteviewdesign));
 
-            note[i].setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    seeFullNote(v);
-                }
-            });
             note[i].setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
+                    int id = v.getId();
                     if(event.getAction() == MotionEvent.ACTION_DOWN){
                         x1 = event.getRawX();
+
+                        params = (LinearLayout.LayoutParams) note[id].getLayoutParams();
+                        start = params.getMarginStart();
                         return true;
                     }
-                    if(event.getAction() == MotionEvent.ACTION_UP){
+
+                    if(event.getAction() == MotionEvent.ACTION_MOVE){
                         x2 = event.getRawX();
 
-                        float diff = x2 - x1;
+                        int diff = (int) (x2 - x1);
+                        int neg = diff * -1;
 
-                        if(Math.abs(diff) >= MIN_DISTANCE){
-                            if(x2 > x1){
+                        pos = start + diff;
+                        if(pos >= 0) {
+                            params.setMargins(pos, 20, neg, 50);
+                            note[id].setLayoutParams(params);
+                        }
+
+                        if(params.getMarginStart() >= 800){
+                            swipe_count++;
+                            if(swipe_count == 1){
                                 deleteNote(v);
                             }
-                            return true;
                         }
-                        return false;
+                        return true;
+                    }
+
+                    if(event.getAction() == MotionEvent.ACTION_UP){
+
+                        if(x1 == event.getRawX()) {
+                            seeFullNote(v);
+                        }
+                        swipe_count = 0;
+                        return true;
                     }
                     return false;
                 }
@@ -179,7 +193,7 @@ public class Notes extends Activity {
         else{ lines = 200; }
 
         param.height = lines;
-        param.width = 880;
+        param.width = 980;
         note[id].setLayoutParams(param);
         }
 

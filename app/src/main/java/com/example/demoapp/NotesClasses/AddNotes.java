@@ -128,7 +128,6 @@ public class AddNotes extends Activity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        notes.setText("");
                         noteBtn.setText("Add Note");
                         noteBtn.setEnabled(true);
                     }
