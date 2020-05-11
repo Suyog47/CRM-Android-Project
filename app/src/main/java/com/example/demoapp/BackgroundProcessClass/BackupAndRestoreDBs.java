@@ -16,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+
+import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.R;
 
 import java.io.File;
@@ -55,14 +57,8 @@ public class BackupAndRestoreDBs extends Activity {
                 return null;
             }
         };
-        List<Callable<Void>> task = new ArrayList<>();
-        task.add(call1);
 
-        ExecutorService executor = Executors.newCachedThreadPool();
-
-        try { executor.invokeAll(task); }
-        catch (InterruptedException ie) { Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show(); }
-        finally{ executor.shutdown(); }
+        new CommonFunctions().setThreads(this, call1);
     }
 
 

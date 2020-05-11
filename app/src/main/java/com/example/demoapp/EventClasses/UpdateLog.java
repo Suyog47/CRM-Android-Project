@@ -99,15 +99,9 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
             }
         };
 
-        List<Callable<Void>> taskList = new ArrayList<>();
-        taskList.add(call1);
-        taskList.add(call2);
-        taskList.add(call3);
-
-        ExecutorService executor =  Executors.newCachedThreadPool();
-        try{ executor.invokeAll(taskList); }
-        catch (InterruptedException ie) { Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show(); }
-        finally{ executor.shutdown(); }
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
+        new CommonFunctions().setThreads(this, call3);
     }
 
 

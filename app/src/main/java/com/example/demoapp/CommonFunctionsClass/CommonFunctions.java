@@ -11,6 +11,7 @@ import android.os.Vibrator;
 import android.view.Display;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.demoapp.SqlliteDBClasses.DActivitySqlliteDbService;
 import com.example.demoapp.SqlliteDBClasses.EventSqlliteDbService;
@@ -18,6 +19,9 @@ import com.example.demoapp.SqlliteDBClasses.EventSqlliteDbService;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 
@@ -47,6 +51,19 @@ public class CommonFunctions {
             vibrator.vibrate(VibrationEffect.createOneShot(300, VibrationEffect.DEFAULT_AMPLITUDE));
         } else {
             vibrator.vibrate(300);
+        }
+    }
+
+    public void setThreads(Context context, Callable<Void> call1){
+        List<Callable<Void>> tasklist = new ArrayList<>();
+        tasklist.add(call1);
+
+        ExecutorService executor = Executors.newCachedThreadPool();
+        try{executor.invokeAll(tasklist);}
+        catch(Exception e){
+            Toast.makeText(context, "Something wrong in Threads", Toast.LENGTH_SHORT).show();}
+        finally {
+            executor.shutdown();
         }
     }
 

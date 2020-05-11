@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.ImpDatesSqlliteDbService;
 
@@ -101,15 +102,9 @@ public class Impdates extends Activity {
             }
         };
 
-        List<Callable<Void>> taskList = new ArrayList<>();
-        taskList.add(call1);
-        taskList.add(call2);
-        taskList.add(call3);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try { executor.invokeAll(taskList); }
-        catch (InterruptedException ie) { Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show(); }
-        finally{ executor.shutdown(); }
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
+        new CommonFunctions().setThreads(this, call3);
     }
 
 

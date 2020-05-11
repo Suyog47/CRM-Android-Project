@@ -70,8 +70,8 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
-        setThreads(call2);
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
     }
 
     //Function to start Insert Log Activity
@@ -84,7 +84,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start Show Log Activity
@@ -97,7 +97,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start Daily-Activities Activity
@@ -110,7 +110,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start Sweet-Memory Activity
@@ -123,7 +123,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start Update Log Activity
@@ -136,7 +136,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start Update daily-activities Activity
@@ -149,7 +149,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start Notes Activity
@@ -162,8 +162,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
-
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start ImpDates Activity
@@ -176,7 +175,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start ShowImages Activity
@@ -189,7 +188,7 @@ public class MenuData extends Activity {
                 return null;
             }
         };
-        setThreads(call1);
+        new CommonFunctions().setThreads(this, call1);
     }
 
     //Function to start BackUp and Restore Activity
@@ -217,26 +216,12 @@ public class MenuData extends Activity {
                                     return null;
                                 }
                             };
-                            setThreads(call1);
+                            new CommonFunctions().setThreads(getApplicationContext(), call1);
                         }
                         else {
                             dbcontrols(v);
                         }
                     }
                 }).show();
-    }
-
-
-    public void setThreads(Callable<Void> call1){
-        List<Callable<Void>> tasklist = new ArrayList<>();
-        tasklist.add(call1);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try{executor.invokeAll(tasklist);}
-        catch(Exception e){
-            Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show();}
-        finally {
-            executor.shutdown();
-        }
     }
 }

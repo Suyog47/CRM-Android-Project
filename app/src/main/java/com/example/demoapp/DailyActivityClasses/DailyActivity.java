@@ -9,6 +9,7 @@ import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.R;
 
 import java.util.ArrayList;
@@ -37,13 +38,7 @@ public class DailyActivity extends Activity {
             }
         };
 
-        List<Callable<Void>> tasklist = new ArrayList<>();
-        tasklist.add(call1);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try{ executor.invokeAll(tasklist);}
-        catch(Exception e){}
-        finally { executor.shutdown(); }
+        new CommonFunctions().setThreads(this, call1);
     }
 
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,6 +34,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+
+import static android.content.ContentValues.TAG;
 
 public class Notes extends Activity {
 
@@ -85,20 +88,9 @@ public class Notes extends Activity {
            }
        };
 
-       List<Callable<Void>> taskList = new ArrayList<>();
-        taskList.add(call1);
-        taskList.add(call2);
-        taskList.add(call3);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try {
-            executor.invokeAll(taskList);
-        } catch (InterruptedException e) {
-            Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show();
-        }
-        finally {
-            executor.shutdown();
-        }
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
+        new CommonFunctions().setThreads(this, call3);
     }
 
     //Function to Show all the Notes in programmatically made layouts
@@ -111,10 +103,10 @@ public class Notes extends Activity {
             note[i].setId(i);
             note[i].setLayoutParams(new LinearLayout.LayoutParams(980, 200
             ));
-            note[i].setText(val.getString(1));
+            note[i].setText(val.getString(0));
 
-            if(val.getString(2).equals("Important")){ note[i].setTextColor(Color.GREEN); }
-            else if(val.getString(2).equals("Extreme")) { note[i].setTextColor(Color.RED); }
+            if(val.getString(1).equals("Important")){ note[i].setTextColor(Color.BLUE); }
+            else if(val.getString(1).equals("Extreme")) { note[i].setTextColor(Color.RED); }
 
             note[i].setTextSize(21);
             note[i].setPadding(20,20,20,20);
@@ -144,15 +136,20 @@ public class Notes extends Activity {
                         int neg = diff * -1;
 
                         pos = start + diff;
-                        if(pos >= 0) {
                             params.setMargins(pos, 20, neg, 50);
                             note[id].setLayoutParams(params);
-                        }
 
-                        if(params.getMarginStart() >= 800){
+                        if(params.getMarginStart() >= 600){
                             swipe_count++;
                             if(swipe_count == 1){
                                 deleteNote(v);
+                            }
+                        }
+
+                        if(params.getMarginEnd() >= 600){
+                            swipe_count++;
+                            if(swipe_count == 1){
+                                editNote(id);
                             }
                         }
                         return true;
@@ -178,6 +175,7 @@ public class Notes extends Activity {
     //Function to start AddNote Activity
     public void newNote(View v){
         Intent a1 = new Intent(this, AddNotes.class);
+        a1.putExtra("btn_text", "Add Note");
         startActivity(a1);
     }
 
@@ -197,23 +195,40 @@ public class Notes extends Activity {
         note[id].setLayoutParams(param);
         }
 
+     public void editNote(final int id){
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_noteleft);
+        note[id].startAnimation(animation);
+
+         final Intent a1 = new Intent(getApplicationContext(), AddNotes.class);
+         a1.putExtra("btn_text", "Save");
+         a1.putExtra("note_text", note[id].getText());
+         new Handler().postDelayed(new Runnable() {
+             @Override
+             public void run() {
+                 startActivity(a1);
+             }
+         },200);
+     }
+
 
         //Function to delete specified Note
-        public void deleteNote(View v){
-            id = v.getId();
-            Animation animation = AnimationUtils.loadAnimation(this,R.anim.noteanim);
-            note[id].startAnimation(animation);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    note[id].setVisibility(View.GONE);
-                }
-            }, 500);
+        public void deleteNote(final View v){
+           id = v.getId();
+           Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.anim_noteright);
+           new CommonFunctions().setVibration(this);
+
+           note[id].startAnimation(animation);
+           new Handler().postDelayed(new Runnable() {
+               @Override
+               public void run() {
+                   note[id].setVisibility(View.GONE);
+               }
+               }, 500);
 
             db = new NotesSqlliteDbService(this);
             int res = db.deleteNote(note[id].getText().toString());
             if(res == 0){
-                new SweetAlertDialog(this,SweetAlertDialog.ERROR_TYPE)
+                new SweetAlertDialog(getApplicationContext(), SweetAlertDialog.ERROR_TYPE)
                         .setTitleText("Oops")
                         .setContentText("Note cannot be Deleted!")
                         .show();

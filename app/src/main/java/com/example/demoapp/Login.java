@@ -87,17 +87,8 @@ public class Login extends Activity {
             }
         };
 
-       List<Callable<Void>> tasklist = new ArrayList<>();
-       tasklist.add(call1);
-       tasklist.add(call2);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try{executor.invokeAll(tasklist);}
-        catch(Exception e){
-            Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show();}
-        finally {
-            executor.shutdown();
-        }
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
 
         //Code to underline the Text
         content = new SpannableString("Get Hint");
@@ -108,6 +99,8 @@ public class Login extends Activity {
     //Function to check valid Owner
     public void evaluate(View v){
         userCode = ucode.getText().toString();
+        ucode.setText("");
+
         if(userCode.equals("SA09")) {
             Intent a1 = new Intent(this,MenuData.class);
             startActivity(a1);
@@ -130,7 +123,7 @@ public class Login extends Activity {
         String hint1 = "First Hint:- 01010011 | 01000001 | 0b0 | 0b1001";
         String hint2 = "Second Hint:- 0b1100100 | 01010010 | 0b1111101000 | 0b100 | 0b111";
         new AlertDialog.Builder(this)
-                .setTitle("Decode this to get Hint")
+                .setTitle("Decode this to get Code")
                 .setMessage(hint1+"\n\n"+hint2)
                 .show();
     }

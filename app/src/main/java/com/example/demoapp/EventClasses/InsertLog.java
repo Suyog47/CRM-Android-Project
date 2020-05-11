@@ -66,8 +66,7 @@ public class InsertLog extends Activity {
         Callable<Void> call1 = new Callable<Void>()
         {
             @Override
-            public Void call() throws Exception
-            {
+            public Void call() throws Exception {
 
                 //Setting up Bitmap Scaled Image
                 int img = R.drawable.insertevent;
@@ -107,14 +106,8 @@ public class InsertLog extends Activity {
             }
         };
 
-        List<Callable<Void>> taskList = new ArrayList<>();
-        taskList.add(call1);
-        taskList.add(call2);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try { executor.invokeAll(taskList); }
-        catch (InterruptedException ie) { Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show(); }
-        finally{ executor.shutdown(); }
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
     }
 
 

@@ -39,8 +39,7 @@
         android:layout_height="50dp"
         android:textColor="@android:color/black"
         android:background="@drawable/green_button_background"
-        android:onClick="addNewNote"
-        android:text="@string/add_notes_btn_text" />
+        android:onClick="addNewNote"/>
 
     <Spinner
         android:id="@+id/flags"

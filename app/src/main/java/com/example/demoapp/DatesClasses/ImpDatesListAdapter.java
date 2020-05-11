@@ -94,7 +94,7 @@ public class ImpDatesListAdapter extends RecyclerView.Adapter<ImpDatesListAdapte
     }
 
     public void confirmDelete(final ViewHolder holder, String Date){
-        Animation animation = AnimationUtils.loadAnimation(holder.relativeLayout.getContext(),R.anim.noteanim);
+        Animation animation = AnimationUtils.loadAnimation(holder.relativeLayout.getContext(),R.anim.anim_noteright);
         holder.relativeLayout.startAnimation(animation);
         new Handler().postDelayed(new Runnable() {
             @Override

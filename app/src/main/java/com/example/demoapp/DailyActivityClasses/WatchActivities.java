@@ -71,18 +71,7 @@ public class WatchActivities extends Activity {
             }
         };
 
-        List<Callable<Void>> taskList = new ArrayList<>();
-        taskList.add(call1);
-        taskList.add(call2);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try {
-            executor.invokeAll(taskList);
-        } catch (InterruptedException e) {
-            Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show();
-        }
-        finally {
-            executor.shutdown();
-        }
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
     }
 }

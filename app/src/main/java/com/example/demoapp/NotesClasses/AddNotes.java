@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -33,14 +34,15 @@ import java.util.concurrent.Executors;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+import static android.content.ContentValues.TAG;
+
 public class AddNotes extends Activity {
 
     Spinner flag;
     EditText notes;
     TextView tv;
     Button noteBtn;
-    Date dt = new Date();
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    String note, flg, prevNote;
     ImageView addnotesimg;
 
     @Override
@@ -53,6 +55,11 @@ public class AddNotes extends Activity {
         noteBtn = findViewById(R.id.addNoteBtn);
         addnotesimg = findViewById(R.id.addNotesImg);
         tv = findViewById(R.id.addnotesHeader);
+
+        Bundle bundle = getIntent().getExtras();
+        noteBtn.setText(bundle.getString("btn_text"));
+        prevNote = bundle.getString("note_text");
+        notes.setText(prevNote);
 
         //Setting up new Thread
         Callable<Void> call1 = new Callable<Void>() {
@@ -94,20 +101,9 @@ public class AddNotes extends Activity {
             }
         };
 
-        List<Callable<Void>> taskList = new ArrayList<>();
-        taskList.add(call1);
-        taskList.add(call2);
-        taskList.add(call3);
-
-        ExecutorService executor = Executors.newCachedThreadPool();
-        try {
-            executor.invokeAll(taskList);
-        } catch (InterruptedException e) {
-            Toast.makeText(this, "Something wrong in Threads", Toast.LENGTH_SHORT).show();
-        }
-        finally {
-            executor.shutdown();
-        }
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
+        new CommonFunctions().setThreads(this, call3);
     }
 
 
@@ -115,28 +111,55 @@ public class AddNotes extends Activity {
     public void addNewNote(View v) {
         if (TextUtils.isEmpty(notes.getText().toString())) {
             notes.setError("Write Something");
-        } else {
-            String date = formatter.format(dt);
-            String note = notes.getText().toString();
-            String flg = flag.getSelectedItem().toString();
-            String res = new NotesSqlliteDbService(this).insertNote(date, note, flg);
+        }
+        else {
+            if (noteBtn.getText().equals("Add Note")) {
+                Log.i(TAG,"ADD NOTE called");
+                note = notes.getText().toString();
+                flg = flag.getSelectedItem().toString();
+                String res = new NotesSqlliteDbService(this).insertNote(note, flg);
 
-            if (res == "Notes Inserted") {
-                notes.setText("");
-                noteBtn.setText("Note Inserted");
-                noteBtn.setEnabled(false);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        noteBtn.setText("Add Note");
-                        noteBtn.setEnabled(true);
-                    }
-                }, 2000);
-            } else {
-                new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Oops")
-                        .setContentText(res)
-                        .show();
+                if (res == "Notes Inserted") {
+                    notes.setText("");
+                    noteBtn.setText("Note Inserted");
+                    noteBtn.setEnabled(false);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            noteBtn.setText("Add Note");
+                            noteBtn.setEnabled(true);
+                        }
+                    }, 2000);
+                } else {
+                    new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Oops")
+                            .setContentText(res)
+                            .show();
+                }
+            }
+            else{
+                note = notes.getText().toString();
+                flg = flag.getSelectedItem().toString();
+                Log.i(TAG,"SAVE NOTE called");
+
+                boolean res = new NotesSqlliteDbService(this).updateNote(prevNote, note,flg);
+
+                if (res == true) {
+                    noteBtn.setText("Note Saved");
+                    noteBtn.setEnabled(false);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            noteBtn.setText("Save");
+                            noteBtn.setEnabled(true);
+                        }
+                    }, 2000);
+                } else {
+                    new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Oops")
+                            .setContentText("Something went Wrong")
+                            .show();
+                }
             }
         }
     }
