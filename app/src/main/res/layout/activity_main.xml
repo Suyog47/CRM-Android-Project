@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:soundEffectsEnabled="true"
     android:theme="@style/AppTheme1"
     android:background="@android:color/holo_green_dark"
@@ -32,19 +33,19 @@
         />
 </RelativeLayout>
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="320dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:elevation="18dp"
-        android:background="@drawable/loginview">
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="8dp">
 
         <EditText
             android:id="@+id/ucode"
             android:layout_width="270dp"
             android:layout_height="60dp"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:ems="10"
             android:textColor="@android:color/holo_green_dark"
@@ -68,12 +69,12 @@
             android:id="@+id/imageButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="150dp"
             android:background="@android:color/transparent"
             android:onClick="evaluate"
             android:scaleType="fitCenter"
             android:src="@drawable/logicon" />
 
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
