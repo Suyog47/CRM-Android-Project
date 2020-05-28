@@ -84,14 +84,11 @@
 
     </RelativeLayout>
 
-<TextView
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:text="===================="
-    android:textColor="@android:color/white"
-    android:textSize="30sp"
-    android:layout_marginTop="329sp"
-    android:layout_centerHorizontal="true"/>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@android:color/black"
+    android:layout_marginTop="349sp" />
 
     <RelativeLayout
         android:layout_width="340sp"
