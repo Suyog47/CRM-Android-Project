@@ -6,13 +6,13 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:soundEffectsEnabled="true"
     android:theme="@style/AppTheme1"
-    android:background="@android:color/holo_green_dark"
     tools:context=".Login">
 
     <ImageView
         android:id="@+id/loginImg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
 
 <RelativeLayout
     android:layout_width="match_parent"
