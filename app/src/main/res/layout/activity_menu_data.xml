@@ -219,41 +219,6 @@
             android:layout_marginTop="40dp"
             android:layout_marginStart="45dp"
             card_view:cardCornerRadius="10dp"
-            android:onClick="updateDailyActivity">
-
-            <ImageButton
-                android:id="@+id/updateDailyActivityBtn"
-                android:layout_width="60dp"
-                android:layout_height="66dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:background="@android:color/white"
-                android:adjustViewBounds="false"
-                android:cropToPadding="false"
-                android:onClick="updateDailyActivity"
-                android:scaleType="fitCenter"
-                android:src="@drawable/updatedailyactivity"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/text6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="99dp"
-                android:text="@string/menu_update_dactivity_text"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:onClick="updateDailyActivity"
-                />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="23sp"
-            card_view:cardCornerRadius="10dp"
             android:onClick="notes">
 
             <ImageButton
@@ -283,11 +248,12 @@
                 />
         </androidx.cardview.widget.CardView>
 
+
         <androidx.cardview.widget.CardView
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="40dp"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="23sp"
             card_view:cardCornerRadius="10dp"
             android:onClick="impdates">
 
@@ -322,7 +288,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="40dp"
-            android:layout_marginStart="23sp"
+            android:layout_marginStart="45dp"
             card_view:cardCornerRadius="10dp"
             android:onClick="showImage">
 
@@ -357,7 +323,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="40dp"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="23dp"
             card_view:cardCornerRadius="10dp"
             android:onClick="dbcontrols">
 

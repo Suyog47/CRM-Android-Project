@@ -7,7 +7,7 @@
         android:id="@+id/watchActivityImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,14 +40,26 @@
         />
     </RelativeLayout>
 
-    <TextView
+    <EditText
         android:id="@+id/activityLabel"
         android:layout_width="340dp"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="130dp"
+        android:gravity="start|top"
         android:scrollbars="horizontal|vertical"
-        />
+        android:enabled="false" />
+
+    <Button
+        android:id="@+id/ubtn"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="update"
+        android:textSize="15sp"
+        android:onClick="updateActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="550dp"
+        android:background="@drawable/updatebutton"/>
 
 </RelativeLayout>

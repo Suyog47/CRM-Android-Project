@@ -199,16 +199,15 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
         if (result > 0) {
             String yr = year.getSelectedItem().toString();
             date.setAdapter(new EventsCF().setDates(this, new EventSqlliteDbService(this), yr,"normal"));
-                subject.setText("");
-                event.setText("");
+                subject.setText(""); event.setText("");
+                subject.setEnabled(false); event.setEnabled(false);
                 dbtn.setText("Event Deleted");
                 dbtn.setEnabled(false);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    event.setText("");
-                    subject.setText("");
+                    event.setText(""); subject.setText("");
                     dbtn.setText("Delete");
                     dbtn.setEnabled(true);
                 }
