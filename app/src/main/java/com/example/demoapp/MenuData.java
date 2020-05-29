@@ -17,12 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.demoapp.BackgroundProcessClass.BackupAndRestoreDBs;
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.DailyActivityClasses.DailyActivity;
-import com.example.demoapp.DailyActivityClasses.UpdateDailyActivity;
 import com.example.demoapp.DatesClasses.Impdates;
 import com.example.demoapp.EventClasses.InsertLog;
 import com.example.demoapp.EventClasses.ShowLog;
@@ -31,11 +29,7 @@ import com.example.demoapp.EventClasses.UpdateLog;
 import com.example.demoapp.NotesClasses.Notes;
 import com.example.demoapp.ShowImageClasses.ShowImage;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MenuData extends Activity {
 
@@ -133,19 +127,6 @@ public class MenuData extends Activity {
             public Void call() throws Exception {
                 Intent a5 = new Intent(getApplicationContext(), UpdateLog.class);
                 startActivity(a5);
-                return null;
-            }
-        };
-        new CommonFunctions().setThreads(this, call1);
-    }
-
-    //Function to start Update daily-activities Activity
-    public void updateDailyActivity(View v){
-        Callable<Void> call1 = new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
-                Intent a6 = new Intent(getApplicationContext(), UpdateDailyActivity.class);
-                startActivity(a6);
                 return null;
             }
         };

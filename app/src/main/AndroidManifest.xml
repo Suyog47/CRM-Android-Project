@@ -55,9 +55,6 @@
             android:name=".DailyActivityClasses.SetTimer"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DailyActivityClasses.UpdateDailyActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".DailyActivityClasses.NotificationWindow"
             android:screenOrientation="portrait" />
         <activity
