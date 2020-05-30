@@ -13,20 +13,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.CommonFunctionsClass.DailyActivitiesCF;
 import com.example.demoapp.SqlliteDBClasses.DActivitySqlliteDbService;
 import com.example.demoapp.R;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class WatchActivities extends Activity {
@@ -85,6 +77,7 @@ public class WatchActivities extends Activity {
     public void updateActivity(View v){
         if(ubtn.getText().toString().equals("update")){
             activity.setEnabled(true);
+            activity.setFocusableInTouchMode(true);
             ubtn.setText("save");
         }
         else{
@@ -97,7 +90,7 @@ public class WatchActivities extends Activity {
                     public void run() {
                         ubtn.setText("update");
                         ubtn.setEnabled(true);
-                        activity.setEnabled(false);
+                        activity.setFocusable(false);
                     }
                 }, 2000);
             } else {

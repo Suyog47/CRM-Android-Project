@@ -325,7 +325,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginStart="23dp"
             card_view:cardCornerRadius="10dp"
-            android:onClick="dbcontrols">
+            android:onClick="dbcontrols" >
 
             <ImageButton
                 android:id="@+id/DBControlBtn"
