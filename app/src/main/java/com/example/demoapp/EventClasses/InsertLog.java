@@ -90,6 +90,7 @@ public class InsertLog extends Activity {
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, d);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 date.setAdapter(dataAdapter);
+                date.setSelection(dt.getDate()-1);
 
                 //Setting months to Dropdown2
                 List<String> m = new ArrayList<>();
@@ -98,6 +99,7 @@ public class InsertLog extends Activity {
                 ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, m);
                 dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 month.setAdapter(dataAdapter2);
+                month.setSelection(dt.getMonth());
 
                 //Setting Current year to TextView
                 year = findViewById(R.id.yearText);

@@ -13,13 +13,13 @@ import android.text.style.UnderlineSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Calendar;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,16 +30,14 @@ import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.ImpDatesSqlliteDbService;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Impdates extends Activity {
 
-    Spinner date,month;
+    int d, m;
     EditText input;
     TextView t, tv;
     LinearLayout mlayout, hlayout, vlayout;
@@ -50,8 +48,6 @@ public class Impdates extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_impdates);
-        date = new Spinner(this);
-        month = new Spinner(this);
         input = new EditText(this);
         relativeLayout = findViewById(R.id.relativeLayout);
         tv = findViewById(R.id.impdatesHeader);
@@ -61,38 +57,12 @@ public class Impdates extends Activity {
         Callable<Void> call1 = new Callable<Void>() {
             @Override
             public Void call() throws Exception {
-
-                //Setting dates to Dropdown1
-                List<String> d = new ArrayList<>();
-                for(int i=1; i<=31; i++){
-                    d.add(""+i);
-                }
-
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, d);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                date.setAdapter(dataAdapter);
-
-                //Setting months to Dropdown2
-                List<String> m = new ArrayList<>();
-                for(int i=1; i<=12; i++){
-                    m.add(""+i);
-                }
-                ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, m);
-                dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                month.setAdapter(dataAdapter2);
-                return null;
-            }
-        };
-
-        Callable<Void> call2 = new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
                 showDates(getApplicationContext());
                 return null;
             }
         };
 
-        Callable<Void> call3 = new Callable<Void>() {
+        Callable<Void> call2 = new Callable<Void>() {
             @Override
             public Void call() throws Exception {
                 SpannableString content = new SpannableString("Important Dates");
@@ -104,7 +74,6 @@ public class Impdates extends Activity {
 
         new CommonFunctions().setThreads(this, call1);
         new CommonFunctions().setThreads(this, call2);
-        new CommonFunctions().setThreads(this, call3);
     }
 
 
@@ -113,39 +82,31 @@ public class Impdates extends Activity {
         final View vv = v;
         try {
             mlayout = new LinearLayout(this);
-            hlayout = new LinearLayout(this);
             vlayout = new LinearLayout(this);
 
             mlayout.setOrientation(LinearLayout.VERTICAL);
-            hlayout.setOrientation(LinearLayout.HORIZONTAL);
             vlayout.setOrientation(LinearLayout.VERTICAL);
 
-            final ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(270, 120);
+            final ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             final ViewGroup.LayoutParams mparams = new ViewGroup.LayoutParams(800, 180);
 
-            date.setLayoutParams(lparams);
-            date.setBackground(getResources().getDrawable(R.drawable.spinner));
-            hlayout.addView(date);
-
-            t = new TextView(this);
-            t.setText("    |    ");
-            t.setTextColor(Color.WHITE);
-            t.setTextSize(25);
-            hlayout.addView(t);
-
-            month.setLayoutParams(lparams);
-            month.setBackground(getResources().getDrawable(R.drawable.spinner));
-            hlayout.addView(month);
-            hlayout.setGravity(Gravity.CENTER);
-            hlayout.setBackgroundColor(Color.BLACK);
+            final DatePicker dp = new DatePicker(this);
+            dp.setLayoutParams(lparams);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            dp.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                d = dayOfMonth;
+                m = month;
+                }
+            });
 
             input.setLayoutParams(mparams);
             vlayout.setGravity(Gravity.CENTER);
-            input.setTextColor(Color.WHITE);
+            vlayout.addView(dp);
             vlayout.addView(input);
-            vlayout.setBackgroundColor(Color.BLACK);
 
-            mlayout.addView(hlayout);
             mlayout.addView(vlayout);
 
             new AlertDialog.Builder(this)
@@ -157,22 +118,18 @@ public class Impdates extends Activity {
                             if (TextUtils.isEmpty(input.getText().toString())) {
                                 input.setHint("Please Write Something");
                                 input.setHintTextColor(Color.RED);
-                                hlayout.removeAllViews();
-                                vlayout.removeAllViews();
-                                mlayout.removeAllViews();
+                                vlayout.removeAllViews(); mlayout.removeAllViews();
                                 showNoteDialog(vv);
 
                             } else {
-                                checkFirst();
+                                checkFirst(d, m);
                             }
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            hlayout.removeAllViews();
-                            vlayout.removeAllViews();
-                            mlayout.removeAllViews();
+                            vlayout.removeAllViews(); mlayout.removeAllViews();
                             input.setText(""); input.setHint("");
                         }
                     })
@@ -183,16 +140,14 @@ public class Impdates extends Activity {
 
 
     //Function to check whether Event is already Inserted for Specified Date or not
-    public void checkFirst(){
-            String dt = date.getSelectedItem().toString() + "/" + month.getSelectedItem().toString();
+    public void checkFirst(int date, int month){
+            String dt = date + "/" + month;
             Cursor res = new ImpDatesSqlliteDbService(this).getCertainDate(dt);
             if (res.getCount() > 0) {
                 new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                         .setContentText("Already added Event for this Date")
                         .show();
-                hlayout.removeAllViews();
-                vlayout.removeAllViews();
-                mlayout.removeAllViews();
+                vlayout.removeAllViews(); mlayout.removeAllViews();
                 input.setText(""); input.setHint("");
             } else {
                 newDate(dt);
@@ -204,17 +159,13 @@ public class Impdates extends Activity {
     public void newDate(String dt){
      String res = new ImpDatesSqlliteDbService(this).insertDate(dt, input.getText().toString());
      if(res == "Date Inserted"){
-         hlayout.removeAllViews();
-         vlayout.removeAllViews();
-         mlayout.removeAllViews();
+         vlayout.removeAllViews(); mlayout.removeAllViews();
          input.setText(""); input.setHint("");
          showDates(this);
      }
      else{
          Toast.makeText(this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
-         hlayout.removeAllViews();
-         vlayout.removeAllViews();
-         mlayout.removeAllViews();
+         vlayout.removeAllViews(); mlayout.removeAllViews();
          input.setText(""); input.setHint("");
      }
     }
