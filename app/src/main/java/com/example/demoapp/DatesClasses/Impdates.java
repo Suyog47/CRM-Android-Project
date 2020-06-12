@@ -98,7 +98,7 @@ public class Impdates extends Activity {
                 @Override
                 public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 d = dayOfMonth;
-                m = month;
+                m = month+1;
                 }
             });
 
@@ -120,7 +120,6 @@ public class Impdates extends Activity {
                                 input.setHintTextColor(Color.RED);
                                 vlayout.removeAllViews(); mlayout.removeAllViews();
                                 showNoteDialog(vv);
-
                             } else {
                                 checkFirst(d, m);
                             }
