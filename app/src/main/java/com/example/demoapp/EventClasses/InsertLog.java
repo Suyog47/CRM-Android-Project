@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,6 +34,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+
+import static android.content.ContentValues.TAG;
 
 public class InsertLog extends Activity {
 
@@ -188,7 +191,8 @@ public class InsertLog extends Activity {
 
     //Function to Insert Event
     public void insert(String fullDate){
-        String result = new EventSqlliteDbService(this).insertData(Integer.parseInt(year.getText().toString()), fullDate, subject.getText().toString(), event.getText().toString(), fav);
+        Log.i(TAG, month.getSelectedItemPosition()+">>>>><<<<");
+        String result = new EventSqlliteDbService(this).insertData(Integer.parseInt(year.getText().toString()), fullDate, subject.getText().toString(), event.getText().toString(), fav, 6);
         if(result == "Data Inserted!") {
             btn.setText("Event Inserted");
             btn.setEnabled(false);

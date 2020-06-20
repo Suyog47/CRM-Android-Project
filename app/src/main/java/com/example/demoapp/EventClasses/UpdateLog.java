@@ -150,7 +150,7 @@ public class UpdateLog extends Activity implements AdapterView.OnItemSelectedLis
 
 
     //Function to update Event
-    public void update(){
+    public void update() {
         Boolean favrt = (fv == 1) ? true : false;
         boolean result = new EventSqlliteDbService(this).updateEvent(date.getSelectedItem().toString(), subject.getText().toString(), event.getText().toString(), favrt);
         if (result == true) {

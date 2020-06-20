@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
+
+import static android.content.ContentValues.TAG;
 
 public class EventSqlliteDbService extends SQLiteOpenHelper {
     SQLiteDatabase db;
@@ -15,6 +19,8 @@ public class EventSqlliteDbService extends SQLiteOpenHelper {
     public final static String COL_3 = "Subject";
     public final static String COL_4 = "Event";
     public final static String COL_5 = "Favourite";
+    public final static String COL_6 = "MonthNum";
+
 
     public EventSqlliteDbService(Context context){
         super(context, DATABASE_NAME, null, 1);
@@ -22,62 +28,63 @@ public class EventSqlliteDbService extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-     db.execSQL("create table " + TABLE_NAME + "(Year Integer, Date Text, Subject Text, Event Text, Favourite Boolean)");
+     db.execSQL("create table " + TABLE_NAME + "(Year Integer, Date Text, Subject Text, Event Text, Favourite Boolean, MonthNum Integer)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { }
 
     //Function for Inserting data
-    public String insertData(int Year, String Date, String Subject, String Event, boolean Favourite){
-       db = this.getWritableDatabase();
+    public String insertData(int Year, String Date, String Subject, String Event, boolean Favourite, Integer monthNum){
+        db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_1, Year);
         values.put(COL_2, Date);
         values.put(COL_3, Subject);
         values.put(COL_4, Event);
         values.put(COL_5, Favourite);
+        values.put(COL_6, monthNum);
         long result = db.insert(TABLE_NAME,null, values);
         if(result == -1) {
           return "Something Went Wrong Bro!";
         }
         else
-            return "Data Inserted!";
+           return "Data Inserted!";
         }
 
 
-    //Function for Getting all Years
+    //Function to get all Years
     public Cursor getYear(){
         db = this.getReadableDatabase();
         Cursor years = db.rawQuery("select distinct(Year) from Event_table Order By Year asc",null);
         return years;
        }
 
-    //Function for Getting Dates of selected Year
+    //Function to get Dates of selected Year
        public Cursor getDates(int Year){
           db = this.getReadableDatabase();
-          Cursor dates = db.rawQuery("select * from Event_table where Year = " + Year + " Order By date asc",null);
+          Cursor dates = db.rawQuery("select * from Event_table where Year = " + Year + " Order By MonthNum asc ",null);
           return dates;
         }
 
 
-    //Function for Getting sweet-mem Years
-    public Cursor getSweetYears(){
+    //Function to get sweet-mem Years
+    public Cursor getSweetYears() {
         db = this.getReadableDatabase();
         Cursor dates = db.rawQuery("select distinct(Year) from Event_table where Favourite = 1 Order By Year asc",null);
         return dates;
     }
 
 
-    //Function for Getting Dates of selected sweet-mem Year
+    //Function to get Dates of selected sweet-mem Year
     public Cursor getSweetDates(int Year){
         db = this.getReadableDatabase();
-        Cursor dates = db.rawQuery("select * from Event_table where Favourite = 1 and Year = '" + Year + "' Order By Date asc",null);
+        Cursor dates = db.rawQuery("select * from Event_table where Favourite = 1 and Year = '" + Year + "' Order By MonthNum asc",null);
         return dates;
     }
 
 
-    //Function for Getting Events
+    //Function to get Events
     public Cursor getEvent(String Date){
         db = this.getReadableDatabase();
         Cursor Data = db.rawQuery("select * from Event_table where Date = '"+Date+"'" ,null);
