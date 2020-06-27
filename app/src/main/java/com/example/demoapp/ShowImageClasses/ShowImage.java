@@ -45,7 +45,7 @@ public class ShowImage extends Activity {
 
     ImageView img;
     TextView tv;
-    Bitmap bitmap;
+    Bitmap bitmap, photo;
     int count=0;
     float x1, x2;
     Cursor res;
@@ -121,7 +121,8 @@ public class ShowImage extends Activity {
         if(count > 0){
             imgList.clear(); imgDate.clear(); imgDesc.clear();
             count-=6;
-            res = new ShowImageDbService(getApplicationContext()).getImages(count);
+            res = new ShowImageDbService(getApplicationContext()).getImages(count)
+            ;
             showImages(res);
         }
     }
@@ -134,18 +135,31 @@ public class ShowImage extends Activity {
         startActivityForResult(galleryIntent,1);
     }
 
+    //Function to open Phone Camera
+    public void openCamera(View v){
+        Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(camera_intent, 2);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == 1 & resultCode == RESULT_OK && data != null && data.getData() != null){
-           openDialog(data);
+           openDialog(data, 1);
+        }
+
+        if(requestCode == 2){
+            if(resultCode != RESULT_CANCELED) {
+                photo = (Bitmap) data.getExtras().get("data");
+                openDialog(null, 2);
+            }
         }
     }
 
 
     //Function to open Dialog containing selected image
-    public void openDialog(Intent data){
+    public void openDialog(Intent data, final int requestCode){
         img = new ImageView(this);
         final ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(920, 520);
         img.setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -164,21 +178,25 @@ public class ShowImage extends Activity {
         vlayout.addView(tv);
         vlayout.addView(txt);
 
-        Uri uri = data.getData();
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-            img.setImageBitmap(bitmap);
+        if(requestCode == 1) {
+            Uri uri = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                img.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                Toast.makeText(this, "something wrong", Toast.LENGTH_LONG).show();
+            }
         }
-        catch(IOException e){
-            Toast.makeText(this,"something wrong",Toast.LENGTH_LONG).show(); }
-
+        else{
+            img.setImageBitmap(photo);
+        }
         new AlertDialog.Builder(this)
                 .setTitle("Selected Image")
                 .setView(vlayout)
                 .setPositiveButton("Insert", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        checkFirst(txt.getText().toString());
+                        checkFirst(txt.getText().toString(), requestCode);
                     }
                 })
                 .show();
@@ -186,7 +204,7 @@ public class ShowImage extends Activity {
 
 
     //Function to check if Image with same Description exists or not
-    public void checkFirst(String text){
+    public void checkFirst(String text, int rc){
          Cursor res = new ShowImageDbService(this).getSelectedImage(text);
          if(res.getCount() > 0){
              new CommonFunctions().setVibration(this);
@@ -195,7 +213,14 @@ public class ShowImage extends Activity {
                      .setContentText("write something different")
                      .show();
          }
-         else{ addImage(bitmap, text); }
+         else{
+             if(rc == 1){
+                 addImage(bitmap, text);
+             }
+             if(rc == 2){
+                 addImage(photo, text);
+             }
+         }
     }
 
 
