@@ -20,6 +20,9 @@ import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -29,7 +32,7 @@ import java.util.concurrent.Executors;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Login extends Activity {
-    String userCode;
+    String userCode, pass;
     EditText ucode;
     TextView hint, tv;
     ImageView loginimg;
@@ -94,6 +97,8 @@ public class Login extends Activity {
         content = new SpannableString("Get Hint");
         content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
         hint.setText(content);
+
+        pass = new CommonFunctions().getCache(this);
     }
 
     //Function to check valid Owner
@@ -101,7 +106,7 @@ public class Login extends Activity {
         userCode = ucode.getText().toString();
         ucode.setText("");
 
-        if(userCode.equals("SA09")) {
+        if(userCode.equals(pass)) {
             Intent a1 = new Intent(this,MenuData.class);
             startActivity(a1);
         }

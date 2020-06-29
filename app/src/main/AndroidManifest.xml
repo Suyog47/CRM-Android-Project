@@ -74,6 +74,9 @@
         <activity
             android:name=".BackgroundProcessClass.BackupAndRestoreDBs"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".PasswordChange"
+            android:screenOrientation="portrait"/>
     </application>
 
     <uses-permission android:name="android.permission.VIBRATE"/>

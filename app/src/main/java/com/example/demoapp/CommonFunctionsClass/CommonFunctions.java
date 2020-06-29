@@ -17,6 +17,9 @@ import com.example.demoapp.SqlliteDBClasses.DActivitySqlliteDbService;
 import com.example.demoapp.SqlliteDBClasses.EventSqlliteDbService;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -67,4 +70,41 @@ public class CommonFunctions {
         }
     }
 
+    public String setCache(Context context, byte[] pass){
+        String res;
+        try{
+            File cacheDir = context.getCacheDir();
+            File file = new File(cacheDir.getAbsolutePath(),"pass");
+            FileOutputStream fs = new FileOutputStream(file);
+            fs.write(pass);
+            fs.close();
+            res = "Password Set";
+        }
+        catch(Exception e){
+            res = "something went wrong";
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public String getCache(Context context){
+        String pass = null;
+        try{
+            File cacheDir = context.getCacheDir();
+            File file = new File(cacheDir.getAbsolutePath(),"pass");
+            FileInputStream fs = new FileInputStream(file);
+            StringBuffer sb  = new StringBuffer();
+
+            int length;
+            while ((length = fs.read()) > 0) {
+                sb.append((char)length);
+            }
+            fs.close();
+            pass = sb.toString();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return pass;
+    }
 }

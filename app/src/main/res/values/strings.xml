@@ -65,4 +65,8 @@
     <string name="restore_text">Restore from Storage</string>
     <string name="upload_text">Upload to Cloud</string>
     <string name="download_text">Download from Cloud</string>
+
+    <string name="password_text">Change</string>
+    <string name="password_hint_text">Set Code</string>
+    <string name="password_hint_text2">Confirm Code</string>
 </resources>
