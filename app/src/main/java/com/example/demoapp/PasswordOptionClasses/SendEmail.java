@@ -1,19 +1,16 @@
-package com.example.demoapp.DailyActivityClasses;
+package com.example.demoapp.PasswordOptionClasses;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.se.omapi.Session;
-import android.util.Config;
 import android.widget.Toast;
 
 import java.util.Properties;
 
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -54,22 +51,25 @@ public class SendEmail extends AsyncTask {
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
-//        session = javax.mail.Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication("suyogamin11@gmail.com", context);
-//            }
-//        });
-//        try {
-//            MimeMessage mm = new MimeMessage(session);
-//            mm.setFrom(new InternetAddress("suyogamin11@gmail.com"));
-//            mm.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-//            mm.setSubject(subject);
-//            mm.setText(message);
-//            Transport.send(mm);
-//        }
-//        catch (MessagingException e) {
-//            e.printStackTrace();
-//        }
+
+        session = Session.getDefaultInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("suyogamin11@gmail.com", "fc.barcelona.city123");
+                    }
+                });
+
+        try {
+            MimeMessage mm = new MimeMessage(session);
+            mm.setFrom(new InternetAddress("suyogamin11@gmail.com"));
+            mm.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+            mm.setSubject(subject);
+            mm.setText(message);
+            Transport.send(mm);
+        }
+        catch (MessagingException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

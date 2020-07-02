@@ -5,7 +5,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/passwordImg"
+        android:id="@+id/otpImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY" />
@@ -16,7 +16,7 @@
         android:background="@drawable/header">
 
         <TextView
-            android:id="@+id/passheader"
+            android:id="@+id/otpheader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -28,60 +28,63 @@
             />
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:text="Go to Login"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:onClick="goLogin"
-        />
-
     <androidx.cardview.widget.CardView
         android:layout_width="320dp"
-        android:layout_height="290dp"
+        android:layout_height="400dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="150dp"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="8dp">
 
         <EditText
-            android:id="@+id/setcode"
+            android:id="@+id/setemail"
             android:layout_width="270dp"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:ems="10"
             android:textColor="@android:color/holo_green_dark"
-            android:hint="@string/password_hint_text"
+            android:hint="@string/otp_email_hint_text"
             android:fontFamily=""
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/confirmcode"
-            android:layout_width="270dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="120dp"
-            android:ems="10"
-            android:textColor="@android:color/holo_green_dark"
-            android:hint="@string/password_hint_text2"
-            android:fontFamily=""
-            android:inputType="textPassword" />
+            android:inputType="textEmailAddress" />
 
         <Button
+            android:id="@+id/sndbtn"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="220dp"
-            android:text="@string/password_btn_text"
-            android:onClick="setPassword"
-            android:background="@drawable/updatebutton"/>
+            android:layout_marginTop="110dp"
+            android:text="@string/otp_send_btn_text"
+            android:textColor="@android:color/white"
+            android:onClick="sendOtp"
+            android:background="@drawable/selectbutton"/>
 
+
+        <EditText
+            android:id="@+id/setotp"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="230dp"
+            android:ems="10"
+            android:textColor="@android:color/holo_green_dark"
+            android:hint="@string/otp_otp_hint_text"
+            android:maxLength="6"
+            android:fontFamily=""
+            android:inputType="number"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/chkbtn"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="310dp"
+            android:text="@string/otp_check_btn_text"
+            android:textColor="@android:color/white"
+            android:onClick="checkOtp"
+            android:background="@drawable/selectbutton"
+            android:enabled="false"/>
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

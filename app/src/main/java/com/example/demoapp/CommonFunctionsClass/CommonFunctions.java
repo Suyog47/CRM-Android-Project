@@ -70,11 +70,11 @@ public class CommonFunctions {
         }
     }
 
-    public String setCache(Context context, byte[] pass){
+    public String setCache(Context context, byte[] pass, String folder){
         String res;
         try{
             File cacheDir = context.getCacheDir();
-            File file = new File(cacheDir.getAbsolutePath(),"pass");
+            File file = new File(cacheDir.getAbsolutePath(),folder);
             FileOutputStream fs = new FileOutputStream(file);
             fs.write(pass);
             fs.close();
@@ -87,11 +87,11 @@ public class CommonFunctions {
         return res;
     }
 
-    public String getCache(Context context){
+    public String getCache(Context context, String folder){
         String pass = null;
         try{
             File cacheDir = context.getCacheDir();
-            File file = new File(cacheDir.getAbsolutePath(),"pass");
+            File file = new File(cacheDir.getAbsolutePath(),folder);
             FileInputStream fs = new FileInputStream(file);
             StringBuffer sb  = new StringBuffer();
 

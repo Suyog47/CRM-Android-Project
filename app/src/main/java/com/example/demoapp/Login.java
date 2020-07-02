@@ -14,27 +14,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.PasswordOptionClasses.ForgetPassword;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Login extends Activity {
     String userCode, pass;
     EditText ucode;
-    TextView hint, tv;
+    TextView fp, tv;
     ImageView loginimg;
     SpannableString content;
     private MediaPlayer mp;
@@ -64,7 +57,7 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ucode = findViewById(R.id.ucode);
-        hint = findViewById(R.id.hint);
+        fp = findViewById(R.id.forgetpassword);
         loginimg = findViewById(R.id.loginImg);
         tv = findViewById(R.id.loginHeader);
 
@@ -94,11 +87,11 @@ public class Login extends Activity {
         new CommonFunctions().setThreads(this, call2);
 
         //Code to underline the Text
-        content = new SpannableString("Get Hint");
+        content = new SpannableString("Forgot Password?");
         content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        hint.setText(content);
+        fp.setText(content);
 
-        pass = new CommonFunctions().getCache(this);
+        pass = new CommonFunctions().getCache(this, "pass");
     }
 
     //Function to check valid Owner
@@ -124,13 +117,9 @@ public class Login extends Activity {
 
 
     //Function to show Hint
-    public void getHint(View v){
-        String hint1 = "First Hint:- 01010011 | 01000001 | 0b0 | 0b1001";
-        String hint2 = "Second Hint:- 0b1100100 | 01010010 | 0b1111101000 | 0b100 | 0b111";
-        new AlertDialog.Builder(this)
-                .setTitle("Decode this to get Code")
-                .setMessage(hint1+"\n\n"+hint2)
-                .show();
+    public void forgetPassword(View v){
+       Intent i1 = new Intent(this, ForgetPassword.class);
+       startActivity(i1);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.demoapp;
+package com.example.demoapp.PasswordOptionClasses;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.Login;
+import com.example.demoapp.R;
 
 public class PasswordChange extends Activity {
 
@@ -45,7 +47,8 @@ public class PasswordChange extends Activity {
 
     public void setPassword(View v){
         if(p1.getText().toString().equals(p2.getText().toString())){
-           String res = new CommonFunctions().setCache(this, p2.getText().toString().getBytes());
+           String res = new CommonFunctions().setCache(this, p2.getText().toString().getBytes(), "pass");
+           p1.setText(""); p2.setText("");
             Toast.makeText(this, res, Toast.LENGTH_LONG).show();
         }
         else{

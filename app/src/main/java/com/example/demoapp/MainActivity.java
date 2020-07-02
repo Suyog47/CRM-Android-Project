@@ -9,12 +9,9 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
-
-import java.io.File;
-import java.io.FileInputStream;
+import com.example.demoapp.PasswordOptionClasses.Otp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,14 +32,14 @@ public class MainActivity extends AppCompatActivity {
         sLogo.setColorFilter(Color.WHITE);
         start = findViewById(R.id.progressBar);
 
-        pass = new CommonFunctions().getCache(this);
+        pass = new CommonFunctions().getCache(this, "pass");
 
-        //Starting Login Activity after 2400ms.
+        //Starting Login Activity after 2000ms.
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if(pass == null) {
-                    Intent i = new Intent(MainActivity.this, PasswordChange.class);
+                    Intent i = new Intent(MainActivity.this, Otp.class);
                     startActivity(i);
                 }
                 else{

@@ -75,7 +75,13 @@
             android:name=".BackgroundProcessClass.BackupAndRestoreDBs"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PasswordChange"
+            android:name=".PasswordOptionClasses.Otp"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PasswordOptionClasses.PasswordChange"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PasswordOptionClasses.ForgetPassword"
             android:screenOrientation="portrait"/>
     </application>
 
