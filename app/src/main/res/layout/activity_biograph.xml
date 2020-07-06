@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/bioImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/header">
+
+        <TextView
+            android:id="@+id/bioheader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:textColor="#F39C12"
+            android:textSize="25sp"
+            android:textStyle="italic|bold"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/emltxt"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/biotvdesign"
+        android:layout_centerHorizontal="true"
+        android:focusable="false"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/emlbtn"
+        android:layout_width="120dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="250dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/bio_email_btn_text"
+        android:textSize="13sp"
+        android:onClick="changeEmail"/>
+
+    <EditText
+        android:id="@+id/passtxt"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/biotvdesign"
+        android:layout_centerHorizontal="true"
+        android:focusable="false"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@id/passtxt"
+        android:layout_alignRight="@id/passtxt"
+        android:layout_marginTop="55dp"
+        android:onClick="watch"
+        android:background="@drawable/red_button_background"
+        android:src="@android:drawable/ic_menu_view" />
+
+    <Button
+        android:id="@+id/passbtn"
+        android:layout_width="150dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="400dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/bio_pass_btn_text"
+        android:textSize="13sp"
+        android:onClick="updatePass"/>
+
+</RelativeLayout>

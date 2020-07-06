@@ -70,15 +70,15 @@ public class CommonFunctions {
         }
     }
 
-    public String setCache(Context context, byte[] pass, String folder){
+    public String setCache(Context context, byte[] text, String folder){
         String res;
         try{
             File cacheDir = context.getCacheDir();
             File file = new File(cacheDir.getAbsolutePath(),folder);
             FileOutputStream fs = new FileOutputStream(file);
-            fs.write(pass);
+            fs.write(text);
             fs.close();
-            res = "Password Set";
+            res = "Text Set";
         }
         catch(Exception e){
             res = "something went wrong";

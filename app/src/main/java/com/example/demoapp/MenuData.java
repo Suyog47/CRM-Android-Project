@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.demoapp.BackgroundProcessClass.BackupAndRestoreDBs;
+import com.example.demoapp.Bio.Biograph;
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.DailyActivityClasses.DailyActivity;
 import com.example.demoapp.DatesClasses.Impdates;
@@ -127,6 +128,19 @@ public class MenuData extends Activity {
             public Void call() throws Exception {
                 Intent a5 = new Intent(getApplicationContext(), UpdateLog.class);
                 startActivity(a5);
+                return null;
+            }
+        };
+        new CommonFunctions().setThreads(this, call1);
+    }
+
+    //Function to start Update Log Activity
+    public void biograph(View v){
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                Intent a6 = new Intent(getApplicationContext(), Biograph.class);
+                startActivity(a6);
                 return null;
             }
         };

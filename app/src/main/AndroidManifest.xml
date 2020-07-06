@@ -61,6 +61,12 @@
             android:name=".NotesClasses.Notes"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Bio.Biograph"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Bio.ReEnterPassword"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".NotesClasses.AddNotes"
             android:screenOrientation="portrait" />
         <activity

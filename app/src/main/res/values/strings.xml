@@ -60,6 +60,9 @@
     <string name="add_notes_btn_text">Add Notes</string>
     <string name="add_notes_text">Notes</string>
 
+    <string name="bio_email_btn_text">Change Email</string>
+    <string name="bio_pass_btn_text">Update Password</string>
+
     <string name="impdate_fragment_text">Date:- </string>
 
     <string name="backup_text">Backup to Storage</string>

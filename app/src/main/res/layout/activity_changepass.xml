@@ -42,8 +42,8 @@
         />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="320dp"
-        android:layout_height="290dp"
+        android:layout_width="340dp"
+        android:layout_height="330dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         card_view:cardCornerRadius="10dp"
@@ -77,11 +77,20 @@
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="210dp"
             android:text="@string/password_btn_text"
             android:onClick="setPassword"
             android:background="@drawable/updatebutton"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password should contain Atleast 1 Character, \n 1 Number and 1 Special Character"
+            android:layout_marginTop="280dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_gravity="center_horizontal"/>
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

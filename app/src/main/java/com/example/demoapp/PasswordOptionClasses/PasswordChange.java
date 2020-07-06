@@ -20,6 +20,9 @@ import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.Login;
 import com.example.demoapp.R;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PasswordChange extends Activity {
 
     TextView tv;
@@ -47,9 +50,18 @@ public class PasswordChange extends Activity {
 
     public void setPassword(View v){
         if(p1.getText().toString().equals(p2.getText().toString())){
-           String res = new CommonFunctions().setCache(this, p2.getText().toString().getBytes(), "pass");
-           p1.setText(""); p2.setText("");
-            Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+            String pattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#%*,]).{4,32}$";
+            Pattern r = Pattern.compile(pattern);
+            Matcher m = r.matcher(p1.getText().toString());
+            if(m.find()){
+                String res = new CommonFunctions().setCache(this, p2.getText().toString().getBytes(), "pass");
+                p1.setText(""); p2.setText("");
+                Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+            }
+            else{
+                p1.setError("match the given password format");
+            }
+
         }
         else{
             p2.setError("confirm password does not match");

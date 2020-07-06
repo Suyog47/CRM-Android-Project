@@ -33,14 +33,14 @@ public class SendEmail extends AsyncTask {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progressDialog = ProgressDialog.show(context,"Sending message","Please wait...",false,false);
+        progressDialog = ProgressDialog.show(context,"Sending Otp to your Email","Please wait...",false,false);
     }
 
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
         progressDialog.dismiss();
-        Toast.makeText(context,"Message Sent",Toast.LENGTH_LONG).show();
+        Toast.makeText(context,"Otp Sent",Toast.LENGTH_LONG).show();
     }
 
     @Override
