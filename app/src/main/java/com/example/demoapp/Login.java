@@ -5,7 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.AudioAttributes;
+import android.media.AudioAttributes.Builder;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -14,12 +18,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.PasswordOptionClasses.ForgetPassword;
 
+import java.io.DataOutputStream;
 import java.util.concurrent.Callable;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -30,7 +36,9 @@ public class Login extends Activity {
     TextView fp, tv;
     ImageView loginimg;
     SpannableString content;
-    private MediaPlayer mp;
+    SoundPool soundPool;
+    private int soundID;
+
 
     //Showing Alert Dialog to Confirm the Exit of Application
     @Override
@@ -41,7 +49,9 @@ public class Login extends Activity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                       moveTaskToBack(true);
+                       android.os.Process.killProcess(android.os.Process.myPid());
+                       System.exit(1);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -92,6 +102,7 @@ public class Login extends Activity {
         fp.setText(content);
 
         pass = new CommonFunctions().getCache(this, "pass");
+        setSound();
     }
 
     //Function to check valid Owner
@@ -104,11 +115,14 @@ public class Login extends Activity {
             startActivity(a1);
         }
         else{
-            mp = MediaPlayer.create(this, R.raw.errorsound);
-            if (!mp.isPlaying()) {
-                mp.setVolume(75,75);
-                mp.start();
-            }
+//            mp = MediaPlayer.create(this, R.raw.errorsound);
+//            if (!mp.isPlaying()) {
+//                mp.setVolume(75,75);
+//                mp.start();
+//            }
+
+            soundPool.play(soundID,1,1,1,0,1);
+
             new SweetAlertDialog(this,SweetAlertDialog.ERROR_TYPE)
                   .setTitleText("Nope...Wrong Access Code")
                   .show();
@@ -122,4 +136,19 @@ public class Login extends Activity {
        startActivity(i1);
     }
 
+
+    public void setSound(){
+        AudioAttributes audio = new AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .build();
+
+        soundPool = new SoundPool.Builder()
+                .setMaxStreams(2)
+                .setAudioAttributes(audio)
+                .build();
+
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC , 0);
+        soundID = soundPool.load(this, R.raw.errorsound,1);
+    }
 }

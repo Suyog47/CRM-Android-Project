@@ -56,7 +56,12 @@ public class PasswordChange extends Activity {
             if(m.find()){
                 String res = new CommonFunctions().setCache(this, p2.getText().toString().getBytes(), "pass");
                 p1.setText(""); p2.setText("");
-                Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+                if(res.equals("success")) {
+                    Toast.makeText(this, "Password Updates", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+                }
             }
             else{
                 p1.setError("match the given password format");

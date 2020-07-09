@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -48,9 +51,10 @@ public class InsertLog extends Activity {
     float x1, x2;
     int MIN_DISTANCE = 50;
     Date dt = new Date();
-    MediaPlayer player;
     SimpleDateFormat formatter = new SimpleDateFormat("YYYY");
     ImageView insertimg;
+    SoundPool soundPool;
+    private int soundID1, soundID2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +117,7 @@ public class InsertLog extends Activity {
 
         new CommonFunctions().setThreads(this, call1);
         new CommonFunctions().setThreads(this, call2);
+        setSound();
     }
 
 
@@ -129,6 +134,7 @@ public class InsertLog extends Activity {
                 float deltaX = x2 - x1;
 
                 if (Math.abs(deltaX) > MIN_DISTANCE) {
+                    soundPool.play(soundID2,1,1,1,0,1);
                     if (x2 > x1) {
                         int yr = Integer.parseInt(year.getText().toString());
                         yr-=1;
@@ -151,12 +157,7 @@ public class InsertLog extends Activity {
         fav = !fav;
         if(fav == true){fbtn.setColorFilter(Color.RED);}
         else{fbtn.setColorFilter(Color.BLACK);}
-
-        player = MediaPlayer.create(this, R.raw.ticksound);
-        if(!player.isPlaying()) {
-            player.setVolume(75,75);
-            player.start();
-        }
+        soundPool.play(soundID1,1,1,1,0,1);
     }
 
 
@@ -213,6 +214,22 @@ public class InsertLog extends Activity {
                     .setContentText(result)
                     .show();
         }
+    }
+
+    public void setSound(){
+        AudioAttributes audio = new AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .build();
+
+        soundPool = new SoundPool.Builder()
+                .setMaxStreams(2)
+                .setAudioAttributes(audio)
+                .build();
+
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC , 0);
+        soundID1 = soundPool.load(this, R.raw.ticksound,1);
+        soundID2 = soundPool.load(this, R.raw.swipesound,1);
     }
 
 }

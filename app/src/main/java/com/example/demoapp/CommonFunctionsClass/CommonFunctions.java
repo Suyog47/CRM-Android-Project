@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -13,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.DActivitySqlliteDbService;
 import com.example.demoapp.SqlliteDBClasses.EventSqlliteDbService;
 
@@ -29,6 +33,8 @@ import java.util.concurrent.Executors;
 import static android.content.Context.VIBRATOR_SERVICE;
 
 public class CommonFunctions {
+
+    private SoundPool soundPool;
 
     //Function to set Image in BitmapFactory Class and get Scaled Image(short image)
     public Bitmap getScaledImage(Context context, int img, Display display){
@@ -78,7 +84,7 @@ public class CommonFunctions {
             FileOutputStream fs = new FileOutputStream(file);
             fs.write(text);
             fs.close();
-            res = "Text Set";
+            res = "success";
         }
         catch(Exception e){
             res = "something went wrong";

@@ -1,6 +1,8 @@
 package com.example.demoapp.PasswordOptionClasses;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
+import com.example.demoapp.Login;
 import com.example.demoapp.R;
 
 import java.util.regex.Matcher;
@@ -29,6 +32,27 @@ public class Otp extends Activity {
     EditText email, otp;
     Button chkbtn, sndbtn;
     ImageView otpimg;
+
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(Otp.this)
+                .setTitle("Are you Sure!")
+                .setMessage("Do you want to close this App")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        moveTaskToBack(true);
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) { }
+                })
+                .show();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,7 +105,7 @@ public class Otp extends Activity {
           startActivity(i1);
       }
       else{
-          Toast.makeText(this, "something wrong", Toast.LENGTH_SHORT).show();
+         otp.setError("Wrong OTP");
       }
     }
 

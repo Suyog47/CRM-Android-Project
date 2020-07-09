@@ -42,7 +42,7 @@ public class Biograph extends Activity {
         content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
         biotv.setText(content);
 
-        int img = R.drawable.forgetpassword;
+        int img = R.drawable.biograph;
         Display display = getWindowManager().getDefaultDisplay();
         Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
         bioimg.setImageBitmap(scaledImg);
@@ -60,7 +60,12 @@ public class Biograph extends Activity {
         }
         else{
             String res = new CommonFunctions().setCache(this, emltxt.getText().toString().getBytes(),"email");
-            Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+            if(res.equals("success")) {
+                Toast.makeText(this, "Email Updates", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+            }
             emltxt.setFocusable(false);
             emlbtn.setText("Change Email");
         }

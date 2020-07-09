@@ -232,7 +232,7 @@
                 android:cropToPadding="false"
                 android:onClick="biograph"
                 android:scaleType="fitCenter"
-                android:src="@drawable/bio"
+                android:src="@drawable/settings"
                 android:visibility="visible" />
 
             <TextView
