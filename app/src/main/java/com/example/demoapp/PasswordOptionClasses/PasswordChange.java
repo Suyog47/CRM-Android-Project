@@ -1,6 +1,8 @@
 package com.example.demoapp.PasswordOptionClasses;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -20,14 +22,41 @@ import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.Login;
 import com.example.demoapp.R;
 
+import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PasswordChange extends Activity {
 
+    int status;
     TextView tv;
     EditText p1, p2;
     ImageView passimg;
+
+    @Override
+    public void onBackPressed() {
+        if(status == 1) {
+            new AlertDialog.Builder(PasswordChange.this)
+                    .setTitle("Are you Sure!")
+                    .setMessage("Do you want to close this App")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) { }
+                    })
+                    .show();
+        }
+        else{
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,14 +67,32 @@ public class PasswordChange extends Activity {
         p2 = findViewById(R.id.confirmcode);
         passimg = findViewById(R.id.passwordImg);
 
-        SpannableString content = new SpannableString("Change Password");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
+        Bundle bundle = getIntent().getExtras();
+        status = bundle.getInt("status");
 
-        int img = R.drawable.changepassword;
-        Display display = getWindowManager().getDefaultDisplay();
-        Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
-        passimg.setImageBitmap(scaledImg);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Change Password");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
+
+        Callable<Void> call2 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                int img = R.drawable.changepassword;
+                Display display = getWindowManager().getDefaultDisplay();
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
+                passimg.setImageBitmap(scaledImg);
+                return null;
+            }
+        };
+
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
     }
 
     public void setPassword(View v){

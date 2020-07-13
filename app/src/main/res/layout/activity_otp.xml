@@ -48,19 +48,31 @@
             android:fontFamily=""
             android:inputType="textEmailAddress" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otp_change_email_txt"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_gravity="end"
+            android:layout_marginTop="90dp"
+            android:onClick="changeEmail"
+            android:layout_marginEnd="30dp"/>
+
+
         <Button
             android:id="@+id/sndbtn"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="130dp"
             android:text="@string/otp_send_btn_text"
             android:textColor="@android:color/white"
             android:onClick="sendOtp"
             android:background="@drawable/selectbutton"/>
 
-
         <EditText
+
             android:id="@+id/setotp"
             android:layout_width="70dp"
             android:layout_height="60dp"

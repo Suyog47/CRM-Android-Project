@@ -1,4 +1,4 @@
-package com.example.demoapp.Bio;
+package com.example.demoapp.Settings;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +19,8 @@ import androidx.annotation.Nullable;
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.R;
 
+import java.util.concurrent.Callable;
+
 public class Biograph extends Activity {
 
     String pass;
@@ -38,19 +40,40 @@ public class Biograph extends Activity {
         emlbtn = findViewById(R.id.emlbtn);
         passbtn = findViewById(R.id.passbtn);
 
-        SpannableString content = new SpannableString("Biograph");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        biotv.setText(content);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Biograph");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                biotv.setText(content);
+                return null;
+            }
+        };
 
-        int img = R.drawable.biograph;
-        Display display = getWindowManager().getDefaultDisplay();
-        Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
-        bioimg.setImageBitmap(scaledImg);
+        Callable<Void> call2 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                int img = R.drawable.biograph;
+                Display display = getWindowManager().getDefaultDisplay();
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
+                bioimg.setImageBitmap(scaledImg);
+                return null;
+            }
+        };
 
-        pass = new CommonFunctions().getCache(this,"pass");
+        Callable<Void> call3 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                pass = new CommonFunctions().getCache(getApplicationContext(),"pass");
+                emltxt.setText(new CommonFunctions().getCache(getApplicationContext(),"email"));
+                passtxt.setText("************");
+                return null;
+            }
+        };
 
-        emltxt.setText(new CommonFunctions().getCache(this,"email"));
-        passtxt.setText("************");
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
+        new CommonFunctions().setThreads(this, call3);
     }
 
     public void changeEmail(View v){

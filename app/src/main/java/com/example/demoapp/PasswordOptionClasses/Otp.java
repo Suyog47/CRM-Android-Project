@@ -2,9 +2,12 @@ package com.example.demoapp.PasswordOptionClasses;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -22,6 +25,7 @@ import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.Login;
 import com.example.demoapp.R;
 
+import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,14 +70,29 @@ public class Otp extends Activity {
         chkbtn = findViewById(R.id.chkbtn);
         sndbtn = findViewById(R.id.sndbtn);
 
-        SpannableString content = new SpannableString("Set Otp");
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-        tv.setText(content);
+        Callable<Void> call1 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                SpannableString content = new SpannableString("Set Otp");
+                content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
+                tv.setText(content);
+                return null;
+            }
+        };
 
-        int img = R.drawable.changepassword;
-        Display display = getWindowManager().getDefaultDisplay();
-        Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
-        otpimg.setImageBitmap(scaledImg);
+        Callable<Void> call2 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                int img = R.drawable.changepassword;
+                Display display = getWindowManager().getDefaultDisplay();
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
+                otpimg.setImageBitmap(scaledImg);
+                return null;
+            }
+        };
+
+        new CommonFunctions().setThreads(this, call1);
+        new CommonFunctions().setThreads(this, call2);
     }
 
     public void sendOtp(View v){
@@ -82,15 +101,32 @@ public class Otp extends Activity {
         Matcher m = r.matcher(email.getText().toString());
 
         if(m.find()){
-            int min = 100000;
-            int max = 999999;
-            random_int = (int)(Math.random() * (max - min + 1) + min);
+            ConnectivityManager cm = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+            if(isConnected) {
+                int min = 100000;
+                int max = 999999;
+                random_int = (int) (Math.random() * (max - min + 1) + min);
 
-            SendEmail sm = new SendEmail(this, email.getText().toString(), "Otp", "Your Otp is " + random_int);
-            sm.execute();
-            new CommonFunctions().setCache(this, email.getText().toString().getBytes(), "email");
-            email.setEnabled(false); sndbtn.setEnabled(false);
-            otp.setEnabled(true);  chkbtn.setEnabled(true);
+                SendEmail sm = new SendEmail(this, email.getText().toString(), "Otp", "Your Otp is " + random_int);
+                sm.execute();
+                new CommonFunctions().setCache(this, email.getText().toString().getBytes(), "email");
+                email.setEnabled(false);
+                sndbtn.setEnabled(false);
+                otp.setEnabled(true);
+                chkbtn.setEnabled(true);
+            }
+            else{
+                new AlertDialog.Builder(Otp.this)
+                        .setTitle("Oops...")
+                        .setMessage("\t\t\t\t\t\t\tNo Internet Connection! \n\nTo change Password you should have an Active Internet Connection.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) { }
+                        })
+                        .show();
+            }
         }
         else{
             email.setError("put email in valid format");
@@ -102,11 +138,18 @@ public class Otp extends Activity {
         int O = Integer.parseInt(otp.getText().toString());
         if(O == random_int){
           Intent i1 = new Intent(this, PasswordChange.class);
+          i1.putExtra("status",1);
           startActivity(i1);
       }
       else{
          otp.setError("Wrong OTP");
       }
+    }
+
+    public void changeEmail(View v){
+        email.setEnabled(true); sndbtn.setEnabled(true);
+        otp.setEnabled(false); chkbtn.setEnabled(false);
+        otp.setText("");
     }
 
 }

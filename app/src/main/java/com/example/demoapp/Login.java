@@ -2,6 +2,7 @@ package com.example.demoapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +11,8 @@ import android.media.AudioAttributes.Builder;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -132,8 +135,23 @@ public class Login extends Activity {
 
     //Function to show Hint
     public void forgetPassword(View v){
-       Intent i1 = new Intent(this, ForgetPassword.class);
-       startActivity(i1);
+        ConnectivityManager cm = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        if(isConnected){
+            Intent i1 = new Intent(this, ForgetPassword.class);
+            startActivity(i1);
+        }
+        else{
+            new AlertDialog.Builder(Login.this)
+                    .setTitle("Oops...")
+                    .setMessage("\t\t\t\t\t\t\tNo Internet Connection! \n\nTo change Password you should have an Active Internet Connection.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) { }
+                    })
+                    .show();
+        }
     }
 
 

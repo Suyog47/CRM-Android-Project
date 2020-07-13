@@ -61,10 +61,10 @@
             android:name=".NotesClasses.Notes"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Bio.Biograph"
+            android:name=".Settings.Biograph"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Bio.ReEnterPassword"
+            android:name=".Settings.ReEnterPassword"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NotesClasses.AddNotes"

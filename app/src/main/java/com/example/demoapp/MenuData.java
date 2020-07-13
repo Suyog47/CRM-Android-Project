@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.demoapp.BackgroundProcessClass.BackupAndRestoreDBs;
-import com.example.demoapp.Bio.Biograph;
+import com.example.demoapp.Settings.Biograph;
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.DailyActivityClasses.DailyActivity;
 import com.example.demoapp.DatesClasses.Impdates;

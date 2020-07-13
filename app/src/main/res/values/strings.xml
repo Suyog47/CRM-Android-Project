@@ -4,6 +4,8 @@
     <string name="splash_text">Capture and ReLive the Moments</string>
 
     <string name="login_text">Access Code</string>
+    <string name="forgetpassword_txt">An Otp has been Sent to ur Email</string>
+    <string name="forgetpassword_eml_txt">suyogamin11@gmail.com</string>
 
     <string name="menu_insert_log_text">Insert Event</string>
     <string name="menu_show_log_text">Show Event</string>
@@ -74,8 +76,11 @@
     <string name="otp_email_hint_text">Enter Email</string>
     <string name="otp_otp_hint_text">Otp</string>
     <string name="otp_check_btn_text">Check</string>
+    <string name="otp_change_email_txt">Change Email</string>
 
     <string name="password_btn_text">Change</string>
     <string name="password_hint_text">Set Code</string>
     <string name="password_hint_text2">Confirm Code</string>
+    <string name="password_login_txt">Go to Login</string>
+    <string name="password_info_txt">Password should contain Atleast 1 Character, \n 1 Number and 1 Special Character</string>
 </resources>
