@@ -67,7 +67,7 @@ public class AddNotes extends Activity {
             public Void call() throws Exception {
 
                 //Setting up Bitmap Scaled Image
-                int img = R.drawable.notesbg2;
+                int img = R.drawable.notesbg;
                 Display display = getWindowManager().getDefaultDisplay();
                 Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 addnotesimg.setImageBitmap(scaledImg);

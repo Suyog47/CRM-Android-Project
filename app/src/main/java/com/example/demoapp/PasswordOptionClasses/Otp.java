@@ -32,7 +32,7 @@ import java.util.regex.Pattern;
 public class Otp extends Activity {
 
     int random_int;
-    TextView tv;
+    TextView tv, otpmsg;
     EditText email, otp;
     Button chkbtn, sndbtn;
     ImageView otpimg;
@@ -69,6 +69,7 @@ public class Otp extends Activity {
         otp = findViewById(R.id.setotp);
         chkbtn = findViewById(R.id.chkbtn);
         sndbtn = findViewById(R.id.sndbtn);
+        otpmsg = findViewById(R.id.otpmsg);
 
         Callable<Void> call1 = new Callable<Void>() {
             @Override
@@ -112,10 +113,9 @@ public class Otp extends Activity {
                 SendEmail sm = new SendEmail(this, email.getText().toString(), "Otp", "Your Otp is " + random_int);
                 sm.execute();
                 new CommonFunctions().setCache(this, email.getText().toString().getBytes(), "email");
-                email.setEnabled(false);
-                sndbtn.setEnabled(false);
-                otp.setEnabled(true);
-                chkbtn.setEnabled(true);
+                otpmsg.setVisibility(View.VISIBLE);
+                email.setEnabled(false); sndbtn.setEnabled(false);
+                otp.setEnabled(true); chkbtn.setEnabled(true);
             }
             else{
                 new AlertDialog.Builder(Otp.this)

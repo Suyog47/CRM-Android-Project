@@ -77,6 +77,7 @@
     <string name="otp_otp_hint_text">Otp</string>
     <string name="otp_check_btn_text">Check</string>
     <string name="otp_change_email_txt">Change Email</string>
+    <string name="otp_otp_send_txt">Otp Sent</string>
 
     <string name="password_btn_text">Change</string>
     <string name="password_hint_text">Set Code</string>

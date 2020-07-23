@@ -7,16 +7,28 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Environment;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
 import com.example.demoapp.R;
 import com.example.demoapp.SqlliteDBClasses.ShowImageDbService;
 import java.io.File;
@@ -45,37 +57,45 @@ public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdap
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.img.setImageBitmap((Bitmap) imgList.get(position));
+        Glide.with(context)
+                .load(imgList.get(position))
+                .into(holder.img);
+        //holder.img.setImageBitmap(scaledImg);
+
         SpannableString content = new SpannableString(imgDate.get(position).toString());
-        content.setSpan( new UnderlineSpan() , 0 , content.length(),0);
-     holder.imgdate.setText(content);
-     holder.imgdesc.setText(imgDesc.get(position).toString());
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        holder.imgdate.setText(content);
+        holder.imgdesc.setText(imgDesc.get(position).toString());
 
-     holder.dbtn.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             deleteImage(holder, position);
-         }
-     });
+        YoYo.with(Techniques.ZoomIn)
+                .duration(550)
+                .playOn(holder.cardLayout);
 
-     holder.savebtn.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             BitmapDrawable draw = (BitmapDrawable) holder.img.getDrawable();
-             saveImage(draw, position);
-         }
-     });
+        holder.dbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteImage(holder, position);
+            }
+        });
 
-     holder.img.setOnClickListener(new View.OnClickListener(){
-         @Override
-         public void onClick(View v) {
-             Intent a1 = new Intent(context, ShowExpandedImage.class);
-             a1.putExtra("imgDesc", imgDesc.get(position).toString());
-             context.startActivity(a1);
-         }
-     });
+        holder.savebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BitmapDrawable draw = (BitmapDrawable) holder.img.getDrawable();
+                saveImage(draw, position);
+            }
+        });
+
+        holder.img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a1 = new Intent(context, ShowExpandedImage.class);
+                a1.putExtra("imgDesc", imgDesc.get(position).toString());
+                context.startActivity(a1);
+            }
+        });
+
     }
-
 
     @Override
     public int getItemCount() {
@@ -87,7 +107,7 @@ public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdap
         ImageView img;
         ImageButton dbtn, savebtn;
         TextView imgdate, imgdesc;
-        LinearLayout imglayout;
+        CardView cardLayout;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -96,7 +116,7 @@ public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdap
             imgdesc = itemView.findViewById(R.id.imgdesc);
             dbtn = itemView.findViewById(R.id.delBtn);
             savebtn = itemView.findViewById(R.id.saveBtn);
-            imglayout = itemView.findViewById(R.id.imgLayout);
+            cardLayout = itemView.findViewById(R.id.imgLayout);
         }
     }
 
@@ -125,7 +145,7 @@ public class ShowImageListAdapter extends RecyclerView.Adapter<ShowImageListAdap
     public void deleteImage(ViewHolder holder, int position){
         int res = new ShowImageDbService(context).delPhoto(imgDesc.get(position).toString());
         if(res > 0){
-           holder.imglayout.setVisibility(View.GONE);
+           holder.cardLayout.setVisibility(View.GONE);
         }
         else{
             Toast.makeText(context, "Something went Wrong", Toast.LENGTH_SHORT).show();

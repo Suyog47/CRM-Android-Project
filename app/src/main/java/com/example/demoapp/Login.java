@@ -78,7 +78,7 @@ public class Login extends Activity {
         Callable<Void> call1 = new Callable<Void>() {
             @Override
             public Void call() throws Exception {
-                int img = R.drawable.login;
+                int img = R.drawable.login2;
                 Display display = getWindowManager().getDefaultDisplay();
                 Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 loginimg.setImageBitmap(scaledImg);

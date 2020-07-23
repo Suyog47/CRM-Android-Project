@@ -7,13 +7,19 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,13 +47,14 @@ import java.util.concurrent.Executors;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
 public class ShowImage extends Activity {
 
-    ImageView img;
+    ImageView img, bgimg;
     TextView tv;
     Bitmap bitmap, photo;
     int count=0;
-    float x1, x2;
     Cursor res;
     LinearLayout vlayout;
     RecyclerView recyclerView;
@@ -60,6 +67,7 @@ public class ShowImage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
         tv = findViewById(R.id.imagesHeader);
+        bgimg = findViewById(R.id.showImageImg);
 
         Callable<Void> call1 = new Callable<Void>() {
             @Override
@@ -80,9 +88,20 @@ public class ShowImage extends Activity {
             }
         };
 
+        Callable<Void> call3 = new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                int img = R.drawable.showimagebg;
+                Display display = getWindowManager().getDefaultDisplay();
+                Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
+                bgimg.setImageBitmap(scaledImg);
+                return null;
+            }
+        };
+
         new CommonFunctions().setThreads(this, call1);
         new CommonFunctions().setThreads(this, call2);
-
+        new CommonFunctions().setThreads(this, call3);
     }
 
 
@@ -98,8 +117,8 @@ public class ShowImage extends Activity {
 
             ShowImageListAdapter adapter = new ShowImageListAdapter(getApplicationContext(), imgList, imgDate, imgDesc);
             recyclerView.setHasFixedSize(true);
-            StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(staggeredGridLayoutManager);
+           // StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(adapter);
     }
 
@@ -230,13 +249,12 @@ public class ShowImage extends Activity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
        byte[] byteImg = new ShowImageCF().convertToByteArray(bitmapImg);
        String res = new ShowImageDbService(this).insertImages(byteImg, desc, dateFormat.format(dt));
-        imgList.clear();
-        imgDate.clear();
-        imgDesc.clear();
+       imgList.clear();
+       imgDate.clear();
+       imgDesc.clear();
        Cursor res1 = new ShowImageDbService(getApplicationContext()).getImages(count);
        showImages(res1);
        Toast.makeText(this, res, Toast.LENGTH_LONG).show();
     }
-
 
 }

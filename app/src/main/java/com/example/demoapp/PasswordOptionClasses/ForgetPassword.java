@@ -1,13 +1,8 @@
 package com.example.demoapp.PasswordOptionClasses;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -21,7 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.demoapp.CommonFunctionsClass.CommonFunctions;
-import com.example.demoapp.Login;
 import com.example.demoapp.R;
 
 import java.util.concurrent.Callable;

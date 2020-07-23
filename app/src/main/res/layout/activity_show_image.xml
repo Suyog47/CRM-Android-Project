@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
+    <ImageView
+        android:id="@+id/showImageImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
+
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -50,9 +56,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="60dp"
         android:scrollbars="vertical" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -61,22 +68,22 @@
         android:layout_height="100sp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_alignBottom="@id/imageRecyclerView"
+        android:layout_alignParentBottom="true"
         android:onClick="openGalary"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="30dp"
+        app:backgroundTint="@android:color/holo_blue_light"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cameraButton"
         android:layout_width="100sp"
         android:layout_height="100sp"
-        android:layout_alignBottom="@id/imageRecyclerView"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="30dp"
         android:clickable="true"
         android:focusable="true"
         android:onClick="openCamera"
         app:backgroundTint="@android:color/holo_green_light"
         app:srcCompat="@android:drawable/ic_menu_camera" />
-
 </RelativeLayout>

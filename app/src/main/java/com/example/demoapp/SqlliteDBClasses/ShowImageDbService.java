@@ -59,4 +59,9 @@ public class ShowImageDbService extends SQLiteOpenHelper {
         return db.delete(TABLE_NAME,"Description = ?", new String[] {desc});
     }
 
+    public Cursor countdb(){
+        db = getWritableDatabase();
+        return db.rawQuery("select count(*) from PImages_table",null);
+    }
+
 }

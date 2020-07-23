@@ -62,7 +62,7 @@ public class Notes extends Activity {
             public Void call() throws Exception {
 
                 //Setting up Bitmap Scaled Image
-                int img = R.drawable.login;
+                int img = R.drawable.notesbg;
                 Display display = getWindowManager().getDefaultDisplay();
                 Bitmap scaledImg = new CommonFunctions().getScaledImage(getApplicationContext(), img, display);
                 loginimg.setImageBitmap(scaledImg);
